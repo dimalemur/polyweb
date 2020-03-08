@@ -1,0 +1,93 @@
+.Name {
+    color: white;
+    font-size: 50px;
+    clear: both;
+}
+.Header {
+    overflow: hidden;
+    box-sizing: border-box;
+    background:#1c1c2a ;
+    height: 100vh;
+    &-Content {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align:center;
+        padding-left: 10%;
+        
+    }
+    &-Back{
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        opacity: 0.02;
+        height: 100vh;
+        background: url('../../../source/images/back.jpg') no-repeat;
+        background-position: center;
+        background-size: 45%;
+        background-position-x: 30%;
+    }
+}
+
+
+.Circle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 120vh;
+    position: relative;
+
+    &-Wrap{
+        position: relative;
+        top: -110vh;
+        right: 0;
+    }
+
+    &-First {
+        display: inline-block;
+        height: 100%;
+        position: absolute;
+        right: -70vh;
+
+
+        & img {
+            height: 100%;
+            animation: rotation_2 20s infinite;
+            animation-timing-function: linear;
+            transform-origin: 51% 49%;
+        }
+    }
+    &-Second {
+        display: inline-block;
+        height: 80%;
+        position: absolute;
+        left: 10%;
+        top:10%;
+
+
+        & img {
+            height: 100%;
+            animation: rotation 20s infinite;
+            animation-timing-function: linear;
+            transform-origin: 51% 49%;
+        }
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform:rotate(45deg);
+    }
+    to {
+        transform:rotate(405deg);
+    }
+  }
+
+  @keyframes rotation_2 {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(-360deg);
+    }
+  }
