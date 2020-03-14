@@ -46,8 +46,8 @@
 
 # <span style = "color:#6666FF; font-weight:bold;"> Полезные ссылки </span>  
 
-## [Уроки JavaScript](https://learn.javascript.ru/) 
-## [Уроки для ознакомления с React js](https://www.youtube.com/watch?v=fQAKKXc6BCM&list=PLqHlAwsJRxAONt5CnjMMeKdYGv1CDRUOl)
-## [Большой курс для разработки на React](https://www.youtube.com/playlist?list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8) 
+### [Уроки JavaScript](https://learn.javascript.ru/) 
+### [Уроки для ознакомления с React js](https://www.youtube.com/watch?v=fQAKKXc6BCM&list=PLqHlAwsJRxAONt5CnjMMeKdYGv1CDRUOl)
+### [Большой курс для разработки на React](https://www.youtube.com/playlist?list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8) 
 
 
