@@ -54,10 +54,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([
-            {
-                from: __dirname + '/src/source/favicon/logo.png',
-                to: __dirname + '/public/icons/'
-            }
+
         ])
     ]
 }
