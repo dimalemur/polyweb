@@ -1,0 +1,35 @@
+.Regsidebar {
+  z-index: 4;
+  position: fixed;
+  height: 100vh;
+  width: 3.5rem;
+  background: #302c2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  &-Icon {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.Icon {
+  &-Top {
+    margin-top: 10vh;
+  }
+  &-Bottom {
+    margin-bottom: 10vh;
+  }
+  &-Img {
+    width: 50%;
+  }
+}
+
+
+@media screen and (max-width: 640px){
+  .Regsidebar {
+    display: none;
+    right: 0;
+  }
+}

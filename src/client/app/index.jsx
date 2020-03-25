@@ -1,11 +1,11 @@
-import React from 'react'
-import './app.pcss'
-import { Main } from '../pages/main'
+import React from 'react';
+import { Authentication } from '../pages/authentication';
+import './app.pcss';
 
 export const App = (props) => {
     return (
         <div className='App' >
-            <Main />
+            <Authentication />
         </div>
     )
 }

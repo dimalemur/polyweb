@@ -1,0 +1,175 @@
+.Regbackground {
+  height: 100vh;
+  background: #5754db;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  &-Programmer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-height: 62vh;
+    max-width: 100vw;
+    z-index: 1;
+  }
+
+  &-Navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    z-index: 3;
+    margin-top: 30px;
+  }
+}
+
+.Menu {
+  &-Icon {
+    padding: 0 30px;
+    line-height: 10px;
+    display: none;
+  }
+}
+
+.Navbar {
+  &-Logo {
+    position: relative;
+    left: 10%;
+    display: flex;
+  }
+}
+
+.Logo {
+  &-Logo {
+    padding: 6px;
+  }
+  &-Text {
+    display: flex;
+    padding: 0 6px;
+    font-size: 16pt;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    border-left: 1px solid white;
+  }
+
+  &_first {
+    font-weight: bold;
+  }
+}
+
+.Line {
+  &-Wrap {
+    position: absolute;
+    min-width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 0;
+  }
+}
+
+.Img {
+  &-Wrap {
+    width: 100%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 80vh;
+      object-fit: cover;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Regbackground {
+    &-Programmer {
+      left: 2vw;
+    }
+  }
+
+  .Menu {
+    &-Icon {
+      display: block;
+      img {
+        max-height: 40px;
+      }
+    }
+  }
+
+  .Navbar {
+    &-Logo {
+      left: 0;
+    }
+  }
+
+  .Logo {
+    &-Logo {
+      padding: 6px;
+
+      img {
+        width: 120px;
+      }
+    }
+    &-Text {
+      font-size: 12pt;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .Menu {
+    &-Icon {
+      width: 80%;
+      text-align: right;
+    }
+  }
+
+  .Regbackground {
+    &-Navbar {
+      flex-direction: column-reverse;
+      margin-top: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .Logo {
+    &-Logo {
+      padding: 6px;
+
+      img {
+        width: 80px;
+      }
+    }
+    &-Text {
+      font-size: 8pt;
+    }
+  }
+
+  .Menu {
+    &-Icon {
+      display: block;
+      img {
+        max-height: 30px;
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .Regbackground {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  
+  .Regbackground {
+    &-Navbar {
+      padding-bottom: 10px;
+    }
+  }
+}

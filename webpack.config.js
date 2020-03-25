@@ -1,7 +1,8 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     context: __dirname + '/src',
@@ -10,8 +11,8 @@ module.exports = {
         main: './client/index.js'
     },
     output: {
-        path: __dirname +'/public/build/',
-        filename:'[name].[contenthash].js'
+        path: __dirname + '/public/build/',
+        filename: '[name].[contenthash].js'
     },
     module: {
         rules: [
@@ -20,16 +21,19 @@ module.exports = {
                 use: [
                     {
                         loader: 'style-loader',
-                      },
-                      {
+                    },
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
                         loader: 'css-loader',
                         options: {
-                          importLoaders: 1,
+                            importLoaders: 1,
                         }
-                      },
-                      {
+                    },
+                    {
                         loader: 'postcss-loader'
-                      }
+                    }
                 ]
             },
             {
@@ -41,20 +45,32 @@ module.exports = {
                 test: /\.(png|jpg|svg|gif)$/,
                 use: "file-loader"
             },
-            
+            {
+                test: /\.(otf|ttf|eot)$/,
+                use: "file-loader",
+            },
+
 
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx','.pcss'],
+        extensions: ['.js', '.jsx', '.pcss'],
     },
     plugins: [
-        new HTMLWebpackPlugin({
-            template:'./source/index.html'
-        }),
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin([
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
 
+        }),
+        new HTMLWebpackPlugin({
+            template: './source/index.html'
+        }),
+        new CopyWebpackPlugin([
+            // {
+            //     from: __dirname + '/src/source/images/icons/',
+            //     to: __dirname + '/public/images/icons/'
+            // }
         ])
     ]
 }
