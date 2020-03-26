@@ -5,6 +5,7 @@ import line from '../../../source/images/Vector 1.svg';
 import { Authorization } from '../authorization';
 import { Authhelp } from '../authhelp';
 import { Regnavbar } from '../regnavbar';
+import {Route} from 'react-router-dom';
 
 export const Regcontent = (props) => {
     return (
