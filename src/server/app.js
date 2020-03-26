@@ -1,19 +1,13 @@
 
 let express = require('express');
-
+var path = require('path');
 let app = express();
 
 app
-    .use(express.static("../../public/build/"))
-    .get('/', (req, res) => {
-        res.sendfile('index.html');
-        
-    })
-    .get('/img', (req, res) => {
-        res.sendfile('../../public/build/index.html');
-        
-    });
+    .use(express.static(path.join(__dirname, "../../public/build/")))
+    .use('/login/authhelp/', express.static(path.join(__dirname, "../../public/build/")))
+
 
 app.listen(3000, () => {
-    console.log('Server is started!');
+    console.log('Server is started! in http://127.0.0.1:3000/');
 })

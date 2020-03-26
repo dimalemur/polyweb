@@ -1,5 +1,6 @@
 import React from 'react';
 import './authorization.pcss';
+import { NavLink } from 'react-router-dom';
 
 export const Authorization = (props) => {
     return (
@@ -24,7 +25,7 @@ export const Authorization = (props) => {
 
                         <div className="Form-Help">
                             <span className="Help-Text">
-                                Проблемы со входом?
+                                <NavLink to = '/login/authhelp/'>Проблемы со входом?</NavLink>
                             </span>
                         </div>
                         <div className="Button Form-Button">

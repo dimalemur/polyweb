@@ -1,14 +1,16 @@
 import React from 'react';
 import './authentication.pcss';
 import { Regsidebar } from '../../components/regsidebar';
-import { Regbackground } from '../../components/regbackground';
-import { Authorization } from '../../components/authorization';
+import { Regcontent } from '../../components/regcontent';
+import { BrowserRouter } from 'react-router-dom';
 
 export const Authentication = (props) => {
     return (
-        <div className='Authentication' >
-            <Regsidebar />
-            <Regbackground />
-        </div>
+        <BrowserRouter>
+            <div className='Authentication' >
+                <Regsidebar />
+                <Regcontent />
+            </div>
+        </BrowserRouter>
     )
 }

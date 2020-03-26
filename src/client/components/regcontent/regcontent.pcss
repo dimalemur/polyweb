@@ -1,4 +1,4 @@
-.Regbackground {
+.Regcontent {
   height: 100vh;
   background: #5754db;
   overflow: hidden;
@@ -34,14 +34,6 @@
   }
 }
 
-.Navbar {
-  &-Logo {
-    position: relative;
-    left: 10%;
-    display: flex;
-  }
-}
-
 .Logo {
   &-Logo {
     padding: 6px;
@@ -55,6 +47,11 @@
     justify-content: center;
     flex-direction: column;
     border-left: 1px solid white;
+    font-family: 'Raleway' sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
   }
 
   &_first {
@@ -85,7 +82,7 @@
 }
 
 @media screen and (max-width: 640px) {
-  .Regbackground {
+  .Regcontent {
     &-Programmer {
       left: 2vw;
     }
@@ -97,12 +94,6 @@
       img {
         max-height: 40px;
       }
-    }
-  }
-
-  .Navbar {
-    &-Logo {
-      left: 0;
     }
   }
 
@@ -128,7 +119,7 @@
     }
   }
 
-  .Regbackground {
+  .Regcontent {
     &-Navbar {
       flex-direction: column-reverse;
       margin-top: 10px;
@@ -161,13 +152,12 @@
 }
 
 @media screen and (max-height: 500px) {
-  .Regbackground {
+  .Regcontent {
     height: auto;
     min-height: 100vh;
   }
 
-  
-  .Regbackground {
+  .Regcontent {
     &-Navbar {
       padding-bottom: 10px;
     }
