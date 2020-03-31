@@ -22,6 +22,8 @@ export const signup = async (req, res, next) => {
 
 //авторизация
 export const signin = async (req, res, next) => {
+    console.log(req.body);
+    
     const { login, password } = req.body;
 
     const user = await User.findOne({ login }); //ищем пользователя по логину
@@ -43,6 +45,6 @@ export const signin = async (req, res, next) => {
     }    
 
     const token = jwt.sign({_id: user._id,}, config.secret); //создаём токен по секретному ключу
-    res.json(token); //выдаём токен
+    res.json({ token:token, status:200 }); //выдаём токен
 }
 

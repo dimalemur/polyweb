@@ -11,3 +11,15 @@ export async function getUserByToken(token) {
     
     return user
 }
+
+
+export async function getUserByName(login) {
+   
+    try {
+        var user = await User.find({ login }, { password:0 }); //ищем пользователя по имени, результат получаем без пароля
+    } catch (e) {
+        throw e        
+    }
+    
+    return user
+}

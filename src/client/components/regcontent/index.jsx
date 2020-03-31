@@ -2,17 +2,17 @@ import React from 'react';
 import './regcontent.pcss';
 import computerIcon from '../../../source/images/programmer.svg';
 import line from '../../../source/images/Vector 1.svg';
-import { Authorization } from '../authorization';
+import Authorization from '../authorization';
 import { Authhelp } from '../authhelp';
 import { Regnavbar } from '../regnavbar';
-import {Route} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 export const Regcontent = (props) => {
     return (
 
         <div className='Regcontent' >
             <Regnavbar />
-            <Route exact path="/" component={Authorization} />
+            <Route path="/" component={Authorization} />
             <Route exact path="/login/authhelp/" component={Authhelp} />
             <img className='Regcontent-Programmer' src={computerIcon} alt="" />
             <div className="Line-Wrap">

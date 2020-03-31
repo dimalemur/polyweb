@@ -14,3 +14,23 @@ export async function getCurrentUser(req, res, next) {
 
     return res.json(user);
 }
+
+//обработчик, проверяющий пользователя в базе данных
+export async function checkUserByName(req, res, next) {
+    const name = req.params.user;   
+
+    try {
+        var userName = await UserServices.getUserByName(name); //получаем юзезра по имени
+    } catch ({ message }) {
+        return next({
+            status:500,
+            message
+        });
+    }    
+
+    if (!userName[0]) {
+        res.sendStatus(404)
+    } else {
+        next() // запускаем следующий обработчик
+    }
+}

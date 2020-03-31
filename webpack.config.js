@@ -14,6 +14,7 @@ module.exports = {
         path: __dirname + '/public/build/',
         filename: '[name].[contenthash].js'
     },
+    watch: true,
     module: {
         rules: [
             {
@@ -39,7 +40,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 use:"babel-loader",
-                exclude: [/node_modules/, /public/]
+                exclude: [/node_modules/, /public/, /server/]
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
