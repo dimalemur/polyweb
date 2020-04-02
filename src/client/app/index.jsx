@@ -11,9 +11,8 @@ class App  extends Component {
         return (
             <div className='App' >
                 {
-                    (this.props.login || !window.localStorage.getItem('polyUser')) && // если логин установлен
+                    (this.props.login || !window.localStorage.getItem('polyUser')) && // если логин в state установлен
                     <div>
-                        {console.log( this.props.state.AuthPage.user )}
                         <Switch>
                             <Route exact path="/" component={Authentication} />
                             <Route  exact path = {`/:user`} component={Profile} />

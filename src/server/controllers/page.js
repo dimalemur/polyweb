@@ -35,8 +35,10 @@ export async function getAll(req, res, next) {
     res.json({ pages })
 }
 
+//получить записи по пользователю
 export async function getPagesByUserLogin(req, res, next) {
     const { login } = req.params;
+    
     try {
         var user = await User.findOne({ login });
     } catch({ message }) {
@@ -62,15 +64,22 @@ export async function getPagesByUserLogin(req, res, next) {
             message
         });
 
-    }
+    }    
 
-    res.json({ pages })
+    
+    const resoult = {isOwner: (pages[0].userId == req.token._id) ? "true" : "false"};
+
+    console.log( resoult );
+    
+    res.json({userData:pages[0],isOwner:resoult});
 }
 
+
+//удалить запись
 export async function deletePage(req, res, next) {
     const _id = req.params.id; //id записи (берется из параметров get)
-    const userId = req.token._id;
-    
+    const userId = req.token._id;   
+
     try {
         var pages = await Page.findOne({ _id });
     } catch({ message }) {
@@ -96,7 +105,7 @@ export async function deletePage(req, res, next) {
     }
 
     try {
-        pages.remove();
+        await Page.findOneAndUpdate({ _id }, req.body );
     } catch({ message }) {
         return next({
             status:500,
