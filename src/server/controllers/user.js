@@ -4,7 +4,7 @@ export async function getCurrentUser(req, res, next) {
     const { token } = req;
 
     try {
-        var user = await UserServices.getUserByToken(token); //получаем юзезра по id 
+        var user = await UserServices.getUserByToken(token); //получаем юзезра по id
     } catch ({ message }) {
         return next({
             status:500,
@@ -17,7 +17,7 @@ export async function getCurrentUser(req, res, next) {
 
 //обработчик, проверяющий пользователя в базе данных
 export async function checkUserByName(req, res, next) {
-    const name = req.params.user;   
+    const name = req.params.user;
 
     try {
         var userName = await UserServices.getUserByName(name); //получаем юзезра по имени
@@ -26,7 +26,7 @@ export async function checkUserByName(req, res, next) {
             status:500,
             message
         });
-    }    
+    }
 
     if (!userName[0]) {
         res.sendStatus(404)

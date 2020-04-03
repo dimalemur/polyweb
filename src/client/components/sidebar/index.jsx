@@ -3,6 +3,8 @@ import './sidebar.pcss';
 import { NavLink } from 'react-router-dom';
 import computerIcon from '../../../source/images/icons/computer.svg';
 import avatarIcon from '../../../source/images/icons/ava.svg';
+import settingsIcon from '../../../source/images/icons/settings.svg';
+import menuIcon from '../../../source/images/icons/menu.svg';
 
 
 
@@ -11,21 +13,21 @@ export const Sidebar = (props) => {
         <div className='Sidebar' >
             <div className="Topicons Sidebar-Topicons">
                 <NavLink to = '/' className = "Topicons-Profileicon" >
-                    <img src={avatarIcon} alt="Профиль" />                
+                    <img src={avatarIcon} alt="Профиль" />
                 </NavLink>
 
                 <NavLink to = '#' className = "Menuicon Topicons-Menuicon" >
-                    <img src={computerIcon} alt="Меню" />                
+                    <img src={menuIcon} alt="Меню" />
                 </NavLink>
             </div>
 
             <div className="Bottomicons Sidebar-Bottomicons">
                 <NavLink to = '#' className = "Menuicon Bottomicons-Settingicon " >
-                    <img src={computerIcon} alt="Настройки" />                                    
+                    <img src={settingsIcon} alt="Настройки" />
                 </NavLink>
 
                 <NavLink to = '#' className = "Menuicon Bottomicons-Desktopicon " >
-                    <img src={computerIcon} alt="Компьютер" />                
+                    <img src={computerIcon} alt="Компьютер" />
                 </NavLink>
             </div>
         </div>

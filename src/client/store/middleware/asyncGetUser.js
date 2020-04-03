@@ -1,10 +1,9 @@
 import { setUser, setUserData } from '../reducers/mainPageReducer';
 import {store} from '../'
 
-
-export const asyncGetUser = token => dispatch => {    
+export const asyncGetUser = token => dispatch => {
     fetch('/api/current-user', {
-        credentials: 'same-origin', 
+        credentials: 'same-origin',
         method: 'GET',
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -12,17 +11,18 @@ export const asyncGetUser = token => dispatch => {
         }),
       })
       .then(response => response.json())
-      .then(user => {        
+      .then(user => {
         window.localStorage.setItem('polyUser',token); // записываем токен в localStorage
         dispatch(setUser(user));
+        console.log(user);
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log('error'))
 };
 
 // получаем данные о пользователе и статуд доступа к странице
-export const asyncGetUserData = (token,name) => dispatch => {     
+export const asyncGetUserData = (token,name) => dispatch => {
   fetch(`/api/info/${name}`, {
-      credentials: 'same-origin', 
+      credentials: 'same-origin',
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',

@@ -7,15 +7,15 @@ import { logOut } from '../../store/reducers/mainPageReducer';
 import avatarIcon from '../../../source/images/icons/ava.svg';
 
 
-const Profilecontent = (props) => {     
+const Profilecontent = (props) => {
     const signOut = (event) => {
         localStorage.setItem('polyUser','');
         props.logOut();
-    } 
-    
+    }
+
     const backHome = (event) => {
         return <Redirect to = {`/${props.user}`} />
-    }      
+    }
 
     return (
         <div className="Profilecontent">
@@ -23,9 +23,9 @@ const Profilecontent = (props) => {
             <div className="Profilecontent-Wrap">
                 <div className="Info Profilecontent-Info">
                     <NavLink to = '/'>
-                        <button onClick = { (props.isOwner == "true" ) ? signOut : backHome }>  
+                        <button onClick = { (props.isOwner == "true" ) ? signOut : backHome }>
                             { (props.isOwner == "true" ) ? "Разлогиниться" : "Домой" }
-                        </button> 
+                        </button>
                     </NavLink>
 
                     <div className="Ava Info-Ava">
@@ -37,14 +37,14 @@ const Profilecontent = (props) => {
                         <p className = 'Infoblock-Title' >
                             Данные обучающегося
                         </p>
-                        <p className = "Infoline" > <b>Факультет : </b> {props.userData.name} </p>
-                        <p className = "Infoline" > <b>Курс : </b> {props.userData.faq} </p>
-                        <p className = "Infoline" > <b>Группа : </b> {props.userData.course} </p>
-                        <p className = "Infoline" > <b>Специальность : </b> {props.userData.group} </p>
-                        <p className = "Infoline" > <b>Специализация : </b> {props.userData.specialty} </p>
-                        <p className = "Infoline" > <b>Срок обучения : </b> {props.userData.specialization} </p> 
-                        <p className = "Infoline" > <b>Форма обучения : </b> {props.userData.period} </p>
-                        <p className = "Infoline" > <b>Вид финансирования : </b> {props.userData.form} </p>
+                        <p className = "Infoline" > <b>Факультет : </b> {props.userData.faq} </p>
+                        <p className = "Infoline" > <b>Курс : </b> {props.userData.course} </p>
+                        <p className = "Infoline" > <b>Группа : </b> {props.userData.group} </p>
+                        <p className = "Infoline" > <b>Специальность : </b> {props.userData.specialty} </p>
+                        <p className = "Infoline" > <b>Специализация : </b> {props.userData.specialization} </p>
+                        <p className = "Infoline" > <b>Срок обучения : </b> {props.userData.period} </p>
+                        <p className = "Infoline" > <b>Форма обучения : </b> {props.userData.form} </p>
+                        <p className = "Infoline" > <b>Вид финансирования : </b> {props.userData.financing} </p>
                         <p className = "Infoline" > <b>Уровень образования : </b>  {props.userData.level}</p>
                         <p className = "Infoline" > <b>Год набора : </b> {props.userData.year} </p>
                     </div>
@@ -78,7 +78,7 @@ export default connect(
         isOwner: state.AuthPage.isOwner.isOwner
     }),
     dispatch => ({
-        logOut: () => {   
+        logOut: () => {
             dispatch(logOut())
         }
     })

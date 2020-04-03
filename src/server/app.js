@@ -18,6 +18,7 @@ const app = express();
 
 const staticWay = express.static(path.join(__dirname, "../../public/build/"));
 
+
 app
     .use(morgan('tiny'))
     .use(bodyParser.json())
@@ -31,7 +32,7 @@ app
     // api роутинг
     .use('/api', authRoute) //аутенфикация
     .use('/api', checkToken, userRoute) //получаем юзезра по id (без пароля)
-    .get('/checkAuth', checkToken, (req,res) => { //получаем токен, возвращаем объект с id пользователя 
+    .get('/checkAuth', checkToken, (req,res) => { //получаем токен, возвращаем объект с id пользователя
         res.json(req.token);
     })
     .use('/api', checkToken, pageRoute) //добавление и получение записей
@@ -41,7 +42,7 @@ app
     .use('/:user/', checkUserByName, staticWay )
     .use('/*/:page', staticWay )
     //обработка необработанных ошибок
-    .use(errorHandler) 
+    .use(errorHandler)
 
 app.listen(config.port, (err) => {
     console.log(`Server is started in http://127.0.0.1:${config.port}/`);

@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/info', PageController.create); //добавление записей
 router.get('/info', PageController.getAll); //получение записей
 router.get('/info/:login', PageController.getPagesByUserLogin); //получение записей
-router.post('/info/:id', PageController.deletePage); //удаление записей
+router.post('/info/:id', PageController.deletePage); //обновление записей
 
 export default router;

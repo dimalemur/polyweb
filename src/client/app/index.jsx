@@ -6,20 +6,16 @@ import { connect } from 'react-redux';
 import { asyncGetUser } from '../store/middleware/asyncGetUser';
 import './app.pcss';
 
-class App  extends Component { 
+class App  extends Component {
     render(){
         return (
             <div className='App' >
-                {
-                    (this.props.login || !window.localStorage.getItem('polyUser')) && // если логин в state установлен
-                    <div>
-                        <Switch>
-                            <Route exact path="/" component={Authentication} />
-                            <Route  exact path = {`/:user`} component={Profile} />
-                            <Redirect to = {`/${this.props.state.login}`}/>
-                        </Switch>
-                    </div>
-                }
+
+                <Switch>
+                    <Route exact path="/" component={Authentication} />
+                    <Route  exact path = {`/:user`} component={Profile} />
+                    <Redirect to = {`/${this.props.state.login}`}/>
+                </Switch> 
             </div>
         )
     }
@@ -31,7 +27,7 @@ export default connect(
         login: state.AuthPage.user.login
     }),
     dispatch => ({
-        asyncGetUser: token => {              
+        asyncGetUser: token => {
             dispatch(asyncGetUser(token))
         }
     })
