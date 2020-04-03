@@ -5,7 +5,7 @@ import menu from '../../../source/images/icons/menu.svg';
 
 export const Regnavbar = (props) => {
     return (
-        <div className='Regnavbar Regcontent-Navbar' >
+        <div className='Navbar Regnavbar Regcontent-Navbar' >
                 <div className="Navbar-Logo">
                     <div className="Logo-Logo">
                         <img src={logo} alt="" />

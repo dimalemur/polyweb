@@ -14,7 +14,6 @@ module.exports = {
         path: __dirname + '/public/build/',
         filename: '[name].[contenthash].js'
     },
-    watch: true,
     module: {
         rules: [
             {
