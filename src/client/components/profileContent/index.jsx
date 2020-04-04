@@ -1,20 +1,32 @@
 import './profilecontent.pcss';
-import React, { useEffect } from 'react';
-import {  NavLink, Redirect } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { Regnavbar } from '../regnavbar';
 import { logOut } from '../../store/reducers/mainPageReducer';
 import avatarIcon from '../../../source/images/icons/ava.svg';
 
 
-const Profilecontent = (props) => {     
+const Profilecontent = (props) => {  
+    const [isOwner, setState] = useState(false);
+
+    useEffect(()=> {
+        setState(props.isOwner == "true");
+        
+    })
+    const history = useHistory();
+
+    const token = window.localStorage.getItem('polyUser');
+    
     const signOut = (event) => {
-        localStorage.setItem('polyUser','');
         props.logOut();
+        history.push(`/`);
     } 
     
     const backHome = (event) => {
-        return <Redirect to = {`/${props.user}`} />
+        history.push(`/${props.login}`);        
+        props.asyncGetUserData(token, props.login);
     }      
 
     return (
@@ -22,12 +34,9 @@ const Profilecontent = (props) => {
             <Regnavbar />
             <div className="Profilecontent-Wrap">
                 <div className="Info Profilecontent-Info">
-                    <NavLink to = '/'>
-                        <button onClick = { (props.isOwner == "true" ) ? signOut : backHome }>  
-                            { (props.isOwner == "true" ) ? "Разлогиниться" : "Домой" }
-                        </button> 
-                    </NavLink>
-
+                    <button onClick = { ( isOwner ) ? signOut : backHome }>  
+                        { ( isOwner ) ? "Разлогиниться" : "Домой" }
+                    </button> 
                     <div className="Ava Info-Ava">
                         <img className = "Ava-Img" src= { avatarIcon } alt=""/>
                         <span className = "Ava-Text" >{props.userData.name}</span>
@@ -75,11 +84,15 @@ export default connect(
     state =>({
         state: state,
         userData: state.AuthPage.userData,
-        isOwner: state.AuthPage.isOwner.isOwner
+        isOwner: state.AuthPage.isOwner.isOwner,
+        login: state.AuthPage.user.login
     }),
     dispatch => ({
         logOut: () => {   
             dispatch(logOut())
+        },
+        asyncGetUserData: (token,name) => {              
+            dispatch(asyncGetUserData(token,name))
         }
     })
 )(Profilecontent);

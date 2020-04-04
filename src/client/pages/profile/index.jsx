@@ -8,22 +8,22 @@ import Profilecontent from '../../components/profileContent';
 
 
 const Profile = (props) => {      
-    useEffect(()=> {        
+    useEffect(()=> {  
+        // если токен не найден
         props.asyncGetUserData(token, user)
     }, []);
-
+    
     const token = window.localStorage.getItem('polyUser');
     const user = props.match.params.user;
-
-    // если токен не найден
-    if (!token) {
+        
+    if (token === 'null' || token == null) {
         return <Redirect to = '/' />
-    } else
-
+    } 
+    
     return (
         <div className="Profile">
             < Sidebar />
-            <Profilecontent user = {user} />
+            <Profilecontent user = { user } />
         </div>
     )
 }

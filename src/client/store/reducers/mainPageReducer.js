@@ -24,6 +24,7 @@ export const mainPageReducer = (state = initialState, action) => {
         case LOG_OUT:            
             newState = Object.assign({}, state);
             newState = initialState;
+            window.localStorage.setItem('polyUser', null );            
             return newState;
  
 

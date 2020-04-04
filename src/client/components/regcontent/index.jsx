@@ -9,7 +9,6 @@ import { Route } from 'react-router-dom';
 
 export const Regcontent = (props) => {
     return (
-
         <div className='Regcontent' >
             <Regnavbar />
             <Route path="/" component={Authorization} />
