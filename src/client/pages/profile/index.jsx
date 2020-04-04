@@ -4,11 +4,12 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { Sidebar } from '../../components/sidebar';
+import { Menu } from '../../components/menu';
 import Profilecontent from '../../components/profileContent';
 
 
-const Profile = (props) => {      
-    useEffect(()=> {        
+const Profile = (props) => {
+    useEffect(()=> {
         props.asyncGetUserData(token, user)
     }, []);
 
@@ -33,7 +34,7 @@ export default connect(
         state: state,
     }),
     dispatch => ({
-        asyncGetUserData: (token,name) => {              
+        asyncGetUserData: (token,name) => {
             dispatch(asyncGetUserData(token,name))
         }
     })

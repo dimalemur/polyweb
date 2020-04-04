@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.Menu {
+  z-index: 4;
+  position: fixed;
+  height: 100vh;
+  width: 7.5rem;
+  background: #302c2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  box-sizing: border-box;
+}
+
+
+.Userinfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  &-Icon {
+  margin-bottom: 25px;
+    img {
+      width: 37px;
+      height: 37px;
+    }
+  }
+  &-Info {
+  text-decoration: none;
+  margin-left: 4px;
+  margin-top: 6px;
+  text-align: left;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  color: #FFFFFF;
+  }
+}
+
+.Settingicons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  &-Setting {
+    margin-right: 66px;
+  }
+}
+
+.Menuicon {
+  text-align: center;
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.Userlist {
+  margin-bottom: auto;
+  margin-top: 25px;
+}
+
+.Userlist-List {
+  padding: 0;
+  margin: 0;
+  &-Item {
+    background: #666262;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    color: #FFFFFF;
+    list-style: none;
+    width: 118px;
+    text-align: center;
+    border: #302c2c solid 1px;
+  }
+  &-Item:hover, &-Item:active {
+    background: #E03F3F;
+    cursor: pointer;
+  }
+}
+
+.Innerlist {
+  display: none;
+  padding: 0;
+
+  &-InItem {
+    background: rgba(255, 255, 255, 0.85);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    list-style: none;
+    width: 118px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    a {
+      color: #666262;
+    }
+    a:hover, a:active {
+      font-style: bold;
+      color: #000000;
+    }
+  }
+}
+
+a {
+ text-decoration: none;
+ color: #FFFFFF;
+}
+
+@media screen and (max-width: 640px){
+  .Menu {
+    display: none;
+    right: 0;
+  }
+}
