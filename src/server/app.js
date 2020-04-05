@@ -37,9 +37,9 @@ app
     .use('/api', checkToken, pageRoute) //добавление и получение записей
     //Роутинг страниц
     .use('/',staticWay)
-    .use('/login/authhelp/',staticWay)
+    .use('/login/authhelp/', staticWay)
     .use('/:user/', checkUserByName, staticWay )
-    .use('/*/:page', staticWay )
+    .use('/*/:page', checkToken, staticWay )
     //обработка необработанных ошибок
     .use(errorHandler) 
 

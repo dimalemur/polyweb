@@ -63,20 +63,22 @@ export async function getPagesByUserLogin(req, res, next) {
             status:500,
             message
         });
-
     }    
 
-    
-    const resoult = {isOwner: (pages[0].userId == req.token._id) ? "true" : "false"};
 
-    console.log( resoult );
+    if (pages[0] !== undefined){
+        var isOwner = {isOwner: (pages[0].userId == req.token._id) ? "true" : "false"};
+    }
+
+
+
     
-    res.json({userData:pages[0],isOwner:resoult});
+    res.json({userData:pages[0],isOwner: isOwner});
 }
 
 
 //удалить запись
-export async function deletePage(req, res, next) {
+export async function editInfo(req, res, next) {
     const _id = req.params.id; //id записи (берется из параметров get)
     const userId = req.token._id;   
 

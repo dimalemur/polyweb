@@ -28,7 +28,7 @@ class App  extends Component {
         return (
             <div className='App' >
                 <div>
-                    <Route exact path="/" component={Authentication} />
+                    <Route  path="/" component={Authentication} />
                     <Route  exact path = {`/:user`} component={Profile} />
                 </div>
             </div>
