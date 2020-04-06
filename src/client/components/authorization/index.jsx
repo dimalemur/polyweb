@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './authorization.pcss';
 import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { asyncGetUser } from '../../store/middleware/asyncGetUser';
+import { asyncGetUser, asyncAuth } from '../../store/middleware/asyncGetUser';
 
 
 const Authorization = (props) => {
@@ -19,31 +19,15 @@ const Authorization = (props) => {
     }
 
     const submitForm = (event) => {
-        event.preventDefault()
-
-        fetch('/api/signin', {
-            credentials: 'same-origin', 
-            method: 'POST',
-            body: JSON.stringify({ login: login, password: password }), 
-            headers: new Headers({
-              'Content-Type': 'application/json'
-            }),
-          })
-          .then(response => response.json())
-          .then(token => { //получаем токен по введеному пользователю
-
-              if (token.status == 200 ) {
-                  setUser('');
-                  setPassword('');
-                  props.asyncGetUser(token); // диспатчем asyncGetUser
-              }
-
-            })
-          .catch(error => console.log(error))
+        event.preventDefault();
+        setUser('');
+        setPassword('');
+        props.asyncAuth(login,password);
+        
     }
 
-    if (props.state.AuthPage.user.login) {
-        return <Redirect to = {`/${props.state.AuthPage.user.login}`} />
+    if (props.login) {
+        return <Redirect to = {`/${login}`} />
     }
     
     return (
@@ -103,11 +87,15 @@ const Authorization = (props) => {
 
 export default connect(
     state =>({
-        state:state
+        state:state,
+        login: state.AuthPage.user.login
     }),
     dispatch => ({
         asyncGetUser: token => {   
             dispatch(asyncGetUser(token.token))
+        },
+        asyncAuth : (login,password) => {
+            dispatch(asyncAuth(login,password))
         }
     })
 )(Authorization);

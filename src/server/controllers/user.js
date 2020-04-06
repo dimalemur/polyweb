@@ -1,7 +1,7 @@
 import * as UserServices from '../services/UserService';
 
 export async function getCurrentUser(req, res, next) {
-    const { token } = req;
+    const { token } = req;   
 
     try {
         var user = await UserServices.getUserByToken(token); //получаем юзезра по id
@@ -12,6 +12,7 @@ export async function getCurrentUser(req, res, next) {
         });
     }
 
+    
     return res.json(user);
 }
 

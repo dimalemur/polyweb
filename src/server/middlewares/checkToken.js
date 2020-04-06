@@ -18,13 +18,13 @@ export default async (req, res, next) => {
     try {
         tokenObj = jwt.verify(token, config.secret); //расшифровываем токен по ключу
     } catch ({ message }) {
+        
         return next ({
             status:400,
-            message
+            message  
         });
     }
-
-    console.log(tokenObj);
+    
     req.token = tokenObj; //во всех объектах req добавляем свойство token
     next();
 }

@@ -23,7 +23,7 @@
       padding: 86px;
       width: 100%;
       button {
-          display: none;
+          display: block;
       }
   }
 
@@ -43,6 +43,7 @@
         display: block;
         width: 100%;
         text-align: center;
+        pointer-events: none;
     }
 
     &-Text {
@@ -82,10 +83,46 @@
         margin: 0;
 
     }
+    &-Orders {
+        padding: 44px;
+        a{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+            text-decoration-line: underline;
+            color: #2F2F2F;
+        }
+    }
+}
+
+.Personinfo {
+    &-Content{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 44px;
+    }
+    &-Name {
+        display: grid;
+        text-align: left;
+        .Infoline {
+            margin-left: 19px;
+            text-align: right;
+        }
+    }
+    &-Value {
+        display: grid;
+        .Infoline {
+            margin-right: 19px;
+            margin-left: 11px;
+        }
+    }
 }
 
 .Infoline {
-    margin: 19px;
+    margin: 0;
+    margin-bottom: 19px;
     font-family: 'Roboto' sans-serif;
     font-style: normal;
     font-weight: 300;
