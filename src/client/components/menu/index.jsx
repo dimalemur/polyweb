@@ -8,38 +8,39 @@ import menuIcon from '../../../source/images/icons/menu.svg';
 
 export const Menu = (props) => {
     return (
-        <div className='Menu' >
+        <div className="Menu">
             <div className="Userinfo Menu-Userinfo">
                 <NavLink to = '/' className = "Userinfo-Icon" >
                     <img src={avatarIcon} alt="Профиль" />
                 </NavLink>
                 <NavLink to = '/' className = "Userinfo-Info" >
-                    <span className = "Info-Text" >Фамилия Имя</span>
+                    <span className = "Info-Text" >{props.state.AuthPage.userData.name}</span>
                 </NavLink>
             </div>
 
             <div>
-              <NavLink to = '#' className = "Menuicon Topicons-Menuicon" >
+              <button className = "Menuicon Topicons-Menuicon" >
                   <img src={menuIcon} alt="Меню" />
-              </NavLink>
+              </button>
             </div>
 
             <div className="Userlist Menu-Userlist">
-              <ul className="Userlist-List">
-                  <li className="Userlist-List-Item">
-                      <a href="#">Учёба</a>
+              <ul className="Userlist List">
+                  <li className="List-Item">
+                      <input type="checkbox" name="vkl" id="Study"/>
+                      <label for="Study">Учёба</label>
                       <ul className="Innerlist">
-                         <li className="Innerlist-InItem"><a href="#">Расписание</a></li>
-                         <li className="Innerlist-InItem"><a href="#">Успеваемость</a></li>
-                         <li className="Innerlist-InItem"><a href="#">Посещения по физкультуре</a></li>
-                         <li className="Innerlist-InItem"><a href="#">Образовательные программы</a></li>
+                         <li className="Innerlist-Initem"><NavLink to = "/">Расписание</NavLink></li>
+                         <li className="Innerlist-Initem"><NavLink to = "/">Успеваемость</NavLink></li>
+                         <li className="Innerlist-Initem"><NavLink to = "/">Посещения по физкультуре</NavLink></li>
+                         <li className="Innerlist-Initem"><NavLink to = "/">Образовательные программы</NavLink></li>
                       </ul>
                   </li>
-                  <li className="Userlist-List-Item"><a href="#">Карьера</a></li>
-                  <li className="Userlist-List-Item"><a href="#">Мои финансы</a></li>
-                  <li className="Userlist-List-Item"><a href="#">Справки</a></li>
-                  <li className="Userlist-List-Item"><a href="#">Уведомления</a></li>
-                  <li className="Userlist-List-Item"><a href="#">Обратная связь</a></li>
+                  <li className="List-Item"><NavLink to = "/">Карьера</NavLink></li>
+                  <li className="List-Item"><NavLink to = "/">Мои финансы</NavLink></li>
+                  <li className="List-Item"><NavLink to = "/">Справки</NavLink></li>
+                  <li className="List-Item"><NavLink to = "/">Уведомления</NavLink></li>
+                  <li className="List-Item"><NavLink to = "/">Обратная связь</NavLink></li>
               </ul>
           </div>
 

@@ -16,9 +16,9 @@ export const Sidebar = (props) => {
                     <img src={avatarIcon} alt="Профиль" />
                 </NavLink>
 
-                <NavLink to = '#' className = "Menuicon Topicons-Menuicon" >
+                <button className = "Menuicon Topicons-Menuicon" >
                     <img src={menuIcon} alt="Меню" />
-                </NavLink>
+                </button>
             </div>
 
             <div className="Bottomicons Sidebar-Bottomicons">

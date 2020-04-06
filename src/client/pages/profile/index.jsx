@@ -24,9 +24,10 @@ const Profile = (props) => {
     return (
         <div className="Profile">
             < Sidebar />
+            < Menu state = {props.state} />
             <Profilecontent user = {user} />
         </div>
-    )
+      )
 }
 
 export default connect(

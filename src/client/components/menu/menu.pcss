@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);
 
 .Menu {
   z-index: 4;
   position: fixed;
   height: 100vh;
   width: 7.5rem;
+  left: -7.5rem;
   background: #302c2c;
   display: flex;
   flex-direction: column;
@@ -12,6 +13,10 @@
   align-items: center;
   padding: 7px;
   box-sizing: border-box;
+  button {
+    background: #302c2c;
+    border: none;
+  }
 }
 
 
@@ -31,7 +36,7 @@
   margin-left: 4px;
   margin-top: 6px;
   text-align: left;
-  font-family: Roboto, sans-serif;
+  font-family: Raleway, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 10px;
@@ -62,12 +67,12 @@
   margin-top: 25px;
 }
 
-.Userlist-List {
+.List {
   padding: 0;
   margin: 0;
   &-Item {
     background: #666262;
-    font-family: Roboto;
+    font-family: Raleway, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -78,7 +83,22 @@
     text-align: center;
     border: #302c2c solid 1px;
   }
+  &-Item [type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+  }
   &-Item:hover, &-Item:active {
+    background: #E03F3F;
+    cursor: pointer;
+  }
+  &-Item label {
+    display: inline-block;
+    width: 118px;
+    height: auto;
+  }
+  &-Item input[type="checkbox"]:checked + label + ul,
+  &-Item input[type="checkbox"]:checked + label:hover + ul {
+    display: block;
     background: #E03F3F;
     cursor: pointer;
   }
@@ -88,23 +108,26 @@
   display: none;
   padding: 0;
 
-  &-InItem {
+  &-Initem {
     background: rgba(255, 255, 255, 0.85);
-    font-family: Roboto;
+    font-family: Raleway, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     list-style: none;
-    width: 118px;
+    width: 110px;
     padding-top: 5px;
     padding-bottom: 5px;
-    text-align: center;
+    padding-left: 8px;
+    text-align: left;
     a {
       color: #666262;
     }
     a:hover, a:active {
-      font-style: bold;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
       color: #000000;
     }
   }
