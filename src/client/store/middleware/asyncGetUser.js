@@ -2,7 +2,6 @@ import { setUser, setUserData } from '../reducers/mainPageReducer';
 import {store} from '../';
 import App from '../../app'
 
-
 export const asyncGetUser = token => dispatch => {   
   fetch('/api/current-user', {
       credentials: 'same-origin', 
@@ -47,9 +46,9 @@ export const asyncAuth = (login,password) => dispatch => {
 
 
 // получаем данные о пользователе и статуд доступа к странице
-export const asyncGetUserData = (token,name) => dispatch => {     
+export const asyncGetUserData = (token,name) => dispatch => {
   fetch(`/api/info/${name}`, {
-      credentials: 'same-origin', 
+      credentials: 'same-origin',
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',

@@ -18,11 +18,10 @@ const Profilecontent = (props) => {
     const history = useHistory();
 
     const token = window.localStorage.getItem('polyUser');
-    
+	
     const signOut = (event) => {
         props.logOut();
-        history.push(`/`);
-    } 
+    }
     
     const backHome = (event) => {
         history.push(`/${props.login}`);        
@@ -34,9 +33,11 @@ const Profilecontent = (props) => {
             <Regnavbar />
             <div className="Profilecontent-Wrap">
                 <div className="Info Profilecontent-Info">
+
                     <button onClick = { ( isOwner ) ? signOut : backHome }>  
                         { ( isOwner ) ? "Разлогиниться" : "Домой" }
                     </button> 
+									
                     <div className="Ava Info-Ava">
                         <img className = "Ava-Img" src= { avatarIcon } alt=""/>
                         <span className = "Ava-Text" >{props.userData.name}</span>
@@ -74,8 +75,6 @@ const Profilecontent = (props) => {
                                 <p className = "Infoline" > {props.userData.year} </p>
                             </div>
                         </div>
-
-
                     </div>
 
                     <div className="Infoblock Info-Contactinfo ">
@@ -134,7 +133,7 @@ export default connect(
         login: state.AuthPage.user.login
     }),
     dispatch => ({
-        logOut: () => {   
+        logOut: () => {
             dispatch(logOut())
         },
         asyncGetUserData: (token,name) => {              

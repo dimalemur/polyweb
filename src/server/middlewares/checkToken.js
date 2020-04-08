@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'; //модуль для получения ток�
 import config from '../config';
 
 export default async (req, res, next) => {
-    
+
     const token = req.headers['authorization']; //получаем токен из заголовка запроса
 
     if(!token) {
@@ -21,7 +21,7 @@ export default async (req, res, next) => {
         
         return next ({
             status:400,
-            message       
+            message  
         });
     }
     
