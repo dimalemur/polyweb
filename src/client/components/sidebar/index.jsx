@@ -6,30 +6,27 @@ import avatarIcon from '../../../source/images/icons/ava.svg';
 import settingsIcon from '../../../source/images/icons/settings.svg';
 import menuIcon from '../../../source/images/icons/menu.svg';
 
+export const Sidebar = (props) => (
+  <div className={`Sidebar Sidebar_${props.visible}`} >
+    <div className='Topicons Sidebar-Topicons'>
+      <NavLink to='/' className='Topicons-Profileicon' >
+        <img src={avatarIcon} alt='Профиль' />
+      </NavLink>
 
+      <button className='Menuicon Topicons-Menuicon' onClick={props.activateMenu} >
+        <img src={menuIcon} alt='Меню' />
+      </button>
+    </div>
 
-export const Sidebar = (props) => {
-    return (
-        <div className='Sidebar' >
-            <div className="Topicons Sidebar-Topicons">
-                <NavLink to = '/' className = "Topicons-Profileicon" >
-                    <img src={avatarIcon} alt="Профиль" />
-                </NavLink>
+    <div className='Bottomicons Sidebar-Bottomicons'>
+      <NavLink to='#' className='Menuicon Bottomicons-Settingicon ' >
+        <img src={settingsIcon} alt='Настройки' />
+      </NavLink>
 
-                <button className = "Menuicon Topicons-Menuicon" >
-                    <img src={menuIcon} alt="Меню" />
-                </button>
-            </div>
+      <NavLink to='#' className='Menuicon Bottomicons-Desktopicon ' >
+        <img src={computerIcon} alt='Компьютер' />
+      </NavLink>
+    </div>
+  </div>
+);
 
-            <div className="Bottomicons Sidebar-Bottomicons">
-                <NavLink to = '#' className = "Menuicon Bottomicons-Settingicon " >
-                    <img src={settingsIcon} alt="Настройки" />
-                </NavLink>
-
-                <NavLink to = '#' className = "Menuicon Bottomicons-Desktopicon " >
-                    <img src={computerIcon} alt="Компьютер" />
-                </NavLink>
-            </div>
-        </div>
-    )
-}

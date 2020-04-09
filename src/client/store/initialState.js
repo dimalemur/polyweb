@@ -1,8 +1,8 @@
 export const initialState = {
-    user:{
-    },
-    userData: {
-        orders:[]
-    },
-    isOwner: false
+  user: {
+  },
+  userData: {
+    orders: [],
+  },
+  isOwner: false,
 };

@@ -1,120 +1,117 @@
 import Page from '../models/page';
 import User from '../models/user';
 
-//создать запись
+// создать запись
 export async function create(req, res, next) {
-    const pageData = req.body;
-    const userId = req.token._id;
+  const pageData = req.body;
+  const userId = req.token._id;
+  let page;
 
-    pageData.userId = userId;
+  pageData.userId = userId;
 
-    try {
-        var page = await Page.create(pageData);   
-    } catch({ message }){
-        return next ({
-            status:400,
-            message
-        });
-    }
+  try {
+    page = await Page.create(pageData);
+  } catch ({ message }) {
+    return next({
+      status: 400,
+      message,
+    });
+  }
 
-    res.json(page)
+  res.json(page);
 }
 
-
-//получить все записи
+// получить все записи
 export async function getAll(req, res, next) {
-    try {
-        var pages = await Page.find({});
-    } catch({ message }) {
-        return next({
-            status:500,
-            message
-        });
-
-    }
-    res.json({ pages })
+  let pages;
+  try {
+    pages = await Page.find({});
+  } catch ({ message }) {
+    return next({
+      status: 500,
+      message,
+    });
+  }
+  res.json({ pages });
 }
 
-//получить записи по пользователю
+// получить записи по пользователю
 export async function getPagesByUserLogin(req, res, next) {
-    const { login } = req.params;
-    
-    try {
-        var user = await User.findOne({ login });
-    } catch({ message }) {
-        return next({
-            status:500,
-            message
-        });
+  const { login } = req.params;
+  let user;
+  let pages;
+  let isOwner;
 
-    }
+  try {
+    user = await User.findOne({ login });
+  } catch ({ message }) {
+    return next({
+      status: 500,
+      message,
+    });
+  }
 
-    if (!user) {
-        return next({
-            status:404,
-            message: 'User not found'
-        });
-    }
+  if (!user) {
+    return next({
+      status: 404,
+      message: 'User not found',
+    });
+  }
 
-    try {
-        var pages = await Page.find({ userId: user._id });
-    } catch({ message }) {
-        return next({
-            status:500,
-            message
-        });
-    }    
+  try {
+    pages = await Page.find({ userId: user._id });
+  } catch ({ message }) {
+    return next({
+      status: 500,
+      message,
+    });
+  }
 
+  if (pages[0] !== undefined) {
+    isOwner = { isOwner: (pages[0].userId.toString() === req.token._id) ? 'true' : 'false' };
+  }
 
-    if (pages[0] !== undefined){
-        var isOwner = {isOwner: (pages[0].userId == req.token._id) ? "true" : "false"};
-    }
-
-
-
-    
-    res.json({userData:pages[0],isOwner: isOwner});
+  res.json({ userData: pages[0], isOwner });
 }
 
-
-//удалить запись
+// удалить запись
 export async function editInfo(req, res, next) {
-    const _id = req.params.id; //id записи (берется из параметров get)
-    const userId = req.token._id;   
+  const _id = req.params.id; // id записи (берется из параметров get)
+  const userId = req.token._id;
+  let pages;
 
-    try {
-        var pages = await Page.findOne({ _id });
-    } catch({ message }) {
-        return next({
-            status:500,
-            message
-        });     
-    }
-    
-    if(!pages) {
-        return next({
-            status:404,
-            message:'Page not found'
-        });
-    }
+  try {
+    pages = await Page.findOne({ _id });
+  } catch ({ message }) {
+    return next({
+      status: 500,
+      message,
+    });
+  }
 
-    //если запись не плоьзователя
-    if (userId.toString() !== pages.userId.toString()) {
-        return next({
-            status:403,
-            message:'Premission denided'
-        })
-    }
+  if (!pages) {
+    return next({
+      status: 404,
+      message: 'Page not found',
+    });
+  }
 
-    try {
-        await Page.findOneAndUpdate({ _id }, req.body );
-    } catch({ message }) {
-        return next({
-            status:500,
-            message
-        });     
-    }
-    
-    return res.json({ message: 'success' })
+  // если запись не плоьзователя
+  if (userId.toString() !== pages.userId.toString()) {
+    return next({
+      status: 403,
+      message: 'Premission denided',
+    });
+  }
 
+  try {
+    await Page.findOneAndUpdate({ _id }, req.body);
+  } catch ({ message }) {
+    return next({
+      status: 500,
+      message,
+    });
+  }
+
+  return res.json({ message: 'success' });
 }

@@ -3,48 +3,47 @@ import config from '../config';
 
 import User from '../models/user';
 
-//регистрация
+// регистрация
 export const signup = async (req, res, next) => {
-    const credentials = req.body; //данные из формы
-    let user;
+  const credentials = req.body; // данные из формы
+  let user;
 
-    try {
-        user = await User.create(credentials) //создаём нового пользователя
-    } catch ({message}) {
-        return next ({
-            status:400,
-            message
-        })        
-    }
+  try {
+    user = await User.create(credentials); // создаём нового пользователя
+  } catch ({ message }) {
+    return next({
+      status: 400,
+      message,
+    });
+  }
 
-    res.json(user); //возвращаем пользоваетя
-}
+  res.json(user); // возвращаем пользоваетя
+};
 
-//авторизация
+// авторизация
 export const signin = async (req, res, next) => {
-    console.log(req.body);
-    
-    const { login, password } = req.body;
+  console.log(req.body);
 
-    const user = await User.findOne({ login }); //ищем пользователя по логину
+  const { login, password } = req.body;
 
-    if (!user) {
-        return next({
-            status:400,
-            message: 'Not found'
-        });
-    }
+  const user = await User.findOne({ login }); // ищем пользователя по логину
 
-    const result = await user.comparePasswords(password); //сравниваем пароли
+  if (!user) {
+    return next({
+      status: 400,
+      message: 'Not found',
+    });
+  }
 
-    if (!result) {
-        return next ({
-            status:400,
-            message: 'Bad Creditials'
-        }); 
-    }    
+  const result = await user.comparePasswords(password); // сравниваем пароли
 
-    const token = jwt.sign({_id: user._id,}, config.secret); //создаём токен по секретному ключу
-    res.json({ token:token, status:200 }); //выдаём токен
-}
+  if (!result) {
+    return next({
+      status: 400,
+      message: 'Bad Creditials',
+    });
+  }
 
+  const token = jwt.sign({ _id: user._id }, config.secret); // создаём токен по секретному ключу
+  res.json({ token, status: 200 }); // выдаём токен
+};
