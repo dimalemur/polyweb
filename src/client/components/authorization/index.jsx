@@ -4,98 +4,100 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { asyncGetUser, asyncAuth } from '../../store/middleware/asyncGetUser';
 
-
 const Authorization = (props) => {
 
-    const [login, setUser] = useState('');
-    const [password, setPassword] = useState('');
+  const [login, setUser] = useState('');
+  const [password, setPassword] = useState('');
 
-    const onChangeLogin = (event) => {
-        setUser(event.target.value)
-    }
+  if (props.login) {
+    return <Redirect to={`/${login}`} />;
+  }
 
-    const onChangePassword = (event) => {
-        setPassword(event.target.value)
-    }
+  const onChangeLogin = (event) => {
+    setUser(event.target.value);
+  };
 
-    const submitForm = (event) => {
-        event.preventDefault();
-        setUser('');
-        setPassword('');
-        props.asyncAuth(login,password);
-        
-    }
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
-    if (props.login) {
-        return <Redirect to = {`/${login}`} />
-    }
-    
-    return (
-            <div className="Authorization-Wrap">
-                <div className="Authorization">
-                <div className="Authorization-Title">
-                    <span className="Title-Text">Авторизация</span>
-                </div>
-                <div className="Form Authorization-Form">
-                    
-                    <form action="/api/signin" method="post">
+  const submitForm = (event) => {
+    event.preventDefault();
+    setUser('');
+    setPassword('');
+    props.asyncAuth(login, password);
+  };
 
-                        <div className="Form Form-Login">
-                            <label htmlFor="Input-Login">Логин</label>
-                            <input  className='Input' 
-                                    type="text" id="Input-Login" 
-                                    value = { login } 
-                                    onChange = { onChangeLogin } />
-                        </div>
+  if (props.location.pathname !== '/') {
+    return <Redirect to='/' />;
+  }
 
-                        <div className="Form Form-Password">
-                            <label htmlFor="Input-Password">Пароль</label>
-                            <input  className='Input' 
-                                    type="password" 
-                                    id="Input-Password" 
-                                    value = { password } 
-                                    onChange = { onChangePassword } />
-                        </div>
+  return (
+    <div className='Authorization-Wrap'>
+      <div className='Authorization'>
+        <div className='Authorization-Title'>
+          <span className='Title-Text'>Авторизация</span>
+        </div>
+        <div className='Form Authorization-Form'>
 
-                        <div className="Form-Help">
-                            <span className="Help-Text">
-                                <NavLink to = '/login/authhelp/'>Проблемы со входом?</NavLink>
-                            </span>
-                        </div>
+          <form action='/api/signin' method='post'>
 
-                            <div className="Button Form-Button">
-                                <button  className = "Button-Red" type="submit" onClick = { submitForm } > Войти </button>
-                            </div>
+            <div className='Form Form-Login'>
+              <label htmlFor='Input-Login'>Логин</label>
+              <input className='Input'
+                type='text' id='Input-Login'
+                value={login}
+                onChange={onChangeLogin} />
+            </div>
 
-                        <span className="Help-Or">
-                            Или
+            <div className='Form Form-Password'>
+              <label htmlFor='Input-Password'>Пароль</label>
+              <input className='Input'
+                type='password'
+                id='Input-Password'
+                value={password}
+                onChange={onChangePassword} />
+            </div>
+
+            <div className='Form-Help'>
+              <span className='Help-Text'>
+                <NavLink to='/login/authhelp/'>Проблемы со входом?</NavLink>
+              </span>
+            </div>
+
+            <div className='Button Form-Button'>
+              <button className='Button-Red' type='submit' onClick={submitForm} > Войти </button>
+            </div>
+
+            <span className='Help-Or'>
+              Или
                         </span>
-                        <div className="Button Form-Button">
-                            <button className = "Button-Blue"  
-                                    onClick = { (event)=> event.preventDefault() } >
-                                        Войти с помощью Google
-                            </button>
-                        </div>
-
-                    </form>
-                </div>
-
+            <div className='Button Form-Button'>
+              <button className='Button-Blue'
+                onClick={(event) => event.preventDefault()} >
+                Войти с помощью Google
+              </button>
             </div>
-            </div>
-    )
-}
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  );
+};
 
 export default connect(
-    state =>({
-        state:state,
-        login: state.AuthPage.user.login
-    }),
-    dispatch => ({
-        asyncGetUser: token => {   
-            dispatch(asyncGetUser(token.token))
-        },
-        asyncAuth : (login,password) => {
-            dispatch(asyncAuth(login,password))
-        }
-    })
+  (state) => ({
+    state,
+    login: state.AuthPage.user.login,
+  }),
+  (dispatch) => ({
+    asyncGetUser: token => {
+      dispatch(asyncGetUser(token.token));
+    },
+    asyncAuth: (login, password) => {
+      dispatch(asyncAuth(login, password));
+    },
+  }),
 )(Authorization);

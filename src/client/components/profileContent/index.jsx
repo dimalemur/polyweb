@@ -1,6 +1,6 @@
 import './profilecontent.pcss';
 import React, { useEffect, useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { Regnavbar } from '../regnavbar';
@@ -29,20 +29,24 @@ const Profilecontent = (props) => {
 
   return (
     <div className={`Profilecontent Profilecontent-Menu${props.visible}`}>
-      <Regnavbar />
+
+      <Regnavbar activateMenu={props.activateMenu} visible={`_visible_${props.menuVisible}`} />
+
       <div className='Profilecontent-Wrap'>
         <div className='Info Profilecontent-Info'>
           <button onClick={(isOwner) ? signOut : backHome}>
             {(isOwner) ? 'Разлогиниться' : 'Домой'}
           </button>
+
           <div className='Ava Info-Ava'>
             <img className='Ava-Img' src={avatarIcon} alt='' />
             <span className='Ava-Text'>{props.userData.name}</span>
           </div>
+
           <div className='Infoblock Personinfo Info-Personinfo'>
             <p className='Infoblock-Title Personinfo-Title' >
               Данные обучающегося
-                        </p>
+            </p>
 
             <div className='Personinfo-Content'>
 
@@ -97,7 +101,7 @@ const Profilecontent = (props) => {
 
             <p className='Infoblock-Title' >
               Приказы
-                        </p>
+            </p>
 
             <div className='Infoblock-Orders'>
               {

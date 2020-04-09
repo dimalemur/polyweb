@@ -39,7 +39,7 @@ app
   .use('/', staticWay)
   .use('/login/authhelp/', staticWay)
   .use('/:user/', checkUserByName, staticWay)
-  .use('/*/:page', checkToken, staticWay)
+  .use('/:user/:page', staticWay)
 // обработка необработанных ошибок
   .use(errorHandler);
 

@@ -1,11 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Raleway:100, 100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);
 
 .Menu {
   z-index: 4;
   position: fixed;
   height: 100vh;
   width: 7.5rem;
-  left: -7.5rem;
+  left: -7.9rem;
   background: #302c2c;
   display: flex;
   flex-direction: column;
@@ -13,11 +13,11 @@
   align-items: center;
   padding: 7px;
   box-sizing: border-box;
-  &_visible_true{
-    left:0;
+  &_visible_true {
+    left: 0;
     transition: all 1s ease-out;
   }
-  &_visible_false{
+  &_visible_false {
     transition: all 1s ease-out;
   }
   button {
@@ -26,29 +26,28 @@
   }
 }
 
-
 .Userinfo {
   display: flex;
   flex-direction: row;
   justify-content: center;
   &-Icon {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
     img {
       width: 37px;
       height: 37px;
     }
   }
   &-Info {
-  text-decoration: none;
-  margin-left: 4px;
-  margin-top: 6px;
-  text-align: left;
-  font-family: Raleway, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 12px;
-  color: #FFFFFF;
+    text-decoration: none;
+    margin-left: 4px;
+    margin-top: 6px;
+    text-align: left;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ffffff;
   }
 }
 
@@ -84,7 +83,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 32px;
-    color: #FFFFFF;
+    color: #ffffff;
     list-style: none;
     width: 118px;
     text-align: center;
@@ -94,8 +93,9 @@
     position: absolute;
     opacity: 0;
   }
-  &-Item:hover, &-Item:active {
-    background: #E03F3F;
+  &-Item:hover,
+  &-Item:active {
+    background: #e03f3f;
     cursor: pointer;
   }
   &-Item label {
@@ -106,7 +106,7 @@
   &-Item input[type="checkbox"]:checked + label + ul,
   &-Item input[type="checkbox"]:checked + label:hover + ul {
     display: block;
-    background: #E03F3F;
+    background: #e03f3f;
     cursor: pointer;
   }
 }
@@ -131,7 +131,8 @@
     a {
       color: #666262;
     }
-    a:hover, a:active {
+    a:hover,
+    a:active {
       font-weight: 600;
       font-size: 12px;
       line-height: 14px;
@@ -141,13 +142,20 @@
 }
 
 a {
- text-decoration: none;
- color: #FFFFFF;
+  text-decoration: none;
+  color: #ffffff;
 }
 
-@media screen and (max-width: 640px){
+@media screen and (max-width: 640px) {
   .Menu {
-    display: none;
-    right: 0;
+    width: 100vw;
+    left: -100vw;
+    &_visible_true {
+      left: 0;
+      transition: all 1s ease-out;
+    }
+    &_visible_false {
+      transition: all 1s ease-out;
+    }
   }
 }

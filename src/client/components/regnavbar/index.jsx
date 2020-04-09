@@ -14,7 +14,8 @@ export const Regnavbar = (props) => (
         <span className='Logo_second' >Студентов и преподавателей</span>
       </div>
     </div>
-    <div className='Menu-Icon'>
+
+    <div className='Menu-Icon' onClick = { props.activateMenu }>
       <img id='Ficon' src={menu} alt='' />
     </div>
   </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './profile.pcss';
-import { Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { Sidebar } from '../../components/sidebar';
@@ -27,9 +27,10 @@ const Profile = (props) => {
 
   return (
     <div className='Profile'>
-      < Sidebar activateMenu = { activateMenu } visible = { `visible_${menuVisible}` } />
-      < Menu state = { props.state } activateMenu = { activateMenu } visible = { `_visible_${menuVisible}` } />
-      <Profilecontent user={ user } visible = { `_visible_${menuVisible}` } />
+      < Sidebar activateMenu={activateMenu} visible={`_visible_${menuVisible}`} />
+      < Menu state={props.state} activateMenu={activateMenu} visible={`_visible_${menuVisible} `} user = { user } />
+      < Route exact path='/:user' render={() => <Profilecontent user={user} visible={`_visible_${menuVisible}`} activateMenu={activateMenu} />} />
+      < Route exact path='/:user/timetable' render= { () => <h1>asassadsadadasdasdasdd</h1> } />
     </div>
   );
 };

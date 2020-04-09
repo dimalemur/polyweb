@@ -29,7 +29,7 @@ export const Menu = (props) => (
           <input type='checkbox' name='vkl' id='Study' />
           <label htmlFor='Study'>Учёба</label>
           <ul className='Innerlist'>
-            <li className='Innerlist-Initem'><NavLink to='/'>Расписание</NavLink></li>
+            <li className='Innerlist-Initem'><NavLink to={`/${props.user}/timetable`}>Расписание</NavLink></li>
             <li className='Innerlist-Initem'><NavLink to='/'>Успеваемость</NavLink></li>
             <li className='Innerlist-Initem'><NavLink to='/'>Посещения по физкультуре</NavLink></li>
             <li className='Innerlist-Initem'><NavLink to='/'>Образовательные программы</NavLink></li>

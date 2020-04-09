@@ -12,10 +12,8 @@ class App extends Component {
       return (
         <div className='App' >
           <div>
-            <Switch>
-              <Route exact path = {'/:user'} component={Profile} />
-              <Redirect to = {`/${this.props.login}`}/>
-            </Switch>
+              <Route exact path = '/' component={() => <Redirect to = {`/${this.props.login}`}/>} />
+              <Route path = {'/:user'} component={Profile} />
           </div>
         </div>
       );
@@ -27,7 +25,6 @@ class App extends Component {
       <div className='App' >
         <div>
           <Route path = '/' component={Authentication} />
-          <Route exact path = {'/:user'} component={Profile} />
         </div>
       </div>
     );
