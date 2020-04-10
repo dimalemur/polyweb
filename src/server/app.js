@@ -32,7 +32,7 @@ app
 // api роутинг
   .use('/api', authRoute) // аутенфикация
   .use('/api', checkToken, userRoute) // получаем юзезра по id (без пароля)
-  .use('/api', checkToken, pageRoute)
+  .use('/api', checkToken, pageRoute) // информация связанная с пользователем
   .use('/api', checkToken, infoRoute) // добавление и получение записей
   .get('/checkAuth', checkToken, (req, res) => { // получаем токен, возвращаем объект с id пользователя
     res.json(req.token);

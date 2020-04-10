@@ -1,3 +1,4 @@
 {
-  "ignore": ["./pulic/","./src/client"]
+  "verbose": true,
+  "ignore": ["./node_mudules/*","./pulic/*","./src/client/*","./src/source/*"]
 }

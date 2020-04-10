@@ -6,10 +6,10 @@
   "scripts": {
     "dev": " concurrently  \"npm run server\" \"npm run client\"",
     "client": "webpack --watch --mode development ",
+    "server": "node_modules/.bin/nodemon -r esm src/server/app.js",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "build": "webpack --mode production",
-    "server": "node_modules/.bin/nodemon -r esm src/server/app.js"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
