@@ -39,7 +39,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 use:"babel-loader",
-                exclude: [/node_modules/, /public/]
+                exclude: [/node_modules/, /public/, /server/]
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
