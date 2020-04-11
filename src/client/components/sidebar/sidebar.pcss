@@ -10,8 +10,11 @@
   align-items: center;
   padding: 7px;
   box-sizing: border-box;
+  button {
+    background: #302c2c;
+    border: none;
+  }
 }
-
 
 .Topicons {
   display: flex;
@@ -22,6 +25,8 @@
     img {
       width: 37px;
       height: 37px;
+      pointer-events: none;
+      user-select: none;
     }
   }
 }
@@ -39,11 +44,12 @@
   img {
     width: 20px;
     height: 20px;
+    pointer-events: none;
+    user-select: none;
   }
 }
 
-
-@media screen and (max-width: 640px){
+@media screen and (max-width: 640px) {
   .Sidebar {
     display: none;
     right: 0;

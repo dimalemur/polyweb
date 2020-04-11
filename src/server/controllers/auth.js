@@ -3,48 +3,48 @@ import config from '../config';
 
 import User from '../models/user';
 
-//регистрация
+// регистрация
 export const signup = async (req, res, next) => {
-    const credentials = req.body; //данные из формы
-    let user;
+  const credentials = req.body; // данные из формы
+  let user;
 
-    try {
-        user = await User.create(credentials) //создаём нового пользователя
-    } catch ({message}) {
-        return next ({
-            status:400,
-            message
-        })        
-    }
+  console.log(credentials);
 
-    res.json(user); //возвращаем пользоваетя
-}
+  if (!credentials.login || !credentials.password) {
+    res.status(400).send('no data entered');
+    return next();
+  }
 
-//авторизация
+  try {
+    user = await User.create(credentials); // создаём нового пользователя
+  } catch ({ message }) {
+    res.status(400).send(message);
+    return next();
+  }
+
+  res.json(user); // возвращаем пользоваетя
+};
+
+// авторизация
 export const signin = async (req, res, next) => {
-    console.log(req.body);
-    
-    const { login, password } = req.body;
+  console.log(req.body);
 
-    const user = await User.findOne({ login }); //ищем пользователя по логину
+  const { login, password } = req.body;
 
-    if (!user) {
-        return next({
-            status:400,
-            message: 'Not found'
-        });
-    }
+  const user = await User.findOne({ login }); // ищем пользователя по логину
 
-    const result = await user.comparePasswords(password); //сравниваем пароли
+  if (!user) {
+    res.status(400).send('Not found');
+    return next();
+  }
 
-    if (!result) {
-        return next ({
-            status:400,
-            message: 'Bad Creditials'
-        }); 
-    }    
+  const result = await user.comparePasswords(password); // сравниваем пароли
 
-    const token = jwt.sign({_id: user._id,}, config.secret); //создаём токен по секретному ключу
-    res.json({ token:token, status:200 }); //выдаём токен
-}
+  if (!result) {
+    res.status(400).send('Bad Creditials');
+    return next();
+  }
 
+  const token = jwt.sign({ _id: user._id }, config.secret); // создаём токен по секретному ключу
+  res.json({ token, status: 200 }); // выдаём токен
+};

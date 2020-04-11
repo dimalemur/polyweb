@@ -1,7 +1,13 @@
 export const initialState = {
-    user:{
-    },
-    userData: {
-    },
-    isOwner: false
+  user: {
+  },
+  userData: {
+    orders: [],
+  },
+  userGrades: [],
+  isOwner: false,
+  pagesState: {
+    menuVisible: false,
+    loader: false,
+  },
 };

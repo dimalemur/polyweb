@@ -1,0 +1,58 @@
+.Backgroundcontainer {
+  min-height: 100vh;
+  width: 100vw;
+  padding-left: 3.5rem;
+  box-sizing: border-box;
+  &-Menu{
+    &_visible_true {
+      padding-left: 7.5rem;
+      transition: all 1s ease-out;
+    }
+    &_visible_false {
+      transition: all 1s ease-out;
+    }
+  }
+  &-Wrap {
+    position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    background: #5754db;
+    z-index: -1;
+    right: 0;
+  }
+  &-Green {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30vw;
+  }
+  &-Blue {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+  }
+  .Navbar {
+    position: relative;
+    right: 3.5rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Backgroundcontainer {
+    padding-left: 0;
+    &-Menu {
+      &_visible_true {
+        padding-left: 0;
+        transition: none;
+      }
+      &_visible_false {
+        transition: none;
+      }
+    }
+    .Navbar {
+      position: relative;
+      right: 0;
+    }
+  }
+}

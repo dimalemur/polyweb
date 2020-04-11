@@ -7,97 +7,154 @@
   display: flex;
   flex-direction: column;
   padding-left: 3.5rem;
+  &-Menu {
+    &_visible_true {
+      padding-left: 7.5rem;
+      transition: all 1s ease-out;
+    }
+    &_visible_false {
+      transition: all 1s ease-out;
+    }
+  }
   &-Wrap {
-      display: flex;
-      justify-content: center;
-      background: white;
-      width: 80%;
-      max-width: 915px;
-      margin: 0 auto;
-      margin-top: 30px;
-      opacity: 0.95;
-      border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    background: white;
+    width: 80%;
+    max-width: 915px;
+    margin: 0 auto;
+    margin-top: 30px;
+    opacity: 0.95;
+    border-radius: 5px;
   }
 
   &-Info {
-      padding: 86px;
-      width: 100%;
-      button {
-          display: block;
-      }
+    padding: 86px;
+    width: 100%;
+    button {
+      display: block;
+    }
   }
 
   .Navbar {
-      position: relative;
-      right: 3.5rem;
+    position: relative;
+    right: 3.5rem;
   }
 }
 
 .Ava {
-    display: flex;
-    flex-direction: column;
-    &-Img {
-        width: 130px;
-        height: 130px;
-        border-radius: 75px;
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
+  display: flex;
+  flex-direction: column;
+  &-Img {
+    width: 130px;
+    height: 130px;
+    border-radius: 75px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+  }
 
-    &-Text {
-        font-family: 'Raleway' sans-serif;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 21px;
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        
-    }
+  &-Text {
+    font-family: "Raleway" sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
-
 .Infoblock {
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  &-Title {
+    background: #121058;
     border: 1px solid #000000;
     box-sizing: border-box;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    &-Title {
-        background: #121058;
-        border: 1px solid #000000;
-        box-sizing: border-box;
-        border-radius: 10px 10px 0px 0px;
-        font-family: 'Roboto' sans-serif;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 21px;
-        color: #FFFFFF;
-        height: 39.61px;
-        display: flex;
-        align-items: center;
-        padding-left: 17px;
-        margin: 0;
-        
+    border-radius: 10px 10px 0px 0px;
+    font-family: "Roboto" sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #ffffff;
+    height: 39.61px;
+    display: flex;
+    align-items: center;
+    padding-left: 17px;
+    margin: 0;
+  }
+  &-Orders {
+    padding: 44px;
+    a {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      text-decoration-line: underline;
+      color: #2f2f2f;
     }
+  }
+}
+
+.Personinfo {
+  &-Content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 44px;
+  }
+  &-Name {
+    display: grid;
+    text-align: left;
+    .Infoline {
+      margin-left: 19px;
+      text-align: right;
+    }
+  }
+  &-Value {
+    display: grid;
+    .Infoline {
+      margin-right: 19px;
+      margin-left: 11px;
+    }
+  }
 }
 
 .Infoline {
-    margin: 19px;
-    font-family: 'Roboto' sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 21px;
-    color: #2F2F2F;
-    b {
-        font-weight: 500;
-    }
-
+  margin: 0;
+  margin-bottom: 19px;
+  font-family: "Roboto" sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  color: #2f2f2f;
+  b {
+    font-weight: 500;
+  }
 }
 
-
 @media screen and (max-width: 640px) {
+  .Profilecontent {
+    padding-left: 0;
+    &-Menu {
+      &_visible_true {
+        padding-left: 0;
+        transition: none;
+      }
+      &_visible_false {
+        transition: none;
+      }
+    }
+    .Navbar {
+      position: relative;
+      right: 0;
+    }
   }
+}

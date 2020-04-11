@@ -1,0 +1,72 @@
+{
+    "extends": [
+        "airbnb/base",
+        "eslint:recommended",
+        "plugin:react/recommended"
+        ],
+    "parser": "babel-eslint",
+    "rules": {
+        "import/prefer-default-export": "off",
+        "no-unused-vars":"off",
+        "consistent-return":"off",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "no-else-return":"off",
+        "react/prop-types":"off",
+        "no-console": "off",
+        "no-underscore-dangle":"off",
+        "func-names":"off",
+        "no-useless-catch":"off",
+        "eqeqeq": "error",
+        "no-multi-spaces": "error",
+        "radix": "error",
+        "lines-between-class-members": "error",
+        "no-trailing-spaces": "error",
+        "no-var": "error",
+        "eol-last": "error",
+        "prefer-const": "error",
+        "space-in-parens": "error",
+        "keyword-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1
+            }
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 170,
+                "tabWidth": 4
+            }
+        ],
+        "react/no-did-mount-set-state": "error",
+        "react/no-did-update-set-state": "error",
+        "react/jsx-closing-bracket-location": "error"
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "jasmine": true
+    },
+
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    }
+}
