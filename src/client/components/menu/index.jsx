@@ -30,9 +30,9 @@ export const Menu = (props) => (
           <label htmlFor='Study'>Учёба</label>
           <ul className='Innerlist'>
             <li className='Innerlist-Initem'><NavLink to={`/${props.user}/timetable`}>Расписание</NavLink></li>
-            <li className='Innerlist-Initem'><NavLink to={`/${props.user}/marks`}>Успеваемость</NavLink></li>
-            <li className='Innerlist-Initem'><NavLink to={`/${props.user}/journalpe`}>Посещения по физкультуре</NavLink></li>
-            <li className='Innerlist-Initem'><NavLink to={`/${props.user}/faculties`}>Образовательные программы</NavLink></li>
+            <li className='Innerlist-Initem'><NavLink to='/'>Успеваемость</NavLink></li>
+            <li className='Innerlist-Initem'><NavLink to='/'>Посещения по физкультуре</NavLink></li>
+            <li className='Innerlist-Initem'><NavLink to='/'>Образовательные программы</NavLink></li>
           </ul>
         </li>
         <li className='List-Item'><NavLink to='/'>Карьера</NavLink></li>

@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { Sidebar } from '../../components/sidebar';
 import { Menu } from '../../components/menu';
-import { Marks } from '../../components/marks';
-import { Journalpe } from '../../components/journalpe';
-import { Faculties } from '../../components/faculties';
 import Profilecontent from '../../components/profileContent';
 
 const Profile = (props) => {
@@ -34,9 +31,6 @@ const Profile = (props) => {
       < Menu state={props.state} activateMenu={activateMenu} visible={`_visible_${menuVisible} `} user = { user } />
       < Route exact path='/:user' render={() => <Profilecontent user={user} visible={`_visible_${menuVisible}`} activateMenu={activateMenu} />} />
       < Route exact path='/:user/timetable' render= { () => <h1>asassadsadadasdasdasdd</h1> } />
-      < Route exact path='/:user/marks' render= { () => <Marks /> } />
-      < Route exact path='/:user/journalpe' render= { () => <Journalpe /> } />
-      < Route exact path='/:user/faculties' render= { () => <Faculties /> } />
     </div>
   );
 };
