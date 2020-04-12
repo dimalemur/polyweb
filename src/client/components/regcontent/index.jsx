@@ -5,7 +5,7 @@ import computerIcon from '../../../source/images/programmer.svg';
 import line from '../../../source/images/Vector 1.svg';
 import Authorization from '../authorization';
 import { Authhelp } from '../authhelp';
-import { Regnavbar } from '../regnavbar';
+import Regnavbar from '../regnavbar';
 
 export const Regcontent = (props) => (
   <div className='Regcontent' >

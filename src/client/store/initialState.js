@@ -4,5 +4,10 @@ export const initialState = {
   userData: {
     orders: [],
   },
+  userGrades: [],
   isOwner: false,
+  pagesState: {
+    menuVisible: false,
+    loader: false,
+  },
 };

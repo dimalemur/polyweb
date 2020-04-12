@@ -1,0 +1,246 @@
+{
+  "authentication": {
+    "signup": {
+      "type": "POST",
+      "url": "/api/signup",
+      "headers": "",
+      "body": {
+        "login": "anya",
+        "password": "asd123"
+      }
+    },
+    "signin": {
+      "type": "POST",
+      "url": "/api/signin",
+      "headers": "",
+      "body": {
+        "login": "anya",
+        "password": "asd123"
+      }
+    }
+  },
+  "personalInfo": {
+    "createInfo": {
+      "type": "POST",
+      "url": "/api/info",
+      "headers": "there should be a token",
+      "body": {
+        "name": "Хван Дмитрий Алексееasdaвич",
+        "faq": "ФИТ",
+        "course": 2,
+        "group": "181-362",
+        "specialty": "09.03.03 Прикладная информатика",
+        "specialization": "КИС",
+        "period": 4,
+        "form": "Очная",
+        "financing": "Бюджет",
+        "level": "Бакалавр",
+        "year": "2018/2019",
+        "email": "dim4ik120899@gmail.com",
+        "tel": "+79772714525",
+        "orders": [
+          {
+            "name": "Приказ об отчислениии",
+            "url": "mospolytech.ru"
+          },
+          {
+            "name": "отмена приказа об отчислении",
+            "url": "mospolytech.ru"
+          }
+        ]
+      }
+    },
+    "getInfo": {
+      "type": "GET",
+      "url": "/api/info",
+      "headers": "there should be a token",
+      "body": {}
+    },
+    "getPagesByUserLogin": {
+      "type": "GET",
+      "url": "/api/info/:login",
+      "headers": "there should be a token",
+      "body": {}
+    },
+    "editInfo": {
+      "type": "POST",
+      "url": "/api/info/:id",
+      "headers": "there should be a token",
+      "body": {
+        "name": "Хван Дмитрий Алексееasdaвич",
+        "faq": "ФИТ",
+        "course": 2,
+        "group": "181-362",
+        "specialty": "09.03.03 Прикладная информатика",
+        "specialization": "КИС",
+        "period": 4,
+        "form": "Очная",
+        "financing": "Бюджет",
+        "level": "Бакалавр",
+        "year": "2018/2019",
+        "email": "dim4ik120899@gmail.com",
+        "tel": "+79772714525",
+        "orders": [
+          {
+            "name": "Приказ об отчислениии",
+            "url": "mospolytech.ru"
+          },
+          {
+            "name": "отмена приказа об отчислении",
+            "url": "mospolytech.ru"
+          }
+        ]
+      }
+    }
+  },
+  "grades": {
+    "addgrades": {
+      "type": "POST",
+      "url": "/api/addgrades",
+      "headers": "there should be a token",
+      "body": {
+        "semester": 2,
+        "orders": [
+          {
+            "name": "Элективные дисциплины по физической культуре и спорту",
+            "type": "Оценка",
+            "grade": "Отлично"
+          },
+          {
+            "name": "Проектная деятельность",
+            "type": "Зачёт",
+            "grade": "Не Зачтено"
+          },
+          {
+            "name": "Программирование",
+            "type": "Зачёт",
+            "grade": "Зачтено"
+          },
+          {
+            "name": "Основы бух учета и управления финансами",
+            "type": "Зачёт",
+            "grade": "Зачтено"
+          }
+        ]
+      }
+    },
+    "getGrages": {
+      "type": "GET",
+      "url": "/api/getgrades",
+      "headers": "there should be a token",
+      "body": {}
+    },
+    "editGrages": {
+      "type": "POST",
+      "url": "/api/editgrades/:gradesId",
+      "headers": "there should be a token",
+      "body": {
+        "semester": 2,
+        "orders": [
+          {
+            "name": "Элективные дисциплины по физической культуре и спорту",
+            "type": "Оценка",
+            "grade": "Отлично"
+          },
+          {
+            "name": "Проектная деятельность",
+            "type": "Зачёт",
+            "grade": "Не Зачтено"
+          },
+          {
+            "name": "Программирование",
+            "type": "Зачёт",
+            "grade": "Зачтено"
+          },
+          {
+            "name": "Основы бух учета и управления финансами",
+            "type": "Зачёт",
+            "grade": "Зачтено"
+          }
+        ]
+      }
+    },
+    "deleteGrages": {
+      "type": "DELETE",
+      "url": "/api/deletegrades/semeter number",
+      "headers": "there should be a token",
+      "body": {}
+    }
+  },
+  "sportVisits": {
+    "addSportVisit": {
+      "type": "POST",
+      "url": "/api/addsportvisit",
+      "headers": "there should be a token",
+      "body": {
+        "semester": 1,
+        "count": 15,
+        "visits": [
+          {
+            "date": "2019-09-02",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-09",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-16",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-24",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-30",
+            "section": "Волейбол Измайлово"
+          }
+        ]
+      }
+    },
+    "getSportVisit": {
+      "type": "GET",
+      "url": "/api/getsportvisit",
+      "headers": "there should be a token",
+      "body": {}
+    },
+    "editSportVisit": {
+      "type": "POST",
+      "url": "/editsportvisit/:visitId",
+      "headers": "there should be a token",
+      "body": {
+        "semester": 1,
+        "count": 15,
+        "visits": [
+          {
+            "date": "2019-09-02",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-09",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-16",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-24",
+            "section": "Волейбол Измайлово"
+          },
+          {
+            "date": "2019-09-30",
+            "section": "Волейбол Измайлово"
+          }
+        ]
+      }
+    },
+    "deleteSportVisit": {
+      "type": "DELETE",
+      "url": "/deletesportvisit/:semester(example 2)",
+      "headers": "there should be a token",
+      "body": {}
+    }
+  }
+}

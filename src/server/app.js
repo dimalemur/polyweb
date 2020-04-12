@@ -1,6 +1,7 @@
 import config from './config';
 import authRoute from './routes/auth';
 import userRoute from './routes/user';
+import infoRoute from './routes/info';
 import pageRoute from './routes/page';
 import errorHandler from './middlewares/errorHandler';
 import checkToken from './middlewares/checkToken';
@@ -31,15 +32,17 @@ app
 // api роутинг
   .use('/api', authRoute) // аутенфикация
   .use('/api', checkToken, userRoute) // получаем юзезра по id (без пароля)
+  .use('/api', checkToken, pageRoute) // информация связанная с пользователем
+  .use('/api', checkToken, infoRoute) // добавление и получение записей
   .get('/checkAuth', checkToken, (req, res) => { // получаем токен, возвращаем объект с id пользователя
     res.json(req.token);
   })
-  .use('/api', checkToken, pageRoute) // добавление и получение записей
 // Роутинг страниц
   .use('/', staticWay)
   .use('/login/authhelp/', staticWay)
-  .use('/:user/', checkUserByName, staticWay)
-  .use('/:user/:page', staticWay)
+  .use('/:user', checkUserByName, staticWay)
+  .use('/:user/:page', checkUserByName, staticWay)
+
 // обработка необработанных ошибок
   .use(errorHandler);
 

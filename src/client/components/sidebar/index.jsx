@@ -7,9 +7,9 @@ import settingsIcon from '../../../source/images/icons/settings.svg';
 import menuIcon from '../../../source/images/icons/menu.svg';
 
 export const Sidebar = (props) => (
-  <div className={`Sidebar Sidebar_${props.visible}`} >
+  <div className={'Sidebar'} >
     <div className='Topicons Sidebar-Topicons'>
-      <NavLink to='/' className='Topicons-Profileicon' >
+      <NavLink to={`/${props.user}`} className='Topicons-Profileicon' >
         <img src={avatarIcon} alt='Профиль' />
       </NavLink>
 

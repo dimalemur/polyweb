@@ -7,10 +7,8 @@ export async function getCurrentUser(req, res, next) {
   try {
     user = await UserServices.getUserByToken(token); // получаем юзезра по id
   } catch ({ message }) {
-    return next({
-      status: 500,
-      message,
-    });
+    res.status(500).send(message);
+    return next();
   }
 
   return res.json(user);
@@ -24,10 +22,8 @@ export async function checkUserByName(req, res, next) {
   try {
     userName = await UserServices.getUserByName(name); // получаем юзезра по имени
   } catch ({ message }) {
-    return next({
-      status: 500,
-      message,
-    });
+    res.status(500).send(message);
+    return next();
   }
 
   if (!userName[0]) {
@@ -36,3 +32,4 @@ export async function checkUserByName(req, res, next) {
     next(); // запускаем следующий обработчик
   }
 }
+

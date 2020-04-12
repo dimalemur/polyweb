@@ -1,0 +1,155 @@
+.Grades {
+  font-family: Raleway, sans-serif;
+  &-Content {
+    width: 964px;
+    max-width: 80%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    padding: 0 74px 36px 74px;
+    box-sizing: border-box;
+  }
+  &-Inner {
+    padding-top: 36px;
+  }
+  &-Title {
+    font-weight: bold;
+    color: white;
+    margin-right: 20px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  &-Changesemester {
+    padding-top: 3rem;
+    width: 964px;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    p {
+      margin: 0;
+    }
+  }
+
+  &-Loader {
+    width: 40px;
+    height: 40px;
+    background: black;
+    border-radius: 100px;
+    margin: 0 auto;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-name: rotation;
+    animation-iteration-count: infinite;
+    &_false {
+      display: none;
+    }
+    &_true {
+      display: block;
+    }
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.Gradetable {
+  border-bottom: 2px solid #121058;
+  border-right: 2px solid #121058;
+  border-left: 2px solid #121058;
+  border-radius: 5px;
+  &-Title {
+    display: grid;
+    height: 44px;
+    background: #121058;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    color: white;
+    align-items: center;
+    border-radius: 5px 5px 0px 0px;
+    grid-template-columns: 50% 25% 25%;
+  }
+  &-Content {
+    display: grid;
+    height: 46px;
+    grid-template-columns: 50% 25% 25%;
+  }
+
+  &-Name {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+  }
+  &-Type {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+  }
+  &-Grade {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+  }
+}
+
+.Title {
+  &-Name {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  &-Type {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  &-Grade {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.Semester {
+  &-Text {
+    color: #121058;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+  }
+}
+
+.Course {
+  width: 158px;
+  &:focus {
+    outline: none;
+  }
+  &-Select {
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Grades {
+    &-Title {
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+    &-Changecourse {
+      flex-direction: column;
+    }
+  }
+}
