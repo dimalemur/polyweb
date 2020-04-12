@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
-import Regnavbar from '../regnavbar';
 import { logOut } from '../../store/reducers/mainPageReducer';
 import avatarIcon from '../../../source/images/icons/ava.svg';
 
@@ -28,9 +27,7 @@ const Profilecontent = (props) => {
   };
 
   return (
-    <div className={`Profilecontent Profilecontent-Menu${props.visible}`}>
-
-      <Regnavbar />
+    <div className= 'Profilecontent'>
 
       <div className='Profilecontent-Wrap'>
         <div className='Info Profilecontent-Info'>

@@ -1,0 +1,78 @@
+.Backgroundcontainer {
+  min-height: 100vh;
+  width: 100vw;
+  padding-left: 3.5rem;
+  box-sizing: border-box;
+  &-Menu {
+    &_visible_true {
+      padding-left: 7.5rem;
+      transition: all 1s ease-out;
+    }
+    &_visible_false {
+      transition: all 1s ease-out;
+    }
+  }
+  &-Wrap {
+    position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -1;
+    right: 0;
+  }
+  &-Green {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30vw;
+  }
+  &-Blue {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+  }
+  &-Yellowssc {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50vw;
+  }
+  &-Peoples{
+    position: absolute;
+    right: 2vw;
+    bottom: 2vh;
+    width: 40vw;
+  }
+  .Navbar {
+    position: relative;
+    right: 3.5rem;
+  }
+}
+
+.Wrap {
+  &-Blue {
+    background: #5754db;
+  }
+  &-Yellow {
+    background: #fff176;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Backgroundcontainer {
+    padding-left: 0;
+    &-Menu {
+      &_visible_true {
+        padding-left: 0;
+        transition: none;
+      }
+      &_visible_false {
+        transition: none;
+      }
+    }
+    .Navbar {
+      position: relative;
+      right: 0;
+    }
+  }
+}

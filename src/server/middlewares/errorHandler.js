@@ -1,7 +1,5 @@
-export default function (err, req, res) {
+export default function (err, res, next) {
   const { status = 500, message = 'Server Error' } = err;
-
-  return res
-    .status(status)
-    .json({ message });
+  res.status(status).json({ message });
+  return next();
 }
