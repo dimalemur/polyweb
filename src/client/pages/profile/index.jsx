@@ -9,6 +9,7 @@ import Menu from '../../components/menu';
 import Grades from '../../components/grades';
 import Profilecontent from '../../components/profileContent';
 import { Backgroundcontainer } from '../../components/backgroundcontainer';
+import { Backgrounds } from '../../components/backgrounds';
 
 const Profile = (props) => {
   useEffect(() => {
@@ -26,23 +27,21 @@ const Profile = (props) => {
     <div className='Profile'>
 
       < Sidebar user={user}
-                activateMenu={props.setMenuVisible}
-                visible={`_visible_${props.menuVisible}`}
+        activateMenu={props.setMenuVisible}
+        visible={`_visible_${props.menuVisible}`}
       />
       < Menu state={props.state}
-             activateMenu={props.setMenuVisible}
-             visible={`_visible_${props.menuVisible} `}
-             user={user}
+        activateMenu={props.setMenuVisible}
+        visible={`_visible_${props.menuVisible} `}
+        user={user}
       />
       < Route exact
-              path='/:user'
-              render={() => <Profilecontent user={user}
-                                            visible={`_visible_${props.menuVisible}`}
-                            />}
+        path='/:user'
+        render={() => <Backgroundcontainer page={Profilecontent} menuVisible={props.menuVisible} background={Backgrounds.Blue} />}
       />
       < Route exact
-              path='/:user/timetable'
-              render={() => <Backgroundcontainer page={Grades} menuVisible = {props.menuVisible} />}
+        path='/:user/timetable'
+        render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.YellowLightYellow} />}
       />
 
     </div>

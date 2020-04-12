@@ -69,6 +69,7 @@
     display: grid;
     height: 44px;
     background: #121058;
+    font-size: 1rem;
     font-family: Roboto, sans-serif;
     font-weight: bold;
     color: white;
@@ -78,16 +79,17 @@
   }
   &-Content {
     display: grid;
-    height: 46px;
+    min-height: 46px;
     grid-template-columns: 50% 25% 25%;
+    font-size: 1rem;
   }
 
   &-Name {
-    justify-content: center;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     border-right: 1px solid #e5e5e5;
+    padding: 12px 26px;
   }
   &-Type {
     justify-content: center;
@@ -96,13 +98,16 @@
     border-bottom: 1px solid #e5e5e5;
     border-right: 1px solid #e5e5e5;
     border-left: 1px solid #e5e5e5;
+    padding: 0 26px;
   }
   &-Grade {
     justify-content: center;
+    text-align: center;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     border-left: 1px solid #e5e5e5;
+    padding: 0 26px;
   }
 }
 
@@ -148,8 +153,64 @@
       margin-bottom: 20px;
       margin-right: 0;
     }
-    &-Changecourse {
+    &-Changesemester {
       flex-direction: column;
+    }
+  }
+  .Gradetable {
+    &-Content {
+      font-size: 0.5rem;
+    }
+    &-Title {
+      font-size: 0.5rem;
+    }
+    &-Name {
+      overflow: scroll;
+    }
+    &-Type {
+      overflow: scroll;
+    }
+    &-Grade {
+      overflow: scroll;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .Gradetable {
+    &-Title {
+      font-size: 0.7rem;
+    }
+  }
+  .Gradetable {
+    &-Content {
+      grid-template-columns: 50% 25% 25%;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .Grades {
+    &-Content {
+      padding: 0 5% 36px;
+    }
+  }
+  .Gradetable {
+    &-Content {
+      font-size: 0.5rem;
+    }
+    &-Title {
+      font-size: 0.5rem;
+    }
+    &-Name {
+      padding: 0;
+    }
+    &-Type {
+      padding: 0;
+    }
+    &-Grade {
+      padding: 0;
     }
   }
 }
