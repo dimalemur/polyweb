@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.Additionalcourses {
+  position: absolute;
+  position: relative;
+  &-Contentlist {
+    background: #2c2a90;
+  }
+}
+
+.Contentlist {
+  &-Title {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    margin: 0px;
+    padding: 42px 0;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+
+.Courses {
+  width: 933px;
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.Course {
+  background: #ffffff;
+  width: 100%;
+  margin-bottom: 26px;
+  border-radius: 10px;
+  padding-top: 27px;
+  padding-bottom: 24px;
+  padding-left: 39px;
+  padding-right: 39px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "image text"
+    "image button";
+  &-Title {
+    grid-area: title;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    text-decoration-line: underline;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #000000;
+    text-align: center;
+    padding-bottom: 17px;
+  }
+  &-Image {
+    grid-area: image;
+    img {
+      border-radius: 5px;
+      max-width: 30vw;
+      width: 418px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-Text {
+    max-width: 373px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    grid-area: text;
+  }
+  &-Button {
+    max-width: 208px;
+    margin-left: 50px;
+    grid-area: button;
+    button {
+      width: 208px;
+      height: 34px;
+    }
+  }
+
+  &-Description {
+    margin-bottom: 13px;
+  }
+
+  &-Category {
+    margin-bottom: 13px;
+  }
+
+  &-Price {
+    margin-bottom: 13px;
+  }
+  &-Duration {
+    margin-bottom: 13px;
+  }
+}
+
+.Button {
+  &-Yellow {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    background: #fff176;
+    border-radius: 10px;
+  }
+}
+
+.Text {
+  &-Normal {
+    font-family: Roboto sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 15px;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: #000000;
+  }
+  &-Semibold {
+    font-family: Roboto sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 15px;
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #000000;
+  }
+}
+
+.Promocourses {
+  width: 50%;
+  margin-left: 6.5rem;
+  &-Wrap {
+    height: 100vh;
+  }
+  &-Title {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 46px;
+  }
+  &-Subtitle {
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 26px;
+    text-indent: 1.5px;
+    color: #2c2a91;
+  }
+  &-Text {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 18px;
+    width: 67%;
+    text-indent: 1.5px;
+  }
+
+  &-Button {
+    width: 142px;
+    height: 28px;
+    margin: 0;
+    border: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    padding: 0;
+    border-radius: 10px;
+  }
+}
+
+.Checklist {
+  width: 60%;
+  margin: 26px 0;
+  &-Item {
+    margin-top: 16px;
+    list-style-type: "\2714";
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    text-indent: 1.5px;
+  }
+}

@@ -10,7 +10,7 @@ import avatarIcon from '../../../source/images/icons/ava.svg';
 
 const Profilecontent = (props) => {
   const [isOwner, setState] = useState(false);
-
+  const Regnav = props.Regnavbar;
   useEffect(() => {
     setState(props.isOwner === 'true');
   });
@@ -30,7 +30,7 @@ const Profilecontent = (props) => {
 
   return (
     <div className= 'Profilecontent'>
-
+      <Regnav />
       <div className='Profilecontent-Wrap'>
         <div className='Info Profilecontent-Info'>
           <button onClick={(isOwner) ? signOut : backHome}>
