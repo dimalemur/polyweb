@@ -26,7 +26,7 @@ const Regnavbar = (props) => (
 export default connect(
   (state) => ({
     state,
-    menuVisible: state.AuthPage.pagesState.menuVisible,
+    menuVisible: state.mainPage.pagesState.menuVisible,
   }),
   (dispatch) => ({
     setMenuVisible: () => {

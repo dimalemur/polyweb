@@ -1,4 +1,4 @@
-import { setUserGrades, setLoader } from '../reducers/mainPageReducer';
+import { setUserGrades, setLoader } from '../reducers/gradesPageReducer';
 
 export const asyncGetGrades = (token, semester) => (dispatch) => {
   dispatch(setLoader());

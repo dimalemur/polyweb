@@ -28,11 +28,9 @@ const Profile = (props) => {
 
       < Sidebar user={user}
         activateMenu={props.setMenuVisible}
-        visible={`_visible_${props.menuVisible}`}
       />
       < Menu state={props.state}
         activateMenu={props.setMenuVisible}
-        visible={`_visible_${props.menuVisible} `}
         user={user}
       />
       < Route exact
@@ -41,6 +39,11 @@ const Profile = (props) => {
       />
       < Route exact
         path='/:user/timetable'
+        render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
+      />
+
+      < Route exact
+        path='/:user/additional_courses'
         render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.YellowLightYellow} />}
       />
 
@@ -51,7 +54,7 @@ const Profile = (props) => {
 export default connect(
   (state) => ({
     state,
-    menuVisible: state.AuthPage.pagesState.menuVisible,
+    menuVisible: state.mainPage.pagesState.menuVisible,
   }),
   (dispatch) => ({
     asyncGetUserData: (token, name) => {

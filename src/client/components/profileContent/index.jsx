@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
-import { logOut } from '../../store/reducers/mainPageReducer';
+import { logOutProfile } from '../../store/reducers/profilePageReducer';
+import { logOutGrades } from '../../store/reducers/gradesPageReducer';
+import { logOutPage } from '../../store/reducers/mainPageReducer';
 import avatarIcon from '../../../source/images/icons/ava.svg';
 
 const Profilecontent = (props) => {
@@ -121,13 +123,15 @@ const Profilecontent = (props) => {
 export default connect(
   (state) => ({
     state,
-    userData: state.AuthPage.userData,
-    isOwner: state.AuthPage.isOwner.isOwner,
-    login: state.AuthPage.user.login,
+    userData: state.profilePage.userData,
+    isOwner: state.profilePage.isOwner.isOwner,
+    login: state.mainPage.user.login,
   }),
   (dispatch) => ({
     logOut: () => {
-      dispatch(logOut());
+      dispatch(logOutProfile());
+      dispatch(logOutPage());
+      dispatch(logOutGrades());
     },
     asyncGetUserData: (token, name) => {
       dispatch(asyncGetUserData(token, name));

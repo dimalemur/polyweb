@@ -8,7 +8,8 @@ import avatarIcon from '../../../source/images/icons/ava.svg';
 import settingsIcon from '../../../source/images/icons/settings.svg';
 import menuIcon from '../../../source/images/icons/menu.svg';
 
-const sublinks = {
+const study = {
+  id: 'Study',
   name: 'Учёба',
   links: [
     {
@@ -30,7 +31,26 @@ const sublinks = {
   ],
 };
 
-const links = [sublinks, 'Карьера', 'Мои финансы', 'Справки', 'Уведомления', 'Обратная связь'];
+const career = {
+  id: 'Career',
+  name: 'Карьера',
+  links: [
+    {
+      name: 'Дополнительные образовательные курсы',
+      url: '/additional_courses',
+    },
+    {
+      name: 'Трудоустройство и практика',
+      url: '',
+    },
+    {
+      name: 'Международные стажировки',
+      url: '',
+    },
+  ],
+};
+
+const links = [study, career, 'Мои финансы', 'Справки', 'Уведомления', 'Обратная связь'];
 
 const Menu = (props) => (
   <div className={`Menu Menu_visible_${props.menuVisible}`}>
@@ -39,7 +59,7 @@ const Menu = (props) => (
         <img src={avatarIcon} alt='Профиль' />
       </NavLink>
       <NavLink to={`/${props.user}`} onClick={props.setMenuVisible} className='Userinfo-Info' >
-        <span className='Info-Text' >{props.state.AuthPage.userData.name}</span>
+        <span className='Info-Text' >{props.state.profilePage.userData.name}</span>
       </NavLink>
     </div>
 
@@ -50,29 +70,29 @@ const Menu = (props) => (
     </div>
 
     <div className='Userlist Menu-Userlist'>
-    <ul className='Userlist List'>
-      {
-        links.map((element, i) => (
-          (typeof element === 'string')
-            ? <li className='List-Item' key={i} >
-              <NavLink onClick={props.setMenuVisible} to='/'>{element}</NavLink>
-            </li>
-            : <li className='List-Item' key={i}>
-              <input type='checkbox' name='vkl' id='Study' />
-              <label htmlFor='Study'> {element.name} </label>
-              <ul className='Innerlist'>
-                {
-                  element.links.map((el, j) => (
-                    <li className='Innerlist-Initem' key = {j}>
-                      <NavLink onClick={props.setMenuVisible} to={`/${props.user}${el.url}`}>{el.name}</NavLink>
-                    </li>
-                  ))
-                }
-              </ul>
-            </li>
-        ))
-      }
-    </ul>
+      <ul className='Userlist List'>
+        {
+          links.map((element, i) => (
+            (typeof element === 'string')
+              ? <li className='List-Item' key={i} >
+                <NavLink to='/'>{element}</NavLink>
+              </li>
+              : <li className='List-Item' key={i}>
+                <input type='checkbox' name='vkl' id={element.id} />
+                <label htmlFor={element.id}> {element.name} </label>
+                <ul className='Innerlist'>
+                  {
+                    element.links.map((el, j) => (
+                      <li className='Innerlist-Initem' key={j}>
+                        <NavLink to={`/${props.user}${el.url}`}>{el.name}</NavLink>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </li>
+          ))
+        }
+      </ul>
     </div>
 
     <div className='Settingicons Menu-Settingicons'>
@@ -90,7 +110,7 @@ const Menu = (props) => (
 export default connect(
   (state) => ({
     state,
-    menuVisible: state.AuthPage.pagesState.menuVisible,
+    menuVisible: state.mainPage.pagesState.menuVisible,
   }),
   (dispatch) => ({
     setMenuVisible: () => {

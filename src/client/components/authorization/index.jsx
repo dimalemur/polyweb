@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { asyncGetUser, asyncAuth } from '../../store/middleware/asyncGetUser';
 
 const Authorization = (props) => {
-
   const [login, setUser] = useState('');
   const [password, setPassword] = useState('');
 
@@ -47,7 +46,8 @@ const Authorization = (props) => {
               <input className='Input'
                 type='text' id='Input-Login'
                 value={login}
-                onChange={onChangeLogin} />
+                onChange={onChangeLogin}
+              />
             </div>
 
             <div className='Form Form-Password'>
@@ -56,7 +56,8 @@ const Authorization = (props) => {
                 type='password'
                 id='Input-Password'
                 value={password}
-                onChange={onChangePassword} />
+                onChange={onChangePassword}
+              />
             </div>
 
             <div className='Form-Help'>
@@ -74,7 +75,8 @@ const Authorization = (props) => {
                         </span>
             <div className='Button Form-Button'>
               <button className='Button-Blue'
-                onClick={(event) => event.preventDefault()} >
+                onClick={(event) => event.preventDefault()}
+              >
                 Войти с помощью Google
               </button>
             </div>
@@ -90,10 +92,10 @@ const Authorization = (props) => {
 export default connect(
   (state) => ({
     state,
-    login: state.AuthPage.user.login,
+    login: state.mainPage.user.login,
   }),
   (dispatch) => ({
-    asyncGetUser: token => {
+    asyncGetUser: (token) => {
       dispatch(asyncGetUser(token.token));
     },
     asyncAuth: (login, password) => {

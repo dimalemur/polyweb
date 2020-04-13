@@ -120,10 +120,10 @@ const Grades = (props) => {
 export default connect(
   (state) => ({
     state,
-    userData: state.AuthPage.userData,
-    userGrades: state.AuthPage.userGrades,
-    course: state.AuthPage.userData.course,
-    loader: state.AuthPage.pagesState.loader,
+    userData: state.profilePage.userData,
+    userGrades: state.gradesPage.userGrades,
+    course: state.profilePage.userData.course,
+    loader: state.gradesPage.pagesState.loader,
   }),
   (dispatch) => ({
     asyncGetGrades: (token, semester = 0) => {
