@@ -13,6 +13,7 @@ const coursesText = courses.map((course, i) => (
 coursesText.push({ value: 0, label: 'Все' });
 
 const Grades = (props) => {
+  const Regnav = props.Regnavbar;
   const [changedSemester, setChangedSemester] = useState(0);
   const token = window.localStorage.getItem('polyUser');
 
@@ -37,9 +38,10 @@ const Grades = (props) => {
 
   return (
     <div className='Grades'>
+      <Regnav />
       <div className='Grades-Changesemester'>
         <span className='Grades-Title'>Академическая успеваемость</span>
-        <form className='Course Grades-Course' action='submit'>
+        <form className='Coursechange Grades-Coursechange' action='submit'>
           <Select
             onChange={handleChangeCourse}
             options={coursesText}
@@ -120,10 +122,10 @@ const Grades = (props) => {
 export default connect(
   (state) => ({
     state,
-    userData: state.AuthPage.userData,
-    userGrades: state.AuthPage.userGrades,
-    course: state.AuthPage.userData.course,
-    loader: state.AuthPage.pagesState.loader,
+    userData: state.profilePage.userData,
+    userGrades: state.gradesPage.userGrades,
+    course: state.profilePage.userData.course,
+    loader: state.gradesPage.pagesState.loader,
   }),
   (dispatch) => ({
     asyncGetGrades: (token, semester = 0) => {

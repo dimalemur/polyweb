@@ -1,13 +1,20 @@
-export const initialState = {
-  user: {
+export const initialState2 = {
+  mainPage: {
+    user: {},
+    pagesState: {
+      menuVisible: false,
+    },
   },
-  userData: {
-    orders: [],
+  profilePage: {
+    userData: {
+      orders: [],
+    },
+    isOwner: false,
   },
-  userGrades: [],
-  isOwner: false,
-  pagesState: {
-    menuVisible: false,
-    loader: false,
+  gradesPage: {
+    userGrades: [],
+    pagesState: {
+      loader: false,
+    },
   },
 };

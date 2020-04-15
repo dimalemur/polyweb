@@ -1,4 +1,5 @@
-import { setUser, setUserData } from '../reducers/mainPageReducer';
+import { setUser } from '../reducers/mainPageReducer';
+import { setUserData } from '../reducers/profilePageReducer';
 
 export const asyncGetUser = (token) => (dispatch) => {
   fetch('/api/current-user', {

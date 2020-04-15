@@ -12,8 +12,8 @@ class App extends Component {
       return (
         <div className='App' >
           <div>
-              <Route exact path = '/' component={() => <Redirect to = {`/${this.props.login}`}/>} />
-              <Route path = {'/:user'} component={Profile} />
+            <Route exact path='/' component={() => <Redirect to={`/${this.props.login}`} />} />
+            <Route path={'/:user'} component={Profile} />
           </div>
         </div>
       );
@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div className='App' >
         <div>
-          <Route path = '/' component={Authentication} />
+          <Route path='/' component={Authentication} />
         </div>
       </div>
     );
@@ -34,6 +34,6 @@ class App extends Component {
 export default connect(
   (state) => ({
     state,
-    login: state.AuthPage.user.login,
+    login: state.mainPage.user.login,
   }),
 )(App);
