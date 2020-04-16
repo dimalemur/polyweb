@@ -7,6 +7,7 @@ import { setMenuVisible } from '../../store/reducers/mainPageReducer';
 import { Sidebar } from '../../components/sidebar';
 import Menu from '../../components/menu';
 import Grades from '../../components/grades';
+import Visits from '../../components/visits';
 import Additionalcourses from '../../components/additional_courses';
 import Profilecontent from '../../components/profileContent';
 import { Backgroundcontainer } from '../../components/backgroundcontainer';
@@ -39,7 +40,17 @@ const Profile = (props) => {
         render={() => <Backgroundcontainer page={Profilecontent} menuVisible={props.menuVisible} background={Backgrounds.Blue} />}
       />
       < Route exact
-        path='/:user/timetable'
+        path='/:user/grades'
+        render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
+      />
+
+      < Route exact
+        path='/:user/visits'
+        render={() => <Backgroundcontainer page={Visits} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
+      />
+
+      < Route exact
+        path='/:user/educationprogs'
         render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
       />
 

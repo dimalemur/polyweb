@@ -18,15 +18,15 @@ const study = {
     },
     {
       name: 'Успеваемость',
-      url: '',
+      url: '/grades',
     },
     {
       name: 'Посещения по физкультуре',
-      url: '',
+      url: '/visits',
     },
     {
       name: 'Образовательные программы',
-      url: '',
+      url: '/educationprogs',
     },
   ],
 };
