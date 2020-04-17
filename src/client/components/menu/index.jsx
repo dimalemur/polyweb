@@ -22,11 +22,11 @@ const study = {
     },
     {
       name: 'Посещения по физкультуре',
-      url: '/sportvisits',
+      url: '/visits',
     },
     {
       name: 'Образовательные программы',
-      url: '/education',
+      url: '/faculties',
     },
   ],
 };

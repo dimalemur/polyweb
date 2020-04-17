@@ -1,4 +1,4 @@
-.Grades {
+.Visits {
   position: relative;
   font-family: Raleway, sans-serif;
   &-Content {
@@ -33,6 +33,33 @@
     }
   }
 
+  &-Count {
+    display: flex;
+    flex-flow: column wrap;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+  }
+
+  .Count {
+    &-Have {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    &-All {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    &-Need {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      color: #F79329;
+    }
+  }
+
   &-Loader {
     width: 40px;
     height: 40px;
@@ -61,82 +88,71 @@
   }
 }
 
-.Gradetable {
-  margin-top: 22px;
-  border-bottom: 2px solid #121058;
-  border-right: 2px solid #121058;
-  border-left: 2px solid #121058;
+.Visitstable {
+  margin-top: 32px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #000000;
+  border-right: 2px solid #000000;
+  border-left: 2px solid #000000;
+  border-top: 2px solid #000000;
   border-radius: 5px;
   &-Title {
     display: grid;
     height: 44px;
-    background: #121058;
+    background: #FFFFFF;
     font-size: 1rem;
     font-family: Roboto, sans-serif;
     font-weight: bold;
-    color: white;
+    color: #000000;
     align-items: center;
+    border-bottom: 2px solid #000000;
     border-radius: 5px 5px 0px 0px;
-    grid-template-columns: 50% 25% 25%;
+    grid-template-columns: 25% 75%;
   }
   &-Content {
     display: grid;
     min-height: 46px;
-    grid-template-columns: 50% 25% 25%;
-    font-size: 1rem;
+    grid-template-columns: 25% 75%;
+    font-size: 18px;
   }
 
-  &-Name {
+  &-Date {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
-    border-right: 1px solid #e5e5e5;
     padding: 12px 26px;
   }
-  &-Type {
+  &-Section {
     justify-content: center;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     border-right: 1px solid #e5e5e5;
-    border-left: 1px solid #e5e5e5;
-    padding: 0 26px;
-  }
-  &-Grade {
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #e5e5e5;
-    border-left: 1px solid #e5e5e5;
     padding: 0 26px;
   }
 }
 
 .Title {
-  &-Name {
+  &-Date {
     justify-content: center;
     display: flex;
     align-items: center;
   }
-  &-Type {
-    justify-content: center;
-    display: flex;
-    align-items: center;
-  }
-  &-Grade {
+  &-Section {
     justify-content: center;
     display: flex;
     align-items: center;
   }
 }
 
-.Semester {
-  &-Text {
+.Journal {
+  text-align: center;
+  &-Title {
     color: #121058;
     font-family: Roboto, sans-serif;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
+    line-height: 26px;
   }
 }
 
@@ -151,7 +167,7 @@
 }
 
 @media screen and (max-width: 640px) {
-  .Grades {
+  .Visits {
     &-Title {
       margin-bottom: 20px;
       margin-right: 0;
@@ -160,59 +176,53 @@
       flex-direction: column;
     }
   }
-  .Gradetable {
+  .Visitstable {
     &-Content {
       font-size: 0.5rem;
     }
     &-Title {
       font-size: 0.5rem;
     }
-    &-Name {
+    &-Date {
       overflow: scroll;
     }
-    &-Type {
-      overflow: scroll;
-    }
-    &-Grade {
+    &-Section {
       overflow: scroll;
     }
   }
 }
 
 @media screen and (max-width: 950px) {
-  .Gradetable {
+  .Visitstable {
     &-Title {
       font-size: 0.7rem;
     }
   }
-  .Gradetable {
+  .Visitstable {
     &-Content {
-      grid-template-columns: 50% 25% 25%;
+      grid-template-columns: 25% 75%;
       font-size: 0.7rem;
     }
   }
 }
 
 @media screen and (max-width: 450px) {
-  .Grades {
+  .Visits {
     &-Content {
       padding: 0 5% 36px;
     }
   }
-  .Gradetable {
+  .Visitstable {
     &-Content {
       font-size: 0.5rem;
     }
     &-Title {
       font-size: 0.5rem;
     }
-    &-Name {
+    &-Date {
       padding: 0;
     }
-    &-Type {
-      padding: 0;
-    }
-    &-Grade {
+    &-Section {
       padding: 0;
     }
   }

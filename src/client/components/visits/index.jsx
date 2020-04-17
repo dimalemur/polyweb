@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './grades.pcss';
+import './visits.pcss';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 import loader from '../../../source/images/icons/loader.png';
@@ -12,7 +12,7 @@ const coursesText = courses.map((course, i) => (
 ));
 coursesText.push({ value: 0, label: 'Все' });
 
-const Grades = (props) => {
+const Visits = (props) => {
   const Regnav = props.Regnavbar;
   const [changedSemester, setChangedSemester] = useState(0);
   const token = window.localStorage.getItem('polyUser');
@@ -37,11 +37,11 @@ const Grades = (props) => {
   };
 
   return (
-    <div className='Grades'>
+    <div className='Visits'>
       <Regnav />
-      <div className='Grades-Changesemester'>
-        <span className='Grades-Title'>Академическая успеваемость</span>
-        <form className='Coursechange Grades-Coursechange' action='submit'>
+      <div className='Visits-Changesemester'>
+        <span className='Visits-Title'>Физическая культура</span>
+        <form className='Coursechange Visits-Coursechange' action='submit'>
           <Select
             onChange={handleChangeCourse}
             options={coursesText}
@@ -71,46 +71,47 @@ const Grades = (props) => {
           />
         </form>
       </div>
-      <div className='Grades-Content'>
+      <div className='Visits-Content'>
         <img className={`Grades-Loader Grades-Loader_${props.loader}`} src = {loader}>
         </img>
         {
           props.userGrades.map((el, i) => (
-            <div className='Grades-Inner' key={i}>
-              <div className='Grades-Semester'>
-                <span className='Semester-Text'>
-                  {`${el.semester} cеместр`}
+            <div className='Visits-Inner' key={i}>
+              <div className='Journal'>
+                <span className='Journal-Title'>
+                  Журнал посещений по физической культуре
                 </span>
               </div>
-              <div className='Gradetable Grades-Gradetable'>
-                <div className='Gradetable-Title'>
-                  <div className='Title-Name'>
-                    <span>Дисциплина</span>
+              <div className='Visitstable Visits-Visitstable'>
+                <div className='Visitstable-Title'>
+                  <div className='Title-Date'>
+                    <span>Дата</span>
                   </div>
-                  <div className='Title-Type'>
-                    <span>Тип cдачи</span>
-                  </div>
-                  <div className='Title-Grade'>
-                    <span>Оценка</span>
+                  <div className='Title-Section'>
+                    <span>Секция</span>
                   </div>
                 </div>
                 {
                   el.orders.map((element) => (
-                    <div className='Gradetable-Content' key={element._id}>
-                      <div className='Gradetable-Name'>
+                    <div className='Visitstable-Content' key={element._id}>
+                      <div className='Visitstable-Date'>
                         <span>{element.name}</span>
                       </div>
-                      <div className='Gradetable-Type'>
+                      <div className='Visitstable-Section'>
                         <span>{element.type}</span>
-                      </div>
-                      <div className='Gradetable-Grade'>
-                        <span>{element.grade}</span>
                       </div>
                     </div>
                   ))
                 }
 
               </div>
+
+              <div className="Visits-Count">
+                <span className="Count-Have">Общее количество посещений:</span>
+                <span className="Count-All">Минимальное количество посещений:</span>
+                <span className="Count-Need">Осталось:</span>
+              </div>
+
             </div>
           ))
         }
@@ -132,4 +133,4 @@ export default connect(
       dispatch(asyncGetGrades(token, semester));
     },
   }),
-)(Grades);
+)(Visits);
