@@ -26,7 +26,7 @@ const study = {
     },
     {
       name: 'Образовательные программы',
-      url: '/educationprogs',
+      url: '/faculties',
     },
   ],
 };

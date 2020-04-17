@@ -8,6 +8,7 @@ import { Sidebar } from '../../components/sidebar';
 import Menu from '../../components/menu';
 import Grades from '../../components/grades';
 import Visits from '../../components/visits';
+import Faculties from '../../components/faculties';
 import Additionalcourses from '../../components/additional_courses';
 import Profilecontent from '../../components/profileContent';
 import { Backgroundcontainer } from '../../components/backgroundcontainer';
@@ -50,8 +51,8 @@ const Profile = (props) => {
       />
 
       < Route exact
-        path='/:user/educationprogs'
-        render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
+        path='/:user/faculties'
+        render={() => <Backgroundcontainer page={Faculties} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
       />
 
       < Route exact
