@@ -96,7 +96,7 @@ const Menu = (props) => (
     </div>
 
     <div className='Settingicons Menu-Settingicons'>
-      <NavLink to='#' className='Menuicon Settingicons-Setting' >
+      <NavLink to={`/${props.user}/settings`} className='Menuicon Settingicons-Setting' >
         <img src={settingsIcon} alt='Настройки' />
       </NavLink>
 

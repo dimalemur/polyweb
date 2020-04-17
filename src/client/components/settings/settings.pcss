@@ -1,0 +1,669 @@
+.Settings {
+  min-height: 100vh;
+  position: relative;
+}
+.Successsubmit {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  text-align: center;
+  width: 30%;
+  background: lightgray;
+  margin: 0 auto;
+  &-Wrap {
+    z-index: 5;
+    width: 100%;
+    position: fixed;
+    bottom: -100px;
+    width: 100%;
+    animation: success 2s;
+    &_acitive {
+      &_true {
+        display: block;
+      }
+      &_false {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes success {
+  0% {
+    bottom: -100px;
+  }
+
+  25% {
+    bottom: 35px;
+  }
+  50% {
+    bottom: 35px;
+  }
+  100% {
+    bottom: -100px;
+  }
+}
+
+.Editblocks {
+  &-Wrap {
+    right: 0;
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    &_visible {
+      &_true {
+        display: flex;
+      }
+      &_false {
+        display: none;
+      }
+    }
+  }
+}
+
+.Editemailblock {
+  &_visible {
+    &_true {
+      display: block;
+    }
+    &_false {
+      display: none;
+    }
+  }
+
+  &-Change {
+    &_sended {
+      &_true {
+        display: none;
+      }
+      &_false {
+        display: block;
+      }
+    }
+  }
+
+  &-Sendedmail {
+    &_sended {
+      &_true {
+        display: block;
+      }
+      &_false {
+        display: none;
+      }
+    }
+  }
+}
+
+.Editphoneblock {
+  &_visible {
+    &_true {
+      display: block;
+    }
+    &_false {
+      display: none;
+    }
+  }
+
+  &-Change {
+    &_sended {
+      &_true {
+        display: none;
+      }
+      &_false {
+        display: block;
+      }
+    }
+  }
+  &-Sendphone {
+    form {
+      width: 194px;
+      margin: 0 auto;
+      button {
+        width: 100%;
+        height: 24px;
+      }
+    }
+    &_sended {
+      &_true {
+        display: block;
+      }
+      &_false {
+        display: none;
+      }
+    }
+  }
+}
+
+.Editblock {
+  width: 345px;
+  max-width: 90%;
+  padding: 10px 10px 24px 10px;
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  &-Exit {
+    font-size: 2rem;
+    text-align: right;
+    cursor: pointer;
+  }
+  &-Title {
+    text-align: center;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+  }
+  &-Form {
+    display: flex;
+    padding: 23px 0;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &-Keytext {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    &_small {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+  &-Inptext {
+    height: 24px;
+    width: 45%;
+    border: 0.7px solid #121058;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+
+  &-Button {
+    text-align: center;
+    button {
+      width: 80%;
+      background: #121058;
+      border-radius: 5px;
+    }
+  }
+
+  &-Icon {
+    text-align: center;
+  }
+  &-Text {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+  }
+
+  &_acitive {
+    &_true {
+      display: block;
+    }
+    &_false {
+      display: none;
+    }
+  }
+}
+
+.Settings {
+  &-Content {
+    position: relative;
+    width: 826px;
+    max-width: 90%;
+    background: white;
+    margin: 0 auto;
+    padding: 43px;
+    margin-top: 58px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  &-Title {
+    text-align: center;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+.Setinfo {
+  position: relative;
+  &-Title {
+    margin: 0px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #2f2f2f;
+    border-bottom: 1px solid #666262;
+  }
+}
+
+.Photoblock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 0;
+  &-Editbutton {
+    width: 227px;
+    height: 34px;
+    background: #121058;
+    border-radius: 5px;
+  }
+  &-Deletebutton {
+    width: 130px;
+    height: 34px;
+  }
+  &-Editphoto {
+    margin-left: 40px;
+    width: 76.65px;
+    height: 71px;
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.Editphoto {
+  &-Img {
+    background: white;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    &:hover {
+      z-index: 0;
+    }
+  }
+  &-Camera {
+    display: none;
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 100px 100px 100px;
+    bottom: 0;
+    background: rgba(47, 47, 47, 0.87);
+    &:hover {
+      z-index: 1;
+    }
+  }
+}
+
+.Button {
+  &-White {
+    background: #ffffff;
+    border: 0.5px solid #666262;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
+
+.Tworows {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  &-Wrap {
+    display: flex;
+    padding: 8px 0;
+  }
+}
+
+.Accountblock {
+  padding: 34px 0;
+}
+
+.Key {
+  font-weight: 600;
+  line-height: 21px;
+  text-align: right;
+  margin-right: 28px;
+  color: #2f2f2f;
+}
+
+.Value {
+  font-weight: 300;
+  line-height: 21px;
+  margin-left: 28px;
+  color: black;
+  &-Wrap {
+    margin-left: 28px;
+    width: 50%;
+  }
+}
+
+.Key,
+.Value {
+  font-size: 18px;
+  font-style: normal;
+  width: 50%;
+  font-family: Raleway, sans-serif;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.Buttonline {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: Raleway, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  text-decoration: underline;
+  color: #121058;
+  &-Mobile {
+    display: none;
+  }
+}
+
+.Accpassword {
+  &-Editpasswordblock {
+    background: #ebebf7;
+  }
+}
+
+.Editpasswordblock {
+  &-Value {
+    width: 133px;
+    padding: 0 10px;
+    height: 24px;
+    border: 0.7px solid #121058;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 0px;
+  }
+  &_visible {
+    &_true {
+      display: block;
+    }
+    &_false {
+      display: none;
+    }
+  }
+}
+
+.Seepasswordblock {
+  &_visible {
+    &_true {
+      display: none;
+    }
+    &_false {
+      display: block;
+    }
+  }
+}
+
+.Submit {
+  &-Button {
+    button {
+      width: 96px;
+      height: 23px;
+      background: #121058;
+      border-radius: 5px;
+    }
+  }
+}
+
+.Setforms {
+  &-Wrap {
+    border: 1px solid black;
+    padding: 22px 45px;
+    margin-top: 22px;
+  }
+  &-Title {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  &-Form {
+    margin-top: 30px;
+    &_open {
+      &_true {
+        display: block;
+      }
+      &_false {
+        display: none;
+      }
+    }
+  }
+
+  &-Inputform {
+    padding: 14px 0px;
+  }
+}
+
+.Inputform {
+  &-Title {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    padding-bottom: 14px;
+  }
+  &-Input {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2f2f2f;
+    display: flex;
+    align-items: center;
+    input {
+      font-family: Roboto, sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2f2f2f;
+      border: none;
+      border-bottom: 0.5px solid #666262;
+      outline: none;
+      &:focus {
+        border-bottom: 0.5px solid #f79329;
+      }
+    }
+  }
+
+  &-Value {
+    &_ratio {
+      font-family: Roboto, sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 11px;
+      line-height: 13px;
+      margin-bottom: 6px;
+      label {
+        padding-left: 9px;
+      }
+      input {
+        width: 11px;
+        height: 11px;
+        &:checked + label {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  &-Changedfile {
+    margin-left: 11px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  &-Resume {
+    input {
+      display: none;
+    }
+    label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 126px;
+      height: 27px;
+    }
+  }
+
+  &-Button {
+    width: 219px;
+    height: 27px;
+  }
+}
+
+.Button {
+  &-Gray {
+    color: #ffffff;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(51, 51, 51, 0.85);
+    border-radius: 3px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  &-Orange {
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #ffffff;
+    background: rgba(247, 147, 41, 0.83);
+    border-radius: 3px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .Photoblock {
+    flex-direction: column-reverse;
+    &-Editbutton {
+      width: 227px;
+      height: 34px;
+      background: #121058;
+      border-radius: 5px;
+    }
+    &-Deletebutton {
+      width: 130px;
+      height: 34px;
+    }
+    &-Editphoto {
+      margin-left: 0;
+      margin-bottom: 8px;
+    }
+    button {
+      margin: 8px 0;
+    }
+  }
+
+  .Key,
+  .Value {
+    font-size: 0.7rem;
+  }
+  .Settings {
+    &-Title {
+      font-size: 1.3rem;
+      line-height: 38px;
+      margin-bottom: 8px;
+    }
+    &-Content {
+      padding: 3%;
+    }
+  }
+
+  .Setinfo {
+    &-Title {
+      font-size: 1rem;
+    }
+  }
+
+  .Photoblock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 0;
+    &-Editbutton {
+      width: auto;
+      padding: 0 7px;
+    }
+    &-Deletebutton {
+      width: auto;
+      height: 34px;
+    }
+    button {
+      font-size: 0.7rem;
+    }
+  }
+  .Buttonline {
+    text-decoration: none;
+    &-Desctop {
+      display: none;
+    }
+    &-Mobile {
+      display: inline;
+    }
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .Key {
+    margin-right: 5px;
+    overflow: scroll;
+  }
+
+  .Value {
+    margin-left: 5px;
+  }
+  .Tworows {
+    width: 90%;
+  }
+}

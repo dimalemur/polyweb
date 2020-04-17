@@ -11,11 +11,14 @@ import Additionalcourses from '../../components/additional_courses';
 import Profilecontent from '../../components/profileContent';
 import { Backgroundcontainer } from '../../components/backgroundcontainer';
 import { Backgrounds } from '../../components/backgrounds';
+import Settings from '../../components/settings';
 
 const Profile = (props) => {
   useEffect(() => {
     props.asyncGetUserData(token, user); /* eslint no-use-before-define: "off" */
   }, []);
+
+  const [fixPosition, setFixPosition] = useState(false);
 
   const token = window.localStorage.getItem('polyUser');
   const user = props.match.params.user; /* eslint prefer-destructuring:"off" */
@@ -25,7 +28,7 @@ const Profile = (props) => {
   }
 
   return (
-    <div className='Profile'>
+    <div className={`Profile Profile_fixpos_${fixPosition} `}>
 
       < Sidebar user={user}
         activateMenu={props.setMenuVisible}
@@ -39,17 +42,29 @@ const Profile = (props) => {
         render={() => <Backgroundcontainer page={Profilecontent} menuVisible={props.menuVisible} background={Backgrounds.Blue} />}
       />
       < Route exact
+        path='/:user/settings'
+        render={() => (
+          <Backgroundcontainer
+            page={Settings}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.Blue}
+            fixPosition={fixPosition}
+            setFixPosition={setFixPosition}
+          />)}
+      />
+      < Route exact
         path='/:user/timetable'
         render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
       />
 
       < Route exact
         path='/:user/additional_courses'
-        render={() => <Backgroundcontainer page={Additionalcourses}
-                                           menuVisible={props.menuVisible}
-                                           background={Backgrounds.YellowLightYellow}
-                                           bgDefault = 'Darkblue'
-                      />}
+        render={() => (
+          <Backgroundcontainer page={Additionalcourses}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.YellowLightYellow}
+            bgDefault='Darkblue'
+          />)}
       />
 
     </div>

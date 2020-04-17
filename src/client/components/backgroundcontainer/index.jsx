@@ -8,7 +8,7 @@ export const Backgroundcontainer = (props) => {
   return (
     <div className={`Backgroundcontainer Wrap-${props.bgDefault} Backgroundcontainer-Menu_visible_${props.menuVisible}`}>
       <Background />
-      <Page Regnavbar = {Regnavbar} />
+      <Page Regnavbar={Regnavbar} props={props} />
     </div>
   );
 };
