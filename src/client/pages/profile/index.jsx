@@ -53,7 +53,7 @@ const Profile = (props) => {
           />)}
       />
       < Route exact
-        path='/:user/timetable'
+        path='/:user/performance'
         render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
       />
 

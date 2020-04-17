@@ -18,15 +18,15 @@ const study = {
     },
     {
       name: 'Успеваемость',
-      url: '',
+      url: '/performance',
     },
     {
       name: 'Посещения по физкультуре',
-      url: '',
+      url: '/sportvisits',
     },
     {
       name: 'Образовательные программы',
-      url: '',
+      url: '/education',
     },
   ],
 };
@@ -41,11 +41,11 @@ const career = {
     },
     {
       name: 'Трудоустройство и практика',
-      url: '',
+      url: '/practic',
     },
     {
       name: 'Международные стажировки',
-      url: '',
+      url: '/internship',
     },
   ],
 };
