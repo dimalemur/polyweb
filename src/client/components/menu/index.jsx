@@ -18,7 +18,7 @@ const study = {
     },
     {
       name: 'Успеваемость',
-      url: '/grades',
+      url: '/performance',
     },
     {
       name: 'Посещения по физкультуре',
@@ -41,11 +41,11 @@ const career = {
     },
     {
       name: 'Трудоустройство и практика',
-      url: '',
+      url: '/practic',
     },
     {
       name: 'Международные стажировки',
-      url: '',
+      url: '/internship',
     },
   ],
 };
@@ -96,7 +96,7 @@ const Menu = (props) => (
     </div>
 
     <div className='Settingicons Menu-Settingicons'>
-      <NavLink to='#' className='Menuicon Settingicons-Setting' >
+      <NavLink to={`/${props.user}/settings`} className='Menuicon Settingicons-Setting' >
         <img src={settingsIcon} alt='Настройки' />
       </NavLink>
 

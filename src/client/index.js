@@ -11,10 +11,11 @@ const token = window.localStorage.getItem('polyUser');
 store.dispatch(asyncGetUser(token));
 
 ReactDom.render(
-    <Provider store = { store } >
+    <Provider store={store} >
         <BrowserRouter >
             <App />
         </BrowserRouter>
     </Provider>,
     document.getElementById('Page'),
 );
+

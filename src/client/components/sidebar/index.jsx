@@ -19,7 +19,7 @@ export const Sidebar = (props) => (
     </div>
 
     <div className='Bottomicons Sidebar-Bottomicons'>
-      <NavLink to='#' className='Menuicon Bottomicons-Settingicon ' >
+      <NavLink to={`/${props.user}/settings`} className='Menuicon Bottomicons-Settingicon ' >
         <img src={settingsIcon} alt='Настройки' />
       </NavLink>
 
