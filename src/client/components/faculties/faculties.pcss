@@ -1,0 +1,113 @@
+.Faculties {
+  position: relative;
+  font-family: Raleway, sans-serif;
+  &-Content {
+    width: 964px;
+    max-width: 80%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    padding: 0 74px 36px 74px;
+    box-sizing: border-box;
+  }
+  &-Inner {
+    padding-top: 36px;
+  }
+  &-Title {
+    font-weight: bold;
+    color: white;
+    margin-right: 20px;
+    font-size: 18px;
+    text-align: center;
+  }
+  &-Changesemester {
+    padding-top: 3rem;
+    width: 964px;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.Firstline {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.Secondline {
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+}
+
+.Faculty {
+  min-width: 118px;
+  height: 160px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 13px;
+  margin-right: 15px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  &-Name {
+    margin: 10px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #000000;
+  }
+}
+
+.Faculty:hover {
+  border-color: #F79329;
+}
+
+
+
+
+@media screen and (max-width: 640px) {
+  .Faculties {
+    &-Title {
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+    &-Changesemester {
+      flex-direction: column;
+    }
+  }
+
+  .Firstline, .Secondline {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+
+  .Faculty {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 950px) {
+  .Firstline, .Secondline {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .Faculties {
+    &-Content {
+      padding: 0 5% 36px;
+    }
+  }
+}

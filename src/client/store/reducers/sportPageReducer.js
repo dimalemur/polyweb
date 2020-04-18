@@ -1,24 +1,24 @@
 export const initialState = {
-  userGrades: [],
+  userVisits: [],
   pagesState: {
     loader: false,
   },
 };
 
-const SET_USER_GRADES = 'SET_USER_GRADES';
-const SET_GRADES_LOADER = 'SET_GRADES_LOADER';
+const SET_USER_VISITS = 'SET_USER_VISITS';
+const SET_VISITS_LOADER = 'SET_VISITS_LOADER';
 const LOG_OUT = 'LOG_OUT';
 
-export const gradesPageReducer = (state = initialState, action) => {
+export const sportPageReducer = (state = initialState, action) => {
   let newState;
 
   switch (action.type) {
-    case SET_USER_GRADES:
+    case SET_USER_VISITS:
       newState = { ...state };
-      newState.userGrades = action.userGrades;
+      newState.userVisits = action.userVisits;
       return newState;
 
-    case SET_GRADES_LOADER:
+    case SET_VISITS_LOADER:
       newState = { ...state };
       newState.pagesState.loader = !newState.pagesState.loader;
       return newState;
@@ -33,6 +33,6 @@ export const gradesPageReducer = (state = initialState, action) => {
   }
 };
 
-export const setGradesLoader = () => ({ type: SET_GRADES_LOADER });
-export const setUserGrades = (userGrades) => ({ type: SET_USER_GRADES, userGrades });
+export const setVisitsLoader = () => ({ type: SET_VISITS_LOADER });
+export const setUserVisits = (userVisits) => ({ type: SET_USER_VISITS, userVisits });
 export const logOutGrades = () => ({ type: LOG_OUT });

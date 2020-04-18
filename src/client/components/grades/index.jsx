@@ -22,7 +22,7 @@ const Grades = (props) => {
       props.asyncGetGrades(token, currentSemester); /* eslint no-use-before-define:"Off" */
       setChangedSemester(currentSemester);
     }
-  }, [props.userData.course]);
+  }, [props.course]);
 
   const date = new Date();
   const day = date.getDay();
@@ -66,20 +66,20 @@ const Grades = (props) => {
                 '&:hover': {},
               }),
             }}
-            defaultValue={coursesText[0]}
+            value={coursesText[changedSemester - 1]}
             isSearchable={false}
           />
         </form>
       </div>
       <div className='Grades-Content'>
-        <img className={`Grades-Loader Grades-Loader_${props.loader}`} src = {loader}>
+        <img className={`Grades-Loader Grades-Loader_${props.loader}`} src={loader}>
         </img>
         {
           props.userGrades.map((el, i) => (
             <div className='Grades-Inner' key={i}>
               <div className='Grades-Semester'>
                 <span className='Semester-Text'>
-                  {`${el.semester} Cеместр`}
+                  {`${el.semester} cеместр`}
                 </span>
               </div>
               <div className='Gradetable Grades-Gradetable'>
@@ -88,7 +88,7 @@ const Grades = (props) => {
                     <span>Дисциплина</span>
                   </div>
                   <div className='Title-Type'>
-                    <span>Тип Сдачи</span>
+                    <span>Тип cдачи</span>
                   </div>
                   <div className='Title-Grade'>
                     <span>Оценка</span>

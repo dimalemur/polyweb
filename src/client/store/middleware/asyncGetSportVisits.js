@@ -1,9 +1,9 @@
-import { setUserGrades, setGradesLoader } from '../reducers/gradesPageReducer';
+import { setUserVisits, setVisitsLoader } from '../reducers/sportPageReducer';
 
-export const asyncGetGrades = (token, semester) => (dispatch) => {
-  dispatch(setGradesLoader());
+export const asyncGetSportVisits = (token, semester) => (dispatch) => {
+  dispatch(setVisitsLoader());
   const serchingSemester = (semester !== 0) ? `?semester=${semester}` : '';
-  fetch(`/api/getgrades${serchingSemester}`, {
+  fetch(`/api/getsportvisit${serchingSemester}`, {
     credentials: 'same-origin',
     method: 'GET',
     headers: new Headers({
@@ -19,9 +19,9 @@ export const asyncGetGrades = (token, semester) => (dispatch) => {
     })
     .then((data) => {
       if (data) {
-        dispatch(setUserGrades(data));
+        dispatch(setUserVisits(data));
       }
-      dispatch(setGradesLoader());
+      dispatch(setVisitsLoader());
     })
     .catch((error) => console.log(error));
 };

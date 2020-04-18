@@ -7,6 +7,8 @@ import { setMenuVisible } from '../../store/reducers/mainPageReducer';
 import { Sidebar } from '../../components/sidebar';
 import Menu from '../../components/menu';
 import Grades from '../../components/grades';
+import Visits from '../../components/visits';
+import Faculties from '../../components/faculties';
 import Additionalcourses from '../../components/additional_courses';
 import Profilecontent from '../../components/profileContent';
 import { Backgroundcontainer } from '../../components/backgroundcontainer';
@@ -29,18 +31,30 @@ const Profile = (props) => {
 
   return (
     <div className={`Profile Profile_fixpos_${fixPosition} `}>
-
+      {/* Сайдбар */}
       < Sidebar user={user}
         activateMenu={props.setMenuVisible}
       />
+
+      {/* Боковое выпадающее меню */}
       < Menu state={props.state}
         activateMenu={props.setMenuVisible}
         user={user}
       />
+
+      {/* Профиль */}
       < Route exact
         path='/:user'
-        render={() => <Backgroundcontainer page={Profilecontent} menuVisible={props.menuVisible} background={Backgrounds.Blue} />}
+        render={() => (
+          <Backgroundcontainer
+            page={Profilecontent}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.Blue}
+          />
+        )}
       />
+
+      {/* Настройки */}
       < Route exact
         path='/:user/settings'
         render={() => (
@@ -50,13 +64,46 @@ const Profile = (props) => {
             background={Backgrounds.Blue}
             fixPosition={fixPosition}
             setFixPosition={setFixPosition}
-          />)}
+          />
+        )}
       />
+      {/* Успеваемость */}
       < Route exact
         path='/:user/performance'
-        render={() => <Backgroundcontainer page={Grades} menuVisible={props.menuVisible} background={Backgrounds.GreenBlue} />}
+        render={() => (
+          <Backgroundcontainer
+            page={Grades}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.GreenBlue}
+          />
+        )}
       />
 
+      {/* Посещения по физкультуре */}
+      < Route exact
+        path='/:user/visits'
+        render={() => (
+          <Backgroundcontainer
+            page={Visits}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.GreenBlue}
+          />
+        )}
+      />
+
+      {/* Образовательные программы */}
+      < Route exact
+        path='/:user/faculties'
+        render={() => (
+          <Backgroundcontainer
+            page={Faculties}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.GreenBlue}
+          />
+        )}
+      />
+
+      {/* Дополнительные курсы */}
       < Route exact
         path='/:user/additional_courses'
         render={() => (
@@ -64,7 +111,8 @@ const Profile = (props) => {
             menuVisible={props.menuVisible}
             background={Backgrounds.YellowLightYellow}
             bgDefault='Darkblue'
-          />)}
+          />
+        )}
       />
 
     </div>

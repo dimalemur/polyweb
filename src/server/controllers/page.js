@@ -126,7 +126,6 @@ export async function getGrages(req, res, next) {
   if (semester) {
     try {
       grades = await Grades.find({ userId }, { userId: 0, '__v': 0 }).where('semester').equals(semester); /* eslint quote-props: "Off" */
-
     } catch ({ message }) {
       res.status(500).send(message);
       return next();
@@ -218,6 +217,7 @@ export async function addSportVisit(req, res, next) {
   let visits;
 
   visitsData.userId = userId;
+  visitsData.countNeed = visitsData.visits.length;
 
   try {
     visits = await SportVisits.create(visitsData);
@@ -232,6 +232,7 @@ export async function addSportVisit(req, res, next) {
 export async function editSportVisit(req, res, next) {
   const _id = req.params.visitId; // id записи (берется из параметров get)
   const userId = req.token._id;
+  const visitsData = req.body;
   let visits;
 
   try {
@@ -252,8 +253,9 @@ export async function editSportVisit(req, res, next) {
     return next();
   }
 
+  visitsData.countNeed = visitsData.visits.length;
   try {
-    await SportVisits.findOneAndUpdate({ _id }, req.body);
+    await SportVisits.findOneAndUpdate({ _id }, visitsData);
   } catch ({ message }) {
     res.status(500).send(message);
     return next();
@@ -265,13 +267,23 @@ export async function editSportVisit(req, res, next) {
 // Получение записей посещений по физре ученика
 export async function getSportVisit(req, res, next) {
   const userId = req.token._id;
-
+  const semester = req.query.semester; /* eslint prefer-destructuring:"Off" */
   let grades;
-  try {
-    grades = await SportVisits.find({ userId }, { userId: 0, '__v': 0 }); /* eslint quote-props: "Off" */
-  } catch ({ message }) {
-    res.status(500).send(message);
-    return next();
+
+  if (semester) {
+    try {
+      grades = await SportVisits.find({ userId }, { userId: 0, '__v': 0 }).where('semester').equals(semester); /* eslint quote-props: "Off" */
+    } catch ({ message }) {
+      res.status(500).send(message);
+      return next();
+    }
+  } else {
+    try {
+      grades = await SportVisits.find({ userId }, { userId: 0, '__v': 0 }); /* eslint quote-props: "Off" */
+    } catch ({ message }) {
+      res.status(500).send(message);
+      return next();
+    }
   }
 
   res.json(grades);

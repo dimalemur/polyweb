@@ -126,7 +126,7 @@
     },
     "getGrages": {
       "type": "GET",
-      "url": "/api/getgrades",
+      "url": "/api/getgrades(?semester=2)",
       "headers": "there should be a token",
       "body": {}
     },
@@ -201,7 +201,7 @@
     },
     "getSportVisit": {
       "type": "GET",
-      "url": "/api/getsportvisit",
+      "url": "/api/getsportvisit(?semester=2)",
       "headers": "there should be a token",
       "body": {}
     },

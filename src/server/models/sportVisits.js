@@ -12,6 +12,7 @@ const VisitsSchema = new Schema({
 
 const SportVisits = new Schema({
   semester: { type: Number, require: true, unique: true },
+  countNeed: { type: Number, require: true },
   count: { type: Number, require: true },
   visits: { type: [VisitsSchema], require: true, default: [] },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
