@@ -1,0 +1,105 @@
+.Practic {
+  position: relative;
+  &-Practicnews {
+    background: #ffffff;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+    overflow: hidden;
+    padding: 25px 50px 11px 50px;
+    box-sizing: border-box;
+    font,
+    h4,
+    hr,
+    h5,
+    h1,
+    br {
+      display: none;
+    }
+  }
+  &-Next {
+    text-align: center;
+    margin-bottom: 1rem;
+    span {
+      cursor: pointer;
+      color: blue;
+      font-size: 1.5rem;
+      font-family: Raleway, sans-serif;
+    }
+  }
+  &-Inner {
+    margin: 0 auto;
+    width: 960px;
+    max-width: 90%;
+  }
+  &-Title {
+    margin-top: 5rem;
+    margin-bottom: 34px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 47px;
+    color: #ffffff;
+  }
+}
+
+.Practicnews {
+  &-Title {
+    font-family: Raleway, sans-serif;
+    margin: 0;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #121058;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    .Open {
+      font-size: 40px;
+    }
+  }
+  &-Date {
+    margin: 0;
+    text-align: right;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #5754db;
+  }
+  &-More {
+    display: none;
+  }
+  &-Content {
+    overflow: hidden;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    display: none;
+    .close-reveal-modal {
+      display: none;
+    }
+    strong {
+      font-weight: 500;
+    }
+    a {
+      color: #ff7b01;
+    }
+    &_open {
+      &_true {
+        display: block;
+      }
+      &_false {
+        display: none;
+      }
+    }
+  }
+}

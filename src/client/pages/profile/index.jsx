@@ -8,6 +8,7 @@ import { Sidebar } from '../../components/sidebar';
 import Menu from '../../components/menu';
 import Grades from '../../components/grades';
 import Visits from '../../components/visits';
+import { WidthGetJobNews } from '../../highOrderComponents/asyncGetJobNews';
 import Faculties from '../../components/faculties';
 import Additionalcourses from '../../components/additional_courses';
 import Profilecontent from '../../components/profileContent';
@@ -75,6 +76,18 @@ const Profile = (props) => {
             page={Grades}
             menuVisible={props.menuVisible}
             background={Backgrounds.GreenBlue}
+          />
+        )}
+      />
+
+      {/* Трудоустройство */}
+      < Route exact
+        path='/:user/practic'
+        render={() => (
+          <Backgroundcontainer
+            page={WidthGetJobNews}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.CurveBLue}
           />
         )}
       />

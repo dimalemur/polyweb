@@ -1,4 +1,6 @@
+import bcrypt from 'bcrypt';
 import * as UserServices from '../services/UserService';
+import User from '../models/user';
 
 export async function getCurrentUser(req, res, next) {
   const { token } = req;
@@ -33,3 +35,44 @@ export async function checkUserByName(req, res, next) {
   }
 }
 
+// Изменяем данные пользователя (логин/пароль)
+export const editUser = async (req, res, next) => {
+  const credentials = req.body; // данные из формы
+  const userId = req.token._id; // id пользователя по токену из заголовка
+
+  let user = await User.findOne({ _id: userId }); // ищем пользователя по id
+
+  if (credentials.password) {
+    try {
+      const result = await user.comparePasswords(credentials.oldpassword); // сравниваем пароли
+
+      if (!result) {
+        res.status(400).send('Bad Creditials');
+        return next();
+      }
+    } catch ({ message }) {
+      res.status(400).send(message);
+      return next();
+    }
+  }
+
+  if (!user) {
+    res.status(400).send('Not found');
+    return next();
+  }
+
+  if (credentials.password) {
+    const salt = await bcrypt.genSalt(10); // соль для хеша
+    const hash = await bcrypt.hash(credentials.password, salt); // хеш
+    credentials.password = hash;
+  }
+
+  try {
+    user = await User.findOneAndUpdate({ _id: userId }, credentials);
+  } catch ({ message }) {
+    res.status(400).send(message);
+    return next();
+  }
+
+  res.json({ message: 'success' }); // возвращаем пользоваетя
+};

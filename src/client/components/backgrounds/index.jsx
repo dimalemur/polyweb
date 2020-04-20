@@ -4,6 +4,8 @@ import bggreen from '../../../source/images/bggreen.svg';
 import bgblue from '../../../source/images/bgblue.svg';
 import yellowssc from '../../../source/images/yellowssc.svg';
 import peoples from '../../../source/images/peoples.svg';
+import greenMask from '../../../source/images/green mask.png';
+import blueMask from '../../../source/images/blue mask.png';
 
 const GreenBlue = () => (
   <div className='Backgroundcontainer-Wrap Wrap-Blue'>
@@ -24,9 +26,17 @@ const YellowLightYellow = () => (
   </div>
 );
 
+const CurveBLue = () => (
+  <div className='Backgroundcontainer-Wrap Wrap-Blue'>
+    <img className='Backgroundcontainer-Greenmask' src={greenMask} />
+    <img className='Backgroundcontainer-Bluemask' src={blueMask} />
+  </div>
+);
+
 export const Backgrounds = {
   GreenBlue,
   Blue,
   YellowLightYellow,
+  CurveBLue,
 };
 

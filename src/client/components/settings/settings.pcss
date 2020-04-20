@@ -14,15 +14,15 @@
     z-index: 5;
     width: 100%;
     position: fixed;
-    bottom: -100px;
     width: 100%;
-    animation: success 2s;
+    bottom: -100px;
     &_acitive {
       &_true {
-        display: block;
+        bottom: 35px;
       }
       &_false {
-        display: none;
+        animation: success 4s linear;
+        bottom: -100px;
       }
     }
   }
@@ -30,17 +30,13 @@
 
 @keyframes success {
   0% {
-    bottom: -100px;
-  }
-
-  25% {
-    bottom: 35px;
+    bottom:35px;
   }
   50% {
-    bottom: 35px;
+    bottom:35px;
   }
   100% {
-    bottom: -100px;
+    bottom:-100px;
   }
 }
 
@@ -359,6 +355,8 @@
   line-height: 21px;
   margin-left: 28px;
   color: black;
+  padding: 0;
+  border: none;
   &-Wrap {
     margin-left: 28px;
     width: 50%;
@@ -395,6 +393,9 @@
 .Accpassword {
   &-Editpasswordblock {
     background: #ebebf7;
+  }
+  &-Value {
+    background: none;
   }
 }
 

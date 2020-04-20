@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './settings.pcss';
 import { connect } from 'react-redux';
+import { asyncEditUserInfoData } from '../../store/middleware/asyncEditUserInfoData';
+import { asyncEditUser } from '../../store/middleware/asyncEditUser';
+import { setSuccess } from '../../store/reducers/profilePageReducer';
 import ava from '../../../source/images/icons/ava.svg';
 import phone from '../../../source/images/icons/phone.png';
 import letter from '../../../source/images/icons/letter.png';
@@ -8,12 +11,16 @@ import camera from '../../../source/images/icons/camera.svg';
 
 const Settings = (props) => {
   const Navbar = props.Regnavbar;
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [newPasswordRepeat, setnewPasswordRepeat] = useState('');
+  const [newEmail, setNewEmail] = useState('');
+  const [newPhone, setNewPhone] = useState('');
   const [photo, setPhoto] = useState('');
   const [resume, setResume] = useState('');
   const [imagePreviewUrl, setImagePreviewUrl] = useState(ava);
   const [resumePreviewUrl, setresumePreviewUrl] = useState('');
   const [resumeLocalUrl, setResumeLocalUrl] = useState('Файл не выбран');
-  const [isSuccess, setSuccess] = useState(false);
   const [isVisibleEditPassword, setVisibleEditPassword] = useState(false);
   const [isVisibleEditBlock, setVisibleEditBlock] = useState(false);
   const [isVisibleEditEmail, setVisibleEditEmail] = useState(false);
@@ -22,12 +29,7 @@ const Settings = (props) => {
   const [isSendedPhone, setSendedPhone] = useState(false);
   const [isOpenForm, setOpenForm] = useState(false);
 
-  const success = () => {
-    setSuccess(true);
-    setTimeout(() => {
-      setSuccess(false);
-    }, 2000);
-  };
+  const token = window.localStorage.getItem('polyUser');
 
   const changeResume = (event) => {
     event.preventDefault();
@@ -47,11 +49,13 @@ const Settings = (props) => {
 
   const saveResume = (event) => {
     event.preventDefault();
-    success();
+    props.setSuccess('Сохранено');
+    props.setSuccess('Сохранено');
   };
 
   const changePhoto = (event) => {
     event.preventDefault();
+    props.setSuccess('Загрузка');
     const reader = new FileReader();
     const file = event.target.files[0];
 
@@ -59,7 +63,7 @@ const Settings = (props) => {
       if (file.type === 'image/png' || file.type === 'image/jpeg') {
         setPhoto(file);
         setImagePreviewUrl(reader.result);
-        success();
+        props.setSuccess('Сохранено');
       }
     };
     reader.readAsDataURL(file);
@@ -70,7 +74,8 @@ const Settings = (props) => {
       event.preventDefault();
       setPhoto('');
       setImagePreviewUrl(ava);
-      success();
+      props.setSuccess('Фото удалено');
+      setTimeout(props.setSuccess('Фото удалено'), 2000);
     }
   };
 
@@ -97,35 +102,44 @@ const Settings = (props) => {
 
   const submitPassword = (event) => {
     event.preventDefault();
-    success();
+    if (newPassword === newPasswordRepeat) {
+      props.asyncEditUser(token, { password: newPassword, oldpassword: oldPassword });
+    }
+    setOldPassword('');
+    setNewPassword('');
+    setnewPasswordRepeat('');
     editPassword(event);
   };
 
   const submitEmail = (event) => {
+    if (newEmail) {
+      props.asyncEditUserInfoData(token, props.login, props.pageId, { email: newEmail });
+    }
     event.preventDefault();
-    success();
     setSendedEmail(!isSendedEmail);
     // editEmail(event);
   };
 
   const submitPhone = (event) => {
     event.preventDefault();
+    if (newPhone) {
+      props.asyncEditUserInfoData(token, props.login, props.pageId, { tel: newPhone });
+    }
     setSendedPhone(!isSendedPhone);
   };
 
   const confirmPhone = (event) => {
     event.preventDefault();
-    success();
     editPhone(event);
   };
 
   return (
     <div className='Settings'>
 
-      <div className={`Successsubmit-Wrap Successsubmit-Wrap_acitive_${isSuccess} `}>
+      <div className={`Successsubmit-Wrap Successsubmit-Wrap_acitive_${props.success.isActive} `}>
         <div className='Successsubmit'>
-          Сохранено
-      </div>
+          {props.success.text}
+        </div>
       </div>
 
       <Navbar />
@@ -181,7 +195,7 @@ const Settings = (props) => {
                       Логин
                     </span>
                     <span className='Value Acclogin-Value'>
-                      khvan
+                      {props.login}
                     </span>
                   </div>
                   <button className='Acclogin-Editlogin Buttonline ' >
@@ -203,10 +217,8 @@ const Settings = (props) => {
                     <div className='Tworows'>
                       <span className='Key Accpassword-Key'>
                         Пароль
-                    </span>
-                      <span className='Value Accpassword-Value'>
-                        asd123
-                    </span>
+                      </span>
+                      <input type='password' disabled className='Value Accpassword-Value' value='********' />
                     </div>
 
                     <button className='Accpassword-Editpassword Buttonline ' onClick={editPassword} >
@@ -222,7 +234,7 @@ const Settings = (props) => {
 
                 <div className={`Editpasswordblock Accpassword-Editpasswordblock Editpasswordblock_visible_${isVisibleEditPassword}`}>
 
-                  <form action=''>
+                  <form qmethod='POST' >
 
                     <div className='Tworows-Wrap'>
                       <div className='Tworows'>
@@ -230,7 +242,12 @@ const Settings = (props) => {
                           Старый пароль
                       </label>
                         <div className='Value-Wrap'>
-                          <input className='Value Editpasswordblock-Value' type='password' name='oldpassword' id='oldpassword' />
+                          <input className='Value Editpasswordblock-Value'
+                            type='password'
+                            name='oldpassword'
+                            id='oldpassword'
+                            onChange={(event) => setOldPassword(event.target.value)}
+                          />
                         </div>
                       </div>
 
@@ -250,7 +267,12 @@ const Settings = (props) => {
                           Новый пароль
                       </label>
                         <div className='Value-Wrap'>
-                          <input className='Value Editpasswordblock-Value' type='password' name='newpassword' id='newpassword' />
+                          <input className='Value Editpasswordblock-Value'
+                            type='password'
+                            name='newpassword'
+                            id='newpassword'
+                            onChange={(event) => setNewPassword(event.target.value)}
+                          />
                         </div>
                       </div>
                     </div>
@@ -261,7 +283,10 @@ const Settings = (props) => {
                           Повторите пароль
                       </label>
                         <div className='Value-Wrap'>
-                          <input className='Value Editpasswordblock-Value' type='password' name='repassword' id='repassword' />
+                          <input className='Value Editpasswordblock-Value'
+                            type='password' name='repassword' id='repassword'
+                            onChange={(event) => setnewPasswordRepeat(event.target.value)}
+                          />
                         </div>
                       </div>
                     </div>
@@ -270,7 +295,7 @@ const Settings = (props) => {
                       <div className='Tworows'>
                         <div className='Key'></div>
                         <div className='Submit-Button Value' >
-                          <button className='Button-Blue' onClick={submitPassword} >Сохранить</button>
+                          <button className='Button-Blue' type='submit' onClick={submitPassword} >Сохранить</button>
                         </div>
                       </div>
                     </div>
@@ -289,7 +314,7 @@ const Settings = (props) => {
                       Email
                     </span>
                     <span className='Value Accountblock-Value'>
-                      dim4ik120899@gmail.com
+                      {props.email}
                     </span>
                   </div>
                   <button className='Accemail-Editmail Buttonline' onClick={editEmail} >
@@ -312,7 +337,7 @@ const Settings = (props) => {
                       Номер телефона
                     </span>
                     <span className='Value Accountblock-Value'>
-                      +7 977 271-45-25
+                      {props.tel}
                     </span>
                   </div>
                   <button className='Accphone-Editphone Buttonline ' onClick={editPhone}>
@@ -441,7 +466,11 @@ const Settings = (props) => {
                 <label className='Editblock-Keytext' htmlFor='newemail'>
                   Новый адрес
                 </label>
-                <input className='Editblock-Inptext' name='newemail' id='newemail' />
+                <input className='Editblock-Inptext'
+                  name='newemail'
+                  id='newemail'
+                  onChange={(event) => { setNewEmail(event.target.value); }}
+                />
               </div>
               <div className='Editblock-Button'>
                 <button className='Button-Blue' onClick={submitEmail}>Подтвердить</button>
@@ -475,7 +504,12 @@ const Settings = (props) => {
                 <label className='Editblock-Keytext' htmlFor='newphone'>
                   Новый номер
               </label>
-                <input className='Editblock-Inptext' name='newphone' id='newphone' />
+                <input
+                  className='Editblock-Inptext'
+                  name='newphone'
+                  id='newphone'
+                  onChange={(event) => { setNewPhone(event.target.value); }}
+                />
               </div>
               <div className='Editblock-Button'>
                 <button className='Button-Blue' onClick={submitPhone}>Подтвердить</button>
@@ -494,7 +528,7 @@ const Settings = (props) => {
               </span>
             </div>
 
-            <form action=''>
+            <form action='POST'>
               <div className='Editblock-Form'>
                 <label className='Editblock-Keytext Editblock-Keytext_small' htmlFor='checkcode'>
                   Полученный код
@@ -518,7 +552,21 @@ const Settings = (props) => {
 export default connect(
   (state) => ({
     state,
+    login: state.mainPage.user.login,
+    email: state.profilePage.userData.email,
+    pageId: state.profilePage.userData._id,
+    success: state.profilePage.success,
+    tel: state.profilePage.userData.tel,
   }),
   (dispatch) => ({
+    setSuccess: (text) => {
+      dispatch(setSuccess(text));
+    },
+    asyncEditUserInfoData: (token, username, pageId, newData) => {
+      dispatch(asyncEditUserInfoData(token, username, pageId, newData));
+    },
+    asyncEditUser: (token, newData) => {
+      dispatch(asyncEditUser(token, newData));
+    },
   }),
 )(Settings);

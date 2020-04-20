@@ -48,3 +48,4 @@ export const signin = async (req, res, next) => {
   const token = jwt.sign({ _id: user._id }, config.secret); // создаём токен по секретному ключу
   res.json({ token, status: 200 }); // выдаём токен
 };
+
