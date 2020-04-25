@@ -1,6 +1,6 @@
 import './profilecontent.pcss';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { logOutProfile } from '../../store/reducers/profilePageReducer';
@@ -9,11 +9,7 @@ import { logOutPage } from '../../store/reducers/mainPageReducer';
 import avatarIcon from '../../../source/images/icons/ava.svg';
 
 const Profilecontent = (props) => {
-  const [isOwner, setState] = useState(false);
   const Regnav = props.Regnavbar;
-  useEffect(() => {
-    setState(props.isOwner === 'true');
-  });
 
   const history = useHistory();
 
@@ -29,12 +25,12 @@ const Profilecontent = (props) => {
   };
 
   return (
-    <div className= 'Profilecontent'>
+    <div className='Profilecontent'>
       <Regnav />
       <div className='Profilecontent-Wrap'>
         <div className='Info Profilecontent-Info'>
-          <button onClick={(isOwner) ? signOut : backHome}>
-            {(isOwner) ? 'Разлогиниться' : 'Домой'}
+          <button onClick={(props.isOwner) ? signOut : backHome}>
+            {(props.isOwner) ? 'Разлогиниться' : 'Домой'}
           </button>
 
           <div className='Ava Info-Ava'>
@@ -124,8 +120,8 @@ export default connect(
   (state) => ({
     state,
     userData: state.profilePage.userData,
-    isOwner: state.profilePage.isOwner.isOwner,
     login: state.mainPage.user.login,
+    isOwner: state.profilePage.isOwner,
   }),
   (dispatch) => ({
     logOut: () => {

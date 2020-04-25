@@ -1,0 +1,118 @@
+.Timetable {
+  position: relative;
+  &-Inner {
+    width: 1200px;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+  &-Title {
+    font-size: 40px;
+    margin-top: 3rem;
+  }
+  &-Group {
+    margin: 0;
+    margin-bottom: 23px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    font-feature-settings: "pnum" on, "lnum" on;
+  }
+}
+
+.Rasp {
+  display: flex;
+  justify-content: space-between;
+  background: #f2f2f2;
+  min-height: 450px;
+  &-Day {
+    width: 15.5%;
+    border: 1.5px solid gray;
+  }
+}
+
+.Day {
+  &-Title {
+    text-align: center;
+    background: gray;
+    font-family: Raleway, sans-serif;
+    font-weight: bold;
+  }
+  &-Lesson {
+    padding: 4px;
+  }
+}
+
+.Lesson {
+  &-Time {
+    font-family: Raleway, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 3px;
+  }
+  &-Auditory {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 4px 0;
+    &_true {
+      a {
+        color: #337ab7;
+      }
+    }
+    &_false {
+      a {
+        color: gray;
+      }
+    }
+  }
+  &-Name {
+    font-family: Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 5px 0px;
+    &_true {
+      color: brown;
+    }
+    &_false {
+      color: gray;
+    }
+  }
+  &-Teacher {
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin: 3px 0;
+    &_true {
+      color: darkcyan;
+    }
+    &_false {
+      color: gray;
+    }
+  }
+  &-Dateperiod {
+    text-align: right;
+    color: gray;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+  }
+
+  &-Wrap {
+    border-top: 1px solid black;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .Rasp {
+    display: flex;
+    flex-direction: column;
+    &-Day {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+}

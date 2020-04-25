@@ -2,7 +2,7 @@ export const initialState = {
   userData: {
     orders: [],
   },
-  isOwner: false,
+  isOwner: true,
   success: {
     isActive: null,
     text: '',
@@ -19,8 +19,12 @@ export const profilePageReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA:
       newState = { ...state };
+
+      if (Object.keys(action.userData).length === 0) {
+        return initialState;
+      }
       newState.userData = action.userData.userData;
-      newState.isOwner = action.userData.isOwner;
+      newState.isOwner = JSON.parse(action.userData.isOwner.isOwner);
       return newState;
 
     case LOG_OUT:

@@ -36,7 +36,7 @@ const Practic = (props) => {
     <div className='Practic'>
       <Regnav />
       <div className='Practic-Inner'>
-        <h2 className='Practic-Title'>
+        <h2 className='Practic-Title Title'>
           Новости трудоустройства
         </h2>
         {
