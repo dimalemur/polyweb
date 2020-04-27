@@ -15,6 +15,11 @@ export const signup = async (req, res, next) => {
     return next();
   }
 
+  if (credentials.login === 'admin') {
+    res.status(400).send('login error');
+    return next();
+  }
+
   try {
     user = await User.create(credentials); // создаём нового пользователя
   } catch ({ message }) {
