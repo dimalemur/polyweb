@@ -2,6 +2,7 @@ import Page from '../models/page';
 import User from '../models/user';
 import Grades from '../models/grades';
 import SportVisits from '../models/sportVisits';
+import Admin from '../models/admin';
 
 // создать запись
 export async function create(req, res, next) {
@@ -71,6 +72,7 @@ export async function editInfo(req, res, next) {
   const _id = req.params.id; // id записи (берется из параметров get)
   const userId = req.token._id;
   let pages;
+  let admin;
 
   try {
     pages = await Page.findOne({ _id });
@@ -84,11 +86,19 @@ export async function editInfo(req, res, next) {
     return next();
   }
 
-  // если запись не плоьзователя
-  if (userId.toString() !== pages.userId.toString()) {
-    res.status(403).send('Premission denided');
-    return next();
+  try {
+    admin = await Admin.findOne({ _id: userId }); // получаем админа по id
+  } catch ({ message }) {
+    console.log(message);
   }
+
+  if (admin.login === undefined) {
+    if (userId.toString() !== pages.userId.toString()) {
+      res.status(403).send('Premission denided');
+      return next();
+    }
+  }
+  // если запись не плоьзователя
 
   try {
     await Page.findOneAndUpdate({ _id }, req.body);

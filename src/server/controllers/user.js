@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import * as UserServices from '../services/UserService';
+import * as AdminService from '../services/AdminService';
 import User from '../models/user';
 
 export async function getCurrentUser(req, res, next) {
@@ -8,6 +9,50 @@ export async function getCurrentUser(req, res, next) {
 
   try {
     user = await UserServices.getUserByToken(token); // получаем юзезра по id
+  } catch ({ message }) {
+    res.status(500).send(message);
+    return next();
+  }
+
+  return res.json(user);
+}
+
+export async function getCurrentAdmin(req, res, next) {
+  const { token } = req;
+  let user;
+
+  try {
+    user = await AdminService.getAdminByToken(token); // получаем админа по id
+  } catch ({ message }) {
+    res.status(500).send(message);
+    return next();
+  }
+
+  return res.json(user);
+}
+
+export async function getUserById(req, res, next) {
+  const { id } = req.params;
+  let user;
+
+  try {
+    user = await User.findOne({ _id: id }, { password: 0 }); // получаем юзезра по id
+  } catch ({ message }) {
+    res.status(500).send(message);
+    return next();
+  }
+
+  return res.json(user);
+}
+
+export async function getUserByName(req, res, next) {
+  const { name } = req.params;
+  console.log(name);
+
+  let user;
+
+  try {
+    user = await UserServices.getUserByName(name); // получаем юзезра по id
   } catch ({ message }) {
     res.status(500).send(message);
     return next();

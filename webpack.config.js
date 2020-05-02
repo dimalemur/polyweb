@@ -89,9 +89,6 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: './source/index.html',
     }),
-    new HTMLWebpackPlugin({
-      template: './source/admin.html',
-    }),
     new CopyWebpackPlugin([
       // {
       //     from: __dirname + '/src/source/images/icons/',

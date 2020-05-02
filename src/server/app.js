@@ -41,6 +41,9 @@ app
   })
   // Роутинг страниц
   .use('/', staticWay)
+  .use('/admin', staticWay)
+  .use('/admin/:user', staticWay)
+  .use('/admin/:user/:page', staticWay)
   .use('/login/authhelp/', staticWay)
   .use('/:user', checkUserByName, staticWay)
   .use('/:user/:page', checkUserByName, staticWay)

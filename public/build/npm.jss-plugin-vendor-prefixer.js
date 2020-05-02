@@ -1,0 +1,15 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["npm.jss-plugin-vendor-prefixer"],{
+
+/***/ "../node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js":
+/*!*****************************************************************************************!*\
+  !*** ../node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var css_vendor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! css-vendor */ \"../node_modules/css-vendor/dist/css-vendor.esm.js\");\n/* harmony import */ var jss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jss */ \"../node_modules/jss/dist/jss.esm.js\");\n\n\n\n/**\n * Add vendor prefix to a property name when needed.\n *\n * @api public\n */\n\nfunction jssVendorPrefixer() {\n  function onProcessRule(rule) {\n    if (rule.type === 'keyframes') {\n      var atRule = rule;\n      atRule.at = Object(css_vendor__WEBPACK_IMPORTED_MODULE_0__[\"supportedKeyframes\"])(atRule.at);\n    }\n  }\n\n  function prefixStyle(style) {\n    for (var prop in style) {\n      var value = style[prop];\n\n      if (prop === 'fallbacks' && Array.isArray(value)) {\n        style[prop] = value.map(prefixStyle);\n        continue;\n      }\n\n      var changeProp = false;\n      var supportedProp = Object(css_vendor__WEBPACK_IMPORTED_MODULE_0__[\"supportedProperty\"])(prop);\n      if (supportedProp && supportedProp !== prop) changeProp = true;\n      var changeValue = false;\n      var supportedValue$$1 = Object(css_vendor__WEBPACK_IMPORTED_MODULE_0__[\"supportedValue\"])(supportedProp, Object(jss__WEBPACK_IMPORTED_MODULE_1__[\"toCssValue\"])(value));\n      if (supportedValue$$1 && supportedValue$$1 !== value) changeValue = true;\n\n      if (changeProp || changeValue) {\n        if (changeProp) delete style[prop];\n        style[supportedProp || prop] = supportedValue$$1 || value;\n      }\n    }\n\n    return style;\n  }\n\n  function onProcessStyle(style, rule) {\n    if (rule.type !== 'style') return style;\n    return prefixStyle(style);\n  }\n\n  function onChangeValue(value, prop) {\n    return Object(css_vendor__WEBPACK_IMPORTED_MODULE_0__[\"supportedValue\"])(prop, Object(jss__WEBPACK_IMPORTED_MODULE_1__[\"toCssValue\"])(value)) || value;\n  }\n\n  return {\n    onProcessRule: onProcessRule,\n    onProcessStyle: onProcessStyle,\n    onChangeValue: onChangeValue\n  };\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (jssVendorPrefixer);\n\n\n//# sourceURL=webpack:///../node_modules/jss-plugin-vendor-prefixer/dist/jss-plugin-vendor-prefixer.esm.js?");
+
+/***/ })
+
+}]);
