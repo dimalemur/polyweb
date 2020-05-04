@@ -110,6 +110,60 @@ export async function editInfo(req, res, next) {
   return res.json({ message: 'success' });
 }
 
+// Удалить приказ
+export async function deleteOrder(req, res, next) {
+  const { pageId, orderId } = req.body;
+  const userId = req.token._id;
+  let admin;
+
+  try {
+    admin = await Admin.findOne({ _id: userId }); // получаем админа по id
+  } catch ({ message }) {
+    console.log(message);
+  }
+
+  if (admin.login === undefined) {
+    res.status(403).send('Premission denided');
+    return next();
+  }
+
+  try {
+    await Page.update({ _id: pageId }, { $pull: { orders: { _id: orderId } } });
+  } catch ({ message }) {
+    res.status(500).send('message');
+    return next();
+  }
+
+  return res.json({ message: 'success' });
+}
+
+// Добавить приказ
+export async function addOrder(req, res, next) {
+  const { pageId, name, url } = req.body;
+  const userId = req.token._id;
+  let admin;
+
+  try {
+    admin = await Admin.findOne({ _id: userId }); // получаем админа по id
+  } catch ({ message }) {
+    console.log(message);
+  }
+
+  if (admin.login === undefined) {
+    res.status(403).send('Premission denided');
+    return next();
+  }
+
+  try {
+    await Page.update({ _id: pageId }, { $push: { orders: { name, url } } });
+  } catch ({ message }) {
+    res.status(500).send('message');
+    return next();
+  }
+
+  return res.json({ message: 'success' });
+}
+
 // Добавление записей оченок ученика
 export async function addGrages(req, res, next) {
   const gradesData = req.body;

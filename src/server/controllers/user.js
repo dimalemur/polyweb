@@ -33,13 +33,21 @@ export async function getCurrentAdmin(req, res, next) {
 
 export async function getUserById(req, res, next) {
   const { id } = req.params;
-  let user;
+  let user = {};
 
-  try {
-    user = await User.findOne({ _id: id }, { password: 0 }); // получаем юзезра по id
-  } catch ({ message }) {
-    res.status(500).send(message);
-    return next();
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    try {
+      user = await User.findById(id, { password: 0 }); // получаем юзезра по id
+    } catch ({ message }) {
+      res.status(500).send(message);
+      return next();
+    }
+  } else {
+    res.status(400).send('Id error');
+  }
+
+  if (user === null) {
+    res.status(404).send('Not found');
   }
 
   return res.json(user);

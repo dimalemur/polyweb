@@ -31,8 +31,15 @@ export const asyncGetStudent = (token, userId) => (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
+
       dispatch(setStudent(data));
       dispatch(asyncGetStudentData(token, data.login));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      dispatch(setStudent({}));
+      dispatch(setStudentData({}));
+      dispatch(setLoading(false));
+      console.log(error);
+    });
 };
