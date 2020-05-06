@@ -2,14 +2,10 @@ import React, { useEffect } from 'react';
 import './students.pcss';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import Grid from '@material-ui/core/Grid';
-import NavigationIcon from '@material-ui/icons/Navigation';
 import EditIcon from '@material-ui/icons/Edit';
-import Select from 'react-select';
-import { Addstudents } from '../addstudents';
+import Addstudents from '../addstudents';
 import Editstudents from '../editstudents';
 import { setPageMode } from '../../store/reducers/studentsPageReducer';
 

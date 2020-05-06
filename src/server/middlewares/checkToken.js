@@ -10,14 +10,12 @@ export default async (req, res, next) => {
   }
 
   let tokenObj;
-
   try {
     tokenObj = jwt.verify(token, config.secret); // расшифровываем токен по ключу
   } catch ({ message }) {
     res.status(400).send(message);
     return next();
   }
-
   req.token = tokenObj; // во всех объектах req добавляем свойство token
   next();
 };

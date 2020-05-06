@@ -9,8 +9,18 @@ export async function create(req, res, next) {
   const pageData = req.body;
   const userId = req.token._id;
   let page;
+  let admin;
 
-  pageData.userId = userId;
+  try {
+    admin = await Admin.findOne({ _id: userId }); // получаем админа по id
+  } catch ({ message }) {
+    console.log(message);
+  }
+
+  if (admin.login === undefined) {
+    res.status(403).send('Premission denided');
+    return next();
+  }
 
   try {
     page = await Page.create(pageData);

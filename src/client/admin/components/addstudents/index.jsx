@@ -1,14 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+import { asyncAddStudentInfo } from '../../store/middleware/asyncAddStudent';
 
-export const Addstudents = (props) => {
+const Addstudents = (props) => {
   // eslint-disable-next-line prefer-destructuring
   const classes = props.classes;
+  const [login, setLogin] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const token = window.localStorage.getItem('polyAdmin');
+
+  const createAccount = (event) => {
+    event.preventDefault();
+    props.asyncAddStudentInfo(token, login, password);
+    console.log(login);
+    console.log(password);
+  };
+
   return (
     <div className='Students-Add'>
       <h2>Заполните Форму</h2>
@@ -22,9 +32,11 @@ export const Addstudents = (props) => {
                 required
                 fullWidth
                 id='lastName'
-                label='Фамилия'
+                label='Логин'
                 name='lastName'
                 autoComplete='lname'
+                value={login}
+                onChange={(event) => { setLogin(event.target.value); }}
               />
             </Grid>
 
@@ -36,33 +48,10 @@ export const Addstudents = (props) => {
                 required
                 fullWidth
                 id='firstName'
-                label='Имя'
+                label='Пароль'
                 autoFocus
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                autoComplete='otch'
-                name='otchestvo'
-                variant='outlined'
-                required
-                fullWidth
-                id='otchestvo'
-                label='Отчество'
-                autoFocus
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                variant='outlined'
-                required
-                fullWidth
-                id='email'
-                label='Email'
-                name='email'
-                autoComplete='email'
+                value={password}
+                onChange={(event) => { setPassword(event.target.value); }}
               />
             </Grid>
 
@@ -73,6 +62,7 @@ export const Addstudents = (props) => {
             variant='contained'
             color='primary'
             className={classes.submit}
+            onClick={createAccount}
           >
             Создать
           </Button>
@@ -81,3 +71,15 @@ export const Addstudents = (props) => {
     </div>
   );
 };
+
+const mapStateToProps = (state) => ({
+  state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  asyncAddStudentInfo: (token, login, password) => {
+    dispatch(asyncAddStudentInfo(token, login, password));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Addstudents);

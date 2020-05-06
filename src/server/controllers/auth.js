@@ -6,10 +6,24 @@ import Admin from '../models/admin';
 
 // регистрация
 export const signup = async (req, res, next) => {
+  const userId = req.token._id; // id пользователя по токену из заголовка
+
   const credentials = req.body; // данные из формы
   let user;
+  let admin;
 
   console.log(credentials);
+
+  try {
+    admin = await Admin.findOne({ _id: userId }); // получаем админа по id
+  } catch ({ message }) {
+    console.log(message);
+  }
+
+  if (admin.login === undefined) {
+    res.status(403).send('Premission denided');
+    return next();
+  }
 
   if (!credentials.login || !credentials.password) {
     res.status(400).send('no data entered');

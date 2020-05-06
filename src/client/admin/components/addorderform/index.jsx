@@ -40,7 +40,7 @@ export const FormDialog = (props) => {
           <Button onClick={props.handleCloseDiadlog} color='primary'>
             Назад
           </Button>
-          <Button onClick={(event) => { props.addOrder(event, name, url); }} color='primary'>
+          <Button onClick={(event) => { props.addOrder(event, name, url, props.kkey); }} color='primary'>
             Добавить
           </Button>
         </DialogActions>

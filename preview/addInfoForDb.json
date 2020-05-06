@@ -25,6 +25,7 @@
       "url": "/api/info",
       "headers": "there should be a token",
       "body": {
+        "userID": "5e9b5e00c3bd391f0864c100",
         "name": "Хван Дмитрий Алексееasdaвич",
         "faq": "ФИТ",
         "course": 2,

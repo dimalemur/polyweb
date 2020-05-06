@@ -31,7 +31,7 @@ app
   }))
   .get('/ping', (_req, res) => res.json({ status: 200 })) // проверка пинга
   // api роутинг
-  .use('/api', authRoute) // аутенфикация
+  .use('/api', checkToken, authRoute) // аутенфикация
   .use('/api', checkToken, userRoute) // получаем юзезра по id (без пароля)
   .use('/api', checkToken, pageRoute) // информация связанная с пользователем
   .use('/api', checkToken, generalInfoRoute) // информация не связанная с пользователем
