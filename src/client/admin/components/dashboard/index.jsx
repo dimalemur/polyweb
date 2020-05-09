@@ -123,8 +123,6 @@ const Dashboard = (props) => {
     props.logOut();
   };
 
-  console.log(1);
-
   return (
     <div className={classes.root}>
       <CssBaseline />

@@ -5,6 +5,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
+import { Groupstudentlist } from '../groupstudentlist';
+import { asyncGetGroupInfo } from '../../store/middleware/asyncGetGroups';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,10 +46,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Groupinput = (props) => {
   const [group, setGroup] = React.useState(null);
-
+  const token = window.localStorage.getItem('polyAdmin');
   const handleChangeGroup = (event) => {
     event.preventDefault();
-    console.log(group);
+    props.asyncGetGroupInfo(token, group.title);
   };
 
   return (
@@ -59,7 +61,7 @@ const Groupinput = (props) => {
           options={props.groups.map((element) => ({ title: element.group_number }))}
           getOptionLabel={(option) => option.title}
           style={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label='Combo box' variant='outlined' />}
+          renderInput={(params) => <TextField {...params} label='Группа' variant='outlined' />}
           onChange={(event, value, reason) => { setGroup(value); }}
           getOptionSelected={(option, value) => true}
         />
@@ -79,8 +81,14 @@ const Editgroups = (props) => {
   return (
     <div className='Students-Add'>
       <h2>Введите номер группы</h2>
-      <Groupinput classes={classes} token={token} groups={props.groups} />
+      <Groupinput classes={classes} token={token} groups={props.groups} asyncGetGroupInfo={props.asyncGetGroupInfo} />
 
+      <Groupstudentlist groupData={props.groupData}
+        asyncDeleteStudentFromGroup={props.asyncDeleteStudentFromGroup}
+        asyncAddStudentFromGroup={props.asyncAddStudentFromGroup}
+        token={token}
+        asyncGetGroupInfo={props.asyncGetGroupInfo}
+      />
     </div>
   );
 };
@@ -88,8 +96,12 @@ const Editgroups = (props) => {
 const mapStateToProps = (state) => ({
   state,
   groups: state.groupsPage.groups,
+  groupData: state.groupsPage.groupData,
 });
 const mapDispatchToProps = (dispatch) => ({
+  asyncGetGroupInfo: (token, group) => {
+    dispatch(asyncGetGroupInfo(token, group));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editgroups);

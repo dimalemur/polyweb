@@ -11,61 +11,59 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import PersonIcon from '@material-ui/icons/Person';
 import { NavLink } from 'react-router-dom';
 
-export const Mainlistitems = (props) => {
-  return (
-    <div className='Mainlistitems'>
+export const Mainlistitems = (props) => (
+  <div className='Mainlistitems'>
 
-      <NavLink to={`/admin/${props.admin}/groups`} >
-        <ListItem
-          button
-          selected={props.selectedIndex === 0}
-        >
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText primary='Группы' />
-        </ListItem>
-      </NavLink>
+    <NavLink to={`/admin/${props.admin}/groups`} >
+      <ListItem
+        button
+        selected={props.selectedIndex === 0}
+      >
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary='Группы' />
+      </ListItem>
+    </NavLink>
 
-      <NavLink to={`/admin/${props.admin}/students`}>
-        <ListItem
-          button
-          selected={props.selectedIndex === 1}
-        >
-          <ListItemIcon>
-            <EmojiPeopleIcon />
-          </ListItemIcon>
-          <ListItemText primary='Студенты' />
-        </ListItem>
-      </NavLink>
+    <NavLink to={`/admin/${props.admin}/students`}>
+      <ListItem
+        button
+        selected={props.selectedIndex === 1}
+      >
+        <ListItemIcon>
+          <EmojiPeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary='Студенты' />
+      </ListItem>
+    </NavLink>
 
-      <NavLink to={`/admin/${props.admin}/teachers`}>
-        <ListItem
-          button
-          selected={props.selectedIndex === 2}
-        >
-          <ListItemIcon>
-            <PersonIcon />
-          </ListItemIcon>
-          <ListItemText primary='Преподаватели' />
-        </ListItem>
-      </NavLink>
+    <NavLink to={`/admin/${props.admin}/teachers`}>
+      <ListItem
+        button
+        selected={props.selectedIndex === 2}
+      >
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary='Преподаватели' />
+      </ListItem>
+    </NavLink>
 
-      <NavLink to={`/admin/${props.admin}/addinfo`}>
-        <ListItem
-          button
-          selected={props.selectedIndex === 3}
-        >
-          <ListItemIcon>
-            <ErrorOutlineIcon />
-          </ListItemIcon>
-          <ListItemText primary='Доп.инфо.' />
-        </ListItem>
-      </NavLink>
+    <NavLink to={`/admin/${props.admin}/addinfo`}>
+      <ListItem
+        button
+        selected={props.selectedIndex === 3}
+      >
+        <ListItemIcon>
+          <ErrorOutlineIcon />
+        </ListItemIcon>
+        <ListItemText primary='Доп.инфо.' />
+      </ListItem>
+    </NavLink>
 
-    </div >
-  );
-};
+  </div >
+);
 
 export const secondaryListItems = (
   <div>

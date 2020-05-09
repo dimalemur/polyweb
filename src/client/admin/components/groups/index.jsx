@@ -10,6 +10,7 @@ import Addgroup from '../addgroup';
 import { setPageMode } from '../../store/reducers/groupsPageReducer';
 import { asyncGetGroups } from '../../store/middleware/asyncGetGroups';
 import { Creategroupcontainer } from '../../hoc/creategroupcontainer';
+import { Editgroupcontainer } from '../../hoc/editgroupscontainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Gruops = (props) => {
-  console.log(props.mode);
   const token = window.localStorage.getItem('polyAdmin');
 
   const classes = useStyles();
@@ -42,7 +42,7 @@ const Gruops = (props) => {
   const componentByMode = (mode) => {
     switch (mode) {
       case 2:
-        return <Editgroups />;
+        return Editgroupcontainer(Editgroups);
       case 1:
         return Creategroupcontainer(Addgroup);
       default:
