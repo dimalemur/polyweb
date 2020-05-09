@@ -1,7 +1,15 @@
 import React from 'react';
+import './groups.pcss';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import Select from 'react-select';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import Editgroups from '../editgroups';
+import Addgroup from '../addgroup';
+import { setPageMode } from '../../store/reducers/groupsPageReducer';
+import { asyncGetGroups } from '../../store/middleware/asyncGetGroups';
+import { Creategroupcontainer } from '../../hoc/creategroupcontainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,44 +20,64 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Gruops = (props) => {
+  console.log(props.mode);
+  const token = window.localStorage.getItem('polyAdmin');
+
   const classes = useStyles();
   props.setSelectedIndex(0);
-  const groups = props.groups.map((group, i) => (
-    { value: group, label: group }
-  ));
 
   const handleChangeGroup = (event) => {
     console.log(event.value);
   };
 
+  const addGroupMode = (event) => {
+    props.setPageMode(1);
+  };
+
+  const editGroupMode = (event) => {
+    props.asyncGetGroups(token);
+    props.setPageMode(2);
+  };
+
+  const componentByMode = (mode) => {
+    switch (mode) {
+      case 2:
+        return <Editgroups />;
+      case 1:
+        return Creategroupcontainer(Addgroup);
+      default:
+        return 'Выберите мод';
+    }
+  };
+
   return (
     <div className='Groups'>
-      <h2>Выберите группу</h2>
-      <Select
-        onChange={handleChangeGroup}
-        options={groups}
-        styles={{
-          valueContainer: (base) => ({
-            ...base,
-            minHeight: '30px',
-            justifyContent: 'center',
-          }),
-          indicatorSeparator: () => ({}),
-          dropdownIndicator: (base) => ({
-            ...base,
-            color: '#F79329',
-            '&:hover': {
-              color: '#F79329',
-            },
-          }),
-          control: (base) => ({
-            ...base,
-            borderColor: 'gray',
+      <div className='Changemode Groups-Changemode'>
 
-            '&:hover': {},
-          }),
-        }}
-      />
+        <Button
+          variant='contained'
+          color={(props.mode === 1) ? 'secondary' : 'primary'}
+          className={`${classes.button} 'Changemode-Add'`}
+          startIcon={<AddIcon />}
+          onClick={addGroupMode}
+        >
+          Добавить группу
+      </Button>
+
+        <Button
+          variant='contained'
+          color={(props.mode === 2) ? 'secondary' : 'primary'}
+          className={`${classes.button} 'Changemode-Add'`}
+          startIcon={<EditIcon />}
+          onClick={editGroupMode}
+        >
+          Редактировать группу
+        </Button>
+
+      </div>
+
+      {componentByMode(props.mode)}
+
     </div>
   );
 };
@@ -57,10 +85,16 @@ const Gruops = (props) => {
 const mapStateToProps = (state) => ({
   state,
   login: state.mainAdminPage.user.login,
-  groups: ['181-362', '181-363', '191-363'],
+  mode: state.groupsPage.mode,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  setPageMode: (mode) => {
+    dispatch(setPageMode(mode));
+  },
+  asyncGetGroups: (token) => {
+    dispatch(asyncGetGroups(token));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gruops);

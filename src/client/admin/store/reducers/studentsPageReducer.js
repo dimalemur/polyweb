@@ -11,7 +11,7 @@ const SET_STUDENT_DATA = 'SET_STUDENT_DATA';
 const SET_PAGE_MODE = 'SET_PAGE_MODE';
 const SET_LOADING = 'SET_LOADING';
 
-export const srudentPageReducer = (state = initialState, action) => {
+export const studentPageReducer = (state = initialState, action) => {
   let newState;
 
   switch (action.type) {

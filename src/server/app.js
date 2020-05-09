@@ -3,6 +3,7 @@ import authRoute from './routes/auth';
 import userRoute from './routes/user';
 import infoRoute from './routes/info';
 import pageRoute from './routes/page';
+import gruopsRoute from './routes/groups';
 import generalInfoRoute from './routes/generalInfo';
 import errorHandler from './middlewares/errorHandler';
 import checkToken from './middlewares/checkToken';
@@ -14,7 +15,8 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-const db = require('./db');// eslint-disable-line no-unused-vars
+const db = require('./db/mongo');// eslint-disable-line no-unused-vars
+const dbpg = require('./db/postgres');
 
 const app = express();
 
@@ -34,6 +36,7 @@ app
   .use('/api', checkToken, authRoute) // аутенфикация
   .use('/api', checkToken, userRoute) // получаем юзезра по id (без пароля)
   .use('/api', checkToken, pageRoute) // информация связанная с пользователем
+  .use('/api', checkToken, gruopsRoute) // работа с группами
   .use('/api', checkToken, generalInfoRoute) // информация не связанная с пользователем
   .use('/api', checkToken, infoRoute) // добавление и получение записей
   .get('/checkAuth', checkToken, (req, res) => { // получаем токен, возвращаем объект с id пользователя

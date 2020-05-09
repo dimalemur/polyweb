@@ -1,8 +1,4 @@
 .Students {
-  &-Changemode {
-    display: flex;
-    justify-content: space-around;
-  }
   &-Input {
     width: 100%;
     display: flex;
@@ -13,13 +9,16 @@
   }
 }
 
+.Changemode {
+  display: flex;
+  justify-content: space-around;
+}
+
 @media screen and (max-width: 850px) {
-  .Students {
-    &-Changemode {
-      flex-direction: column;
-      button {
-        margin: 10px 0;
-      }
+  .Changemode {
+    flex-direction: column;
+    button {
+      margin: 10px 0;
     }
   }
 }
