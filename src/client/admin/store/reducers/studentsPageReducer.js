@@ -3,6 +3,7 @@ export const initialState = {
   studentData: {},
   pageModeComponent: null,
   mode: null,
+  addStudentDataMode: false,
   loading: false,
 };
 
@@ -10,6 +11,7 @@ const SET_STUDENT = 'SET_STUDENT';
 const SET_STUDENT_DATA = 'SET_STUDENT_DATA';
 const SET_PAGE_MODE = 'SET_PAGE_MODE';
 const SET_LOADING = 'SET_LOADING';
+const SET_ADD_STUDENT_DATA_MODE = 'SET_ADD_STUDENT_DATA_MODE';
 
 export const studentPageReducer = (state = initialState, action) => {
   let newState;
@@ -28,6 +30,10 @@ export const studentPageReducer = (state = initialState, action) => {
       newState.pageModeComponent = action.component;
       newState.mode = action.mode;
       return newState;
+    case SET_ADD_STUDENT_DATA_MODE:
+      newState = { ...state };
+      newState.addStudentDataMode = action.mode;
+      return newState;
     case SET_LOADING:
       newState = { ...state };
       newState.loading = action.val;
@@ -42,3 +48,4 @@ export const setPageMode = (component, mode) => ({ type: SET_PAGE_MODE, componen
 export const setStudent = (student) => ({ type: SET_STUDENT, student });
 export const setLoading = (val) => ({ type: SET_LOADING, val });
 export const setStudentData = (studentData) => ({ type: SET_STUDENT_DATA, studentData });
+export const setAddStudentDataMode = (mode) => ({ type: SET_ADD_STUDENT_DATA_MODE, mode });

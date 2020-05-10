@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import * as UserServices from '../services/UserService';
 import * as AdminService from '../services/AdminService';
 import User from '../models/user';
+import Page from '../models/page';
 
 export async function getCurrentUser(req, res, next) {
   const { token } = req;
@@ -61,6 +62,30 @@ export async function getUserByName(req, res, next) {
 
   try {
     user = await UserServices.getUserByName(name); // получаем юзезра по id
+  } catch ({ message }) {
+    res.status(500).send(message);
+    return next();
+  }
+
+  return res.json(user);
+}
+
+export async function userbyFNameAndGroup(req, res, next) {
+  const {
+    name,
+    surname,
+    otchestvo,
+    group,
+  } = req.body;
+
+  let user;
+
+  const fullname = [name, surname, otchestvo].join(' ');
+
+  console.log(fullname);
+
+  try {
+    user = await Page.findOne({ name: fullname, group }); // получаем юзезра по id
   } catch ({ message }) {
     res.status(500).send(message);
     return next();

@@ -7,6 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import { Groupstudentlist } from '../groupstudentlist';
 import { asyncGetGroupInfo } from '../../store/middleware/asyncGetGroups';
+import { asyncEditStudentData } from '../../store/middleware/asyncEditStudentInfo';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Groupinput = (props) => {
+export const Groupinput = (props) => {
+  const classes = useStyles();
   const [group, setGroup] = React.useState(null);
   const token = window.localStorage.getItem('polyAdmin');
   const handleChangeGroup = (event) => {
@@ -54,9 +56,9 @@ const Groupinput = (props) => {
 
   return (
     <div className='Groups-Input'>
-      <form action='submit' className={props.classes.root} onSubmit={(event) => { event.preventDefault(); }}>
+      <form action='submit' className={classes.root} onSubmit={(event) => { event.preventDefault(); }}>
         <Autocomplete
-          className={props.classes.input}
+          className={classes.input}
           id='combo-box-demo'
           options={props.groups.map((element) => ({ title: element.group_number }))}
           getOptionLabel={(option) => option.title}
@@ -66,7 +68,7 @@ const Groupinput = (props) => {
           getOptionSelected={(option, value) => true}
         />
 
-        <IconButton type='submit' className={props.classes.iconButton} aria-label='search' onClick={handleChangeGroup}>
+        <IconButton type='submit' className={classes.iconButton} aria-label='search' onClick={handleChangeGroup}>
           <SearchIcon />
         </IconButton>
       </form>
@@ -84,8 +86,11 @@ const Editgroups = (props) => {
       <Groupinput classes={classes} token={token} groups={props.groups} asyncGetGroupInfo={props.asyncGetGroupInfo} />
 
       <Groupstudentlist groupData={props.groupData}
+        asyncEditStudentData={props.asyncEditStudentData}
+        asyncGetStudentByFnameAndGroup={props.asyncGetStudentByFnameAndGroup}
         asyncDeleteStudentFromGroup={props.asyncDeleteStudentFromGroup}
         asyncAddStudentFromGroup={props.asyncAddStudentFromGroup}
+        asyncGetStudentById={props.asyncGetStudentById}
         token={token}
         asyncGetGroupInfo={props.asyncGetGroupInfo}
       />
@@ -101,6 +106,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   asyncGetGroupInfo: (token, group) => {
     dispatch(asyncGetGroupInfo(token, group));
+  },
+  asyncEditStudentData: (token, id, userId, newData) => {
+    dispatch(asyncEditStudentData(token, id, userId, newData));
   },
 });
 

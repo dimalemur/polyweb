@@ -25,7 +25,6 @@ import { Addstudenttogroupdialog } from '../addstudenttogroupdialog';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    maxWidth: 752,
   },
   fab: {
     margin: theme.spacing(2),
@@ -79,6 +78,11 @@ const Groupstudentalert = (props) => (
 const GroupstudentlistItem = (props) => {
   const deleteStudent = async (token, name, surname, otchestvo, group) => {
     await props.asyncDeleteStudentFromGroup(token, name, surname, otchestvo, group);
+    // const userData = await props.asyncGetStudentByFnameAndGroup(props.token, name, surname, otchestvo, group);
+    // console.log(userData);
+
+    // const [userId, _id] = userData;
+    // await props.asyncEditStudentData(props.token, _id, userId, { group: '' });
     await props.asyncGetGroupInfo(token, group);
   };
   return (
@@ -140,7 +144,7 @@ export const Groupstudentlist = (props) => {
         {props.groupData.groupName}
       </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <div className={classes.demo}>
             <List>
               {
@@ -152,6 +156,8 @@ export const Groupstudentlist = (props) => {
                     surname={element.surname}
                     otchestvo={element.otchestvo}
                     group={props.groupData.groupName}
+                    asyncEditStudentData={props.asyncEditStudentData}
+                    asyncGetStudentByFnameAndGroup={props.asyncGetStudentByFnameAndGroup}
                     asyncDeleteStudentFromGroup={props.asyncDeleteStudentFromGroup}
                     asyncGetGroupInfo={props.asyncGetGroupInfo}
                     handleClickOpen={handleClickOpen}
@@ -163,7 +169,7 @@ export const Groupstudentlist = (props) => {
             </List>
           </div>
         </Grid>
-        <Grid item xs={12} md={6} className={classes.add}>
+        <Grid item xs={12} className={classes.add}>
           <Tooltip title='Add' aria-label='add' onClick={handleClickOpenDialog} >
             <Fab color='primary' className={classes.fab}>
               <AddIcon />
@@ -174,9 +180,12 @@ export const Groupstudentlist = (props) => {
       <Addstudenttogroupdialog
         group={props.groupData.groupName}
         handleCloseDialog={handleCloseDialog}
+        asyncGetStudentByFnameAndGroup={props.asyncGetStudentByFnameAndGroup}
+        asyncEditStudentData={props.asyncEditStudentData}
         openDialogForm={openDialogForm}
         asyncGetGroupInfo={props.asyncGetGroupInfo}
         asyncAddStudentFromGroup={props.asyncAddStudentFromGroup}
+        asyncGetStudentById={props.asyncGetStudentById}
         token={props.token}
       />
     </div>

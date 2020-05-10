@@ -10,7 +10,11 @@ export const asyncAddStudentInfo = (token, login, password) => (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      alert('Успешно');
       console.log(data);
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error);
+      alert('Ошибка! Детали смотрите в консоле.');
+    });
 };

@@ -17,12 +17,25 @@ import Fab from '@material-ui/core/Fab';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import AddIcon from '@material-ui/icons/Add';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import { FormDialog } from '../addorderform';
 
+const useStyles = makeStyles((theme) => ({
+  err: {
+    border: '1px solid red',
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
+  },
+}));
+
 export const StudentinfoEditItem = (props) => {
+  const classes = useStyles();
   const [currentEdit, setCurrentEdit] = React.useState(false);
   const [dense, setDense] = React.useState(false);
   const [open, setOpen] = React.useState(null);
@@ -59,17 +72,10 @@ export const StudentinfoEditItem = (props) => {
     props.setLoading(true);
     props.asyncEditStudentData(props.token, props.userDataId, props.userId, { [key]: currentEdit });
   };
-  if (props.kkey === 'orders') {
-    return (
-      <ExpansionPanel expanded={props.expanded === `panel${props.index}`} onChange={props.handleChange(`panel${props.index}`)}>
-        <ExpansionPanelSummary
-          expandIcon={<EditIcon />}
-          aria-controls='panel1bh-content'
-          id='panel1bh-header'
-        >
-          <Typography className={props.classes.heading}>{props.kkey}</Typography>
-          <Typography className={props.secondaryHeading}>Приказы</Typography>
-        </ExpansionPanelSummary>
+
+  const detailComponent = () => {
+    if (props.kkey === 'orders') {
+      return (
         <ExpansionPanelDetails>
           <div className={props.classes.demo}>
             <List dense={dense} className={props.classes.orders}>
@@ -117,10 +123,65 @@ export const StudentinfoEditItem = (props) => {
             </List>
           </div>
         </ExpansionPanelDetails>
-      </ExpansionPanel >
-    );
-  }
-
+      );
+    } else if (props.kkey === 'group') {
+      return (
+        <ExpansionPanelDetails>
+          <form className={props.classes.edittext} noValidate autoComplete='off' onSubmit={(event) => { event.preventDefault(); }}>
+            <Autocomplete
+              className={classes.input}
+              id='combo-box-demo'
+              options={props.groups.map((element) => ({ title: element.group_number }))}
+              getOptionLabel={(option) => option.title}
+              style={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} label='Группа' variant='outlined' />}
+              onChange={(event, value, reason) => { setCurrentEdit(value.title); }}
+              getOptionSelected={(option, value) => true}
+            />
+            <Button
+              variant='contained'
+              color='primary'
+              size='small'
+              type='submit'
+              className={props.classes.button}
+              onClick={(event) => { handleEditData(event, props.kkey); }}
+            >
+              Сохранить
+      </Button>
+          </form>
+        </ExpansionPanelDetails>
+      );
+    } else {
+      return (
+        <ExpansionPanelDetails>
+          <form className={props.classes.edittext} noValidate autoComplete='off' onSubmit={(event) => { event.preventDefault(); props.setLoading(true); }}>
+            <TextField id='fullname'
+              label='Введите новые данные'
+              fullWidth={true}
+              onChange={(event) => { setCurrentEdit(event.target.value); }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position='start'>
+                    <AccountCircle />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button
+              variant='contained'
+              color='primary'
+              size='small'
+              type='submit'
+              className={props.classes.button}
+              onClick={(event) => { handleEditData(event, props.kkey); }}
+            >
+              Сохранить
+        </Button>
+          </form>
+        </ExpansionPanelDetails>
+      );
+    }
+  };
   return (
     <ExpansionPanel expanded={props.expanded === `panel${props.index}`} onChange={props.handleChange(`panel${props.index}`)}>
       <ExpansionPanelSummary
@@ -131,32 +192,7 @@ export const StudentinfoEditItem = (props) => {
         <Typography className={props.classes.heading}>{props.kkey}</Typography>
         <Typography className={props.secondaryHeading}>{props.value}</Typography>
       </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        <form className={props.classes.edittext} noValidate autoComplete='off' onSubmit={(event) => { event.preventDefault(); props.setLoading(true); }}>
-          <TextField id='fullname'
-            label='Введите новые данные'
-            fullWidth={true}
-            onChange={(event) => { setCurrentEdit(event.target.value); }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position='start'>
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Button
-            variant='contained'
-            color='primary'
-            size='small'
-            type='submit'
-            className={props.classes.button}
-            onClick={(event) => { handleEditData(event, props.kkey); }}
-          >
-            Сохранить
-        </Button>
-        </form>
-      </ExpansionPanelDetails>
+      {detailComponent()}
     </ExpansionPanel >
   );
 };

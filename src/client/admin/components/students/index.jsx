@@ -8,11 +8,17 @@ import EditIcon from '@material-ui/icons/Edit';
 import Addstudents from '../addstudents';
 import Editstudents from '../editstudents';
 import { setPageMode } from '../../store/reducers/studentsPageReducer';
+import { asyncGetGroups, asyncGetGroupInfo } from '../../store/middleware/asyncGetGroups';
+import { Editgroupcontainer } from '../../hoc/editgroupscontainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.button,
     padding: theme.spacing(1),
+  },
+  buttonWrap: {
+    width: '100%',
+    textAlign: 'center',
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -30,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    maxWidth: '350px',
   },
 }));
 
@@ -41,8 +48,10 @@ const Students = (props) => {
     props.setPageMode(<Addstudents classes={classes} />, 1);
   };
 
+  const token = window.localStorage.getItem('polyAdmin');
   const editStudentMode = (event) => {
-    props.setPageMode(<Editstudents />, 2);
+    props.asyncGetGroups(token);
+    props.setPageMode(Editgroupcontainer(Editstudents), 2);
   };
 
   return (
@@ -88,6 +97,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setPageMode: (component, mode) => {
     dispatch(setPageMode(component, mode));
+  },
+  asyncGetGroups: (token) => {
+    dispatch(asyncGetGroups(token));
   },
 });
 

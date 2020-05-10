@@ -25,3 +25,15 @@ export async function getUserByName(login) {
 
   return user;
 }
+
+export async function getUserByFNameAndGroup(login) {
+  let user;
+  // ищем пользователя по имени, результат получаем без пароля
+  try {
+    user = await User.find({ login }, { password: 0 });
+  } catch (e) {
+    throw e;
+  }
+
+  return user;
+}

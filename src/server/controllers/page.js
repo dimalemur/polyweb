@@ -44,6 +44,18 @@ export async function getAll(req, res, next) {
   res.json({ pages });
 }
 
+// получить все имена
+export async function getAllNames(req, res, next) {
+  let pages;
+  try {
+    pages = await Page.find({}).select('name');
+  } catch ({ message }) {
+    res.status(500).send(message);
+    return next();
+  }
+  res.json(pages);
+}
+
 // получить записи по пользователю
 export async function getPagesByUserLogin(req, res, next) {
   const { login } = req.params;
@@ -53,6 +65,39 @@ export async function getPagesByUserLogin(req, res, next) {
 
   try {
     user = await User.findOne({ login });
+  } catch ({ message }) {
+    res.status(500).send(message);
+    return next();
+  }
+
+  if (!user) {
+    res.status(404).send('User nor found');
+    return next();
+  }
+
+  try {
+    pages = await Page.find({ userId: user._id });
+  } catch ({ message }) {
+    res.status(500).send(message);
+    return next();
+  }
+
+  if (pages[0] !== undefined) {
+    isOwner = { isOwner: (pages[0].userId.toString() === req.token._id) ? 'true' : 'false' };
+  }
+
+  res.json({ userData: pages[0], isOwner });
+}
+
+// получить записи по id пользователя
+export async function getPagesByUserId(req, res, next) {
+  const { id } = req.params;
+  let user;
+  let pages;
+  let isOwner;
+
+  try {
+    user = await User.findOne({ _id: id });
   } catch ({ message }) {
     res.status(500).send(message);
     return next();

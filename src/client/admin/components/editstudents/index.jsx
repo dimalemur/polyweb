@@ -12,8 +12,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { asyncGetStudent, asyncGetStudentData } from '../../store/middleware/asyncGetStudent';
 import { asyncAddStudentInfo } from '../../store/middleware/asyncAddStudentInfo';
 import { asyncEditStudentData, asyncDeleteStudentOrdersData, asyncAddStudentOrdersData } from '../../store/middleware/asyncEditStudentInfo';
-import { setLoading } from '../../store/reducers/studentsPageReducer';
+import { setLoading, setAddStudentDataMode } from '../../store/reducers/studentsPageReducer';
 import { StudentinfoEditItem } from '../studentinfoedititem';
+
 import { StudentinfoAddItem } from '../srudentinfoadditem';
 
 const useStyles = makeStyles((theme) => ({
@@ -90,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Studentinfo = (props) => {
   const [expanded, setExpanded] = React.useState(false);
+  const [error, setError] = React.useState(false);
   const [studentInfo, editStudentInfo] = React.useState({
     name: '',
     faq: '',
@@ -111,21 +113,28 @@ const Studentinfo = (props) => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const [addStudentDataMode, setAddStudentDataMode] = React.useState(false);
-
-  // ВОТ ТУТ НАДО ДОБАВИТЬ АСИНХРОННОЕ ДОБАВЛЕНИЕ ДАННЫХ О СТУДЕНТЕ ----------------------- //
   const handleAddStudentData = (event, userData, userId) => {
     const addData = userData;
     addData.userId = userId;
-    console.log(addData);
-    props.asyncAddStudentInfo(props.token, userId, addData);
+    if (userData.name && userData.group) {
+      const [names, surnames, otchestvos] = userData.name.split(' ');
+      props.asyncAddStudentInfo(props.token, userId, addData);
+      props.asyncAddStudentFromGroup(props.token, names, surnames, otchestvos, userData.group);
+    } else {
+      setError(true);
+      // eslint-disable-next-line no-alert
+      alert('Поля group и name обязательны!');
+    }
+  };
+
+  const handleSetAddStudentDataMode = (event) => {
+    props.setAddStudentDataMode(true);
   };
 
   const savingEditStudentInfo = (key, value) => {
     editStudentInfo({ ...studentInfo, [key]: value });
     console.log(studentInfo);
   };
-  // ВОТ ТУТ НАДО ДОБАВИТЬ АСИНХРОННОЕ ДОБАВЛЕНИЕ ДАННЫХ О СТУДЕНТЕ ----------------------- //
 
   return (
     <div className='Students-Info'>
@@ -136,6 +145,7 @@ const Studentinfo = (props) => {
               if (key !== '__v' && key !== '_id') {
                 return (
                   <StudentinfoEditItem key={i}
+                    groups={props.groups}
                     kkey={key}
                     value={props.studentData[key]}
                     userDataId={props.studentData._id}
@@ -157,14 +167,14 @@ const Studentinfo = (props) => {
             : (
               <div>
                 {
-                  (!addStudentDataMode)
+                  (!props.addStudentDataMode)
                     ? (
                       <div>
                         Запись студента не найдена.
                         <Link
                           component='button'
                           variant='body2'
-                          onClick={() => { setAddStudentDataMode(true); }}
+                          onClick={handleSetAddStudentDataMode}
                         >
                           Добавить запись?
                       </Link>
@@ -176,7 +186,10 @@ const Studentinfo = (props) => {
                           if (key !== '__v' && key !== '_id') {
                             return (
                               <StudentinfoAddItem
+                                groups={props.groups}
                                 value={studentInfo[key]}
+                                error={error}
+                                setError={setError}
                                 savingEditStudentInfo={savingEditStudentInfo}
                                 key={i}
                                 kkey={key}
@@ -214,7 +227,7 @@ const Studentinfo = (props) => {
         }
 
       </div>
-    </div>
+    </div >
   );
 };
 
@@ -224,6 +237,7 @@ const Studentinput = (props) => {
   const handleChangeStudent = (event) => {
     event.preventDefault();
     props.setLoading(true);
+    props.setAddStudentDataMode(false);
     props.asyncGetStudent(props.token, studentId);
   };
   return (
@@ -250,7 +264,13 @@ const Editstudents = (props) => {
   return (
     <div className='Students-Add'>
       <h2>Введите Id студента</h2>
-      <Studentinput classes={classes} asyncGetStudent={props.asyncGetStudent} token={token} setLoading={props.setLoading} />
+      <Studentinput
+        classes={classes}
+        asyncGetStudent={props.asyncGetStudent}
+        token={token}
+        setLoading={props.setLoading}
+        setAddStudentDataMode={props.setAddStudentDataMode}
+      />
 
       <div className={classes.loader}>
         <Fade
@@ -265,6 +285,10 @@ const Editstudents = (props) => {
       </div>
 
       <Studentinfo classes={classes}
+        asyncAddStudentFromGroup={props.asyncAddStudentFromGroup}
+        setAddStudentDataMode={props.setAddStudentDataMode}
+        addStudentDataMode={props.addStudentDataMode}
+        groups={props.groups}
         studentId={props.studentId}
         studentData={props.studentData}
         token={token}
@@ -285,6 +309,8 @@ const mapStateToProps = (state) => ({
   studentData: state.studentPage.studentData,
   studentId: state.studentPage.student._id,
   loading: state.studentPage.loading,
+  addStudentDataMode: state.studentPage.addStudentDataMode,
+  groups: state.groupsPage.groups,
 });
 const mapDispatchToProps = (dispatch) => ({
   asyncGetStudent: (token, userId) => {
@@ -307,6 +333,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   asyncAddStudentInfo: (token, userId, studentInfo) => {
     dispatch(asyncAddStudentInfo(token, userId, studentInfo));
+  },
+  setAddStudentDataMode: (mode) => {
+    dispatch(setAddStudentDataMode(mode));
   },
 });
 
