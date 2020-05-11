@@ -11,7 +11,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import user from '../../../../server/models/user';
 
 const useStyles = makeStyles((theme) => ({
   swtitch: {
@@ -32,12 +31,7 @@ export const Addstudenttogroupdialog = (props) => {
 
   const addStudentByFullName = async (event) => {
     props.handleCloseDialog();
-    await props.asyncAddStudentFromGroup(props.tтoken, name, surname, otchestvo, props.group);
-    // const userData = await props.asyncGetStudentByFnameAndGroup(props.token, name, surname, otchestvo, props.group);
-    // console.log(userData);
-
-    // const [userId, _id] = userData;
-    // await props.asyncEditStudentData(props.token, _id, userId, { group: props.group });
+    await props.asyncAddStudentFromGroup(props.token, name, surname, otchestvo, props.group);
     await props.asyncGetGroupInfo(props.token, props.group);
     setName('');
     setSurname('');
@@ -49,8 +43,14 @@ export const Addstudenttogroupdialog = (props) => {
     const student = await props.asyncGetStudentById(props.token, id);
     if (student !== undefined) {
       const [names, surnames, otchestvos] = student.userData.name.split(' ');
+
       if (student.userData.group === '') {
         await props.asyncAddStudentFromGroup(props.token, names, surnames, otchestvos, props.group);
+
+        const userData = await props.asyncGetStudentByFnameAndGroup(props.token, names, surnames, otchestvos, '');
+        const { userId, _id } = userData;
+        await props.asyncEditStudentData(props.token, _id, userId, { group: props.group });
+
         await props.asyncGetGroupInfo(props.token, props.group);
       } else {
         alert('Этот студент уже в группе!');

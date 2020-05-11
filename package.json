@@ -53,6 +53,7 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "@types/node": "^13.13.5",
     "autoprefixer": "^9.7.6",
     "autoprefixer-loader": "^3.2.0",
     "babel": "^6.23.0",

@@ -78,11 +78,11 @@ const Groupstudentalert = (props) => (
 const GroupstudentlistItem = (props) => {
   const deleteStudent = async (token, name, surname, otchestvo, group) => {
     await props.asyncDeleteStudentFromGroup(token, name, surname, otchestvo, group);
-    // const userData = await props.asyncGetStudentByFnameAndGroup(props.token, name, surname, otchestvo, group);
-    // console.log(userData);
 
-    // const [userId, _id] = userData;
-    // await props.asyncEditStudentData(props.token, _id, userId, { group: '' });
+    const userData = await props.asyncGetStudentByFnameAndGroup(props.token, name, surname, otchestvo, group);
+    const { userId, _id } = userData;
+    await props.asyncEditStudentData(props.token, _id, userId, { group: '' });
+
     await props.asyncGetGroupInfo(token, group);
   };
   return (
