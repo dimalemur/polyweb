@@ -21,7 +21,6 @@ import { logOut } from '../../store/reducers/mainPageReducer';
 import Gruops from '../groups';
 import Addinfo from '../addinfo';
 import Students from '../students';
-import Teachers from '../teachers';
 import { Mainlistitems, secondaryListItems } from '../listitems';
 
 const drawerWidth = 240;
@@ -110,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = (props) => {
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = React.useState(null);
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -182,10 +181,6 @@ const Dashboard = (props) => {
             <Route
               path={'/admin/:user/students'}
               component={() => <Students setSelectedIndex={setSelectedIndex} />}
-            />
-            <Route
-              path={'/admin/:user/teachers'}
-              component={() => <Teachers setSelectedIndex={setSelectedIndex} />}
             />
             <Route
               path={'/admin/:user/addinfo'}

@@ -1,0 +1,38 @@
+.Myfinances {
+  position: relative;
+  &-Content {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 45px 0;
+  }
+  &-Info {
+    margin: 45px 0 0 0;
+  }
+}
+
+.Changebar {
+  display: flex;
+  &-Item {
+    background: #121058;
+    border-radius: 5px 5px 0px 0px;
+    padding: 8px 52px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 19px;
+    color: rgba(255, 255, 255, 0.8);
+    &_active {
+      background: white;
+      color: black;
+    }
+    &_orange {
+      background: #f79329;
+    }
+  }
+}

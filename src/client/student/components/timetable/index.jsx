@@ -72,7 +72,7 @@ const Lessons = (day, dayNum) => {
           <div className='Lesson-Wrap' >
             <div className='Lesson-Time'>
               <span>
-                {lessonTime[dayNum]}
+                {lessonTime[el]}
               </span>
             </div>
             {lessons}

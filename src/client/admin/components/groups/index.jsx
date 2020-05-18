@@ -46,7 +46,7 @@ const Gruops = (props) => {
       case 1:
         return Creategroupcontainer(Addgroup);
       default:
-        return 'Выберите мод';
+        return '';
     }
   };
 

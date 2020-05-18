@@ -15,10 +15,6 @@ const Profilecontent = (props) => {
 
   const token = window.localStorage.getItem('polyUser');
 
-  const signOut = (event) => {
-    props.logOut();
-  };
-
   const backHome = (event) => {
     history.push(`/${props.login}`);
     props.asyncGetUserData(token, props.login);
@@ -29,10 +25,11 @@ const Profilecontent = (props) => {
       <Regnav />
       <div className='Profilecontent-Wrap'>
         <div className='Info Profilecontent-Info'>
-          <button onClick={(props.isOwner) ? signOut : backHome}>
-            {(props.isOwner) ? 'Разлогиниться' : 'Домой'}
-          </button>
-
+          {!(props.isOwner) && (
+            <button onClick={backHome}>
+              Домой
+            </button>
+          )}
           <div className='Ava Info-Ava'>
             <img className='Ava-Img' src={avatarIcon} alt='' />
             <span className='Ava-Text'>{props.userData.name}</span>

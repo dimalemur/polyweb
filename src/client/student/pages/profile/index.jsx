@@ -2,20 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './profile.pcss';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { Sidebar } from '../../components/sidebar';
 import Menu from '../../components/menu';
 import Grades from '../../components/grades';
 import Visits from '../../components/visits';
 import Faculties from '../../components/faculties';
 import Profilecontent from '../../components/profileContent';
+import Myfinances from '../../components/myfinances';
 import Additionalcourses from '../../components/additional_courses';
 import Timetable from '../../components/timetable';
 import { Backgroundcontainer } from '../../components/backgroundcontainer';
 import { Backgrounds } from '../../components/backgrounds';
 import Settings from '../../components/settings';
 import { WidthGetJobNews } from '../../highOrderComponents/asyncGetJobNews';
-
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { setMenuVisible, logOutPage } from '../../store/reducers/mainPageReducer';
 import { logOutProfile } from '../../store/reducers/profilePageReducer';
@@ -39,18 +38,18 @@ const Profile = (props) => {
 
     <div className={`Profile Profile_fixpos_${fixPosition} `}>
       {/* Сайдбар */}
-      < Sidebar user={user}
+      <Sidebar user={user}
         activateMenu={props.setMenuVisible}
       />
 
       {/* Боковое выпадающее меню */}
-      < Menu state={props.state}
+      <Menu state={props.state}
         activateMenu={props.setMenuVisible}
         user={user}
       />
 
       {/* Профиль */}
-      < Route exact
+      <Route exact
         path='/:user'
         render={() => (
           <Backgroundcontainer
@@ -63,7 +62,7 @@ const Profile = (props) => {
       />
 
       {/* Настройки */}
-      < Route exact
+      <Route exact
         path='/:user/settings'
         render={() => (
           <Backgroundcontainer
@@ -77,7 +76,7 @@ const Profile = (props) => {
       />
 
       {/* Успеваемость */}
-      < Route exact
+      <Route exact
         path='/:user/performance'
         render={() => (
           <Backgroundcontainer
@@ -89,7 +88,7 @@ const Profile = (props) => {
       />
 
       {/* Расписание */}
-      < Route exact
+      <Route exact
         path='/:user/timetable'
         render={() => (
           <Backgroundcontainer
@@ -100,20 +99,8 @@ const Profile = (props) => {
         )}
       />
 
-      {/* Трудоустройство */}
-      < Route exact
-        path='/:user/practic'
-        render={() => (
-          <Backgroundcontainer
-            page={WidthGetJobNews}
-            menuVisible={props.menuVisible}
-            background={Backgrounds.CurveBLue}
-          />
-        )}
-      />
-
       {/* Посещения по физкультуре */}
-      < Route exact
+      <Route exact
         path='/:user/visits'
         render={() => (
           <Backgroundcontainer
@@ -125,7 +112,7 @@ const Profile = (props) => {
       />
 
       {/* Образовательные программы */}
-      < Route exact
+      <Route exact
         path='/:user/faculties'
         render={() => (
           <Backgroundcontainer
@@ -137,7 +124,7 @@ const Profile = (props) => {
       />
 
       {/* Дополнительные курсы */}
-      < Route exact
+      <Route exact
         path='/:user/additional_courses'
         render={() => (
           <Backgroundcontainer page={Additionalcourses}
@@ -148,6 +135,29 @@ const Profile = (props) => {
         )}
       />
 
+      {/* Трудоустройство */}
+      <Route exact
+        path='/:user/practic'
+        render={() => (
+          <Backgroundcontainer
+            page={WidthGetJobNews}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.CurveBLue}
+          />
+        )}
+      />
+
+      {/* Мои финансы */}
+      < Route exact
+        path='/:user/myfinances'
+        render={() => (
+          <Backgroundcontainer
+            page={Myfinances}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.CurveVectorBLue}
+          />
+        )}
+      />
     </div>
   );
 };

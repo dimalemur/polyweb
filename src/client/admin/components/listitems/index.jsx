@@ -38,18 +38,6 @@ export const Mainlistitems = (props) => (
       </ListItem>
     </NavLink>
 
-    <NavLink to={`/admin/${props.admin}/teachers`}>
-      <ListItem
-        button
-        selected={props.selectedIndex === 2}
-      >
-        <ListItemIcon>
-          <PersonIcon />
-        </ListItemIcon>
-        <ListItemText primary='Преподаватели' />
-      </ListItem>
-    </NavLink>
-
     <NavLink to={`/admin/${props.admin}/addinfo`}>
       <ListItem
         button

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './settings.pcss';
 import { connect } from 'react-redux';
 import { asyncEditUserInfoData } from '../../store/middleware/asyncEditUserInfoData';
@@ -132,6 +132,11 @@ const Settings = (props) => {
     event.preventDefault();
     editPhone(event);
   };
+  if (!props.isOwner) {
+    return (
+      <div className='Settings'>Доступ к этой странице закрыт.</div>
+    );
+  }
 
   return (
     <div className='Settings'>
@@ -557,6 +562,7 @@ export default connect(
     pageId: state.profilePage.userData._id,
     success: state.profilePage.success,
     tel: state.profilePage.userData.tel,
+    isOwner: state.profilePage.isOwner,
   }),
   (dispatch) => ({
     setSuccess: (text) => {

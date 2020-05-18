@@ -6,6 +6,7 @@ import yellowssc from '../../../../source/images/yellowssc.svg';
 import peoples from '../../../../source/images/peoples.svg';
 import greenMask from '../../../../source/images/green mask.png';
 import blueMask from '../../../../source/images/blue mask.png';
+import vector13 from '../../../../source/images/Vector13.svg';
 
 const GreenBlue = () => (
   <div className='Backgroundcontainer-Wrap Wrap-Blue'>
@@ -33,10 +34,16 @@ const CurveBLue = () => (
   </div>
 );
 
+const CurveVectorBLue = () => (
+  <div className='Backgroundcontainer-Wrap Wrap-Blue'>
+    <img className='Backgroundcontainer-VectorbLuemask' src={vector13} />
+  </div>
+);
 export const Backgrounds = {
   GreenBlue,
   Blue,
   YellowLightYellow,
   CurveBLue,
+  CurveVectorBLue,
 };
 

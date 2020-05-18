@@ -22,5 +22,12 @@ export const WidthGetJobNews = (props) => {
       .catch((error) => { console.log(error); });
   };
 
-  return <Practic getData={getData} externalData={externalData} newsCount={newsCount} setNewsCount={setNewsCount} Regnav={Regnav} />;
+  return (
+    <Practic getData={getData}
+      externalData={externalData}
+      newsCount={newsCount}
+      setNewsCount={setNewsCount}
+      Regnav={Regnav}
+    />
+  );
 };

@@ -1,5 +1,6 @@
 import config from './config';
 import authRoute from './routes/auth';
+import regRoute from './routes/reg';
 import userRoute from './routes/user';
 import infoRoute from './routes/info';
 import pageRoute from './routes/page';
@@ -25,7 +26,6 @@ const staticWay = express.static(path.join(__dirname, '../../public/build/'));
 app
   .use(morgan('tiny'))
   .use(bodyParser.json())
-  .use(bodyParser.urlencoded({ extended: true }))
   .use(session({
     resave: true,
     saveUninitialized: true,
@@ -33,7 +33,8 @@ app
   }))
   .get('/ping', (_req, res) => res.json({ status: 200 })) // проверка пинга
   // api роутинг
-  .use('/api', checkToken, authRoute) // аутенфикация
+  .use('/api', authRoute) // авторизация
+  .use('/api', checkToken, regRoute) // регистрация
   .use('/api', checkToken, userRoute) // получаем юзезра по id (без пароля)
   .use('/api', checkToken, pageRoute) // информация связанная с пользователем
   .use('/api', checkToken, gruopsRoute) // работа с группами
