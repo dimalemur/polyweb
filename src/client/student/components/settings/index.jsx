@@ -117,7 +117,6 @@ const Settings = (props) => {
     }
     event.preventDefault();
     setSendedEmail(!isSendedEmail);
-    // editEmail(event);
   };
 
   const submitPhone = (event) => {

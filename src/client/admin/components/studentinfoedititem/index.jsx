@@ -53,7 +53,7 @@ export const StudentinfoEditItem = (props) => {
     setOpenDialog(false);
   };
 
-  const handleClickToAddOrder = (event) => {
+  const handleClickToAddOrder = () => {
     setOpenDialog(true);
   };
 
@@ -147,7 +147,7 @@ export const StudentinfoEditItem = (props) => {
               onClick={(event) => { handleEditData(event, props.kkey); }}
             >
               Сохранить
-      </Button>
+            </Button>
           </form>
         </ExpansionPanelDetails>
       );
@@ -190,7 +190,7 @@ export const StudentinfoEditItem = (props) => {
         id='panel1bh-header'
       >
         <Typography className={props.classes.heading}>{props.kkey}</Typography>
-        <Typography className={props.secondaryHeading}>{props.value}</Typography>
+        <Typography className={props.secondaryHeading}>{(Array.isArray(props.value)) ? '' : props.value}</Typography>
       </ExpansionPanelSummary>
       {detailComponent()}
     </ExpansionPanel >

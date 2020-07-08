@@ -21,6 +21,7 @@ const days = {
   4: 'Четверг',
   5: 'Пятница',
   6: 'Суббота',
+  7: 'Воскресенье',
 };
 
 const parseDate = (date, setOld) => {
@@ -31,13 +32,13 @@ const parseDate = (date, setOld) => {
   return new Date(Date.parse(date)).toLocaleDateString('ru', options);
 };
 
-const Lessons = (day, dayNum) => {
+const Lessons = (day, dayNum, isSession) => {
   if (day !== undefined) {
     const res = Object.keys(day).map((el) => {
       if (day[el].length !== 0) {
         const lessons = day[el].map((element, i) => (
           <div key={Number(dayNum).toString() + Number(el).toString() + Number(i).toString()} className='Day-Lesson'>
-            <div className={`Lesson-Auditory Lesson-Auditory_${new Date(Date.parse(element.dt)) > new Date()}`} >
+            <div className={`Lesson-Auditory Lesson-Auditory_${(!isSession) ? new Date(Date.parse(element.dt)) > new Date() : true}`} >
               <span>
                 {
                   element.auditories.map((auditory, j) => (
@@ -48,23 +49,29 @@ const Lessons = (day, dayNum) => {
                 }
               </span>
             </div>
-            <div className={`Lesson-Name Lesson-Name_${new Date(Date.parse(element.dt)) > new Date()}`}>
+            <div className={`Lesson-Name Lesson-Name_${(!isSession) ? new Date(Date.parse(element.dt)) > new Date() : true}`}>
               <span>
                 {`${element.sbj} (${element.type})`}
               </span>
             </div>
-            <div className={`Lesson-Teacher Lesson-Teacher_${new Date(Date.parse(element.dt)) > new Date()}`}>
+            <div className={`Lesson-Teacher Lesson-Teacher_${(!isSession) ? new Date(Date.parse(element.dt)) > new Date() : ''}`}>
               <span>
                 {element.teacher}
               </span>
             </div>
-            <div className='Lesson-Dateperiod'>
-              {
-                `${parseDate(element.df)}
-                - 
-                  ${parseDate(element.dt)}`
-              }
-            </div>
+
+            {
+              (!isSession)
+                ? (<div className='Lesson-Dateperiod'>
+                  {
+                    `${parseDate(element.df)}
+                              - 
+                                ${parseDate(element.dt)}`
+                  }
+                </div>)
+                : ''
+            }
+
           </div>
         ));
 
@@ -88,6 +95,7 @@ const Lessons = (day, dayNum) => {
 };
 
 const Timetable = (props) => {
+  let currentDayIndex = 0;
   const Navbar = props.Regnavbar;
   const token = window.localStorage.getItem('polyUser');
 
@@ -111,16 +119,34 @@ const Timetable = (props) => {
 
           {
             // Обход дней недели
-            Object.keys(days).map((day) => (
-              <div key={day} className='Rasp-Monday Rasp-Day Day'>
-                <div className='Day-Title'>
-                  {days[day]}
+            (Array.isArray(props.timeTable))
+              ? (Object.keys(days).map((day) => (
+                <div key={day} className='Rasp-Monday Rasp-Day Day'>
+                  <div className='Day-Title'>
+                    {days[day]}
+                  </div>
+                  {
+                    Lessons(props.timeTable[day], day, false)
+                  }
                 </div>
-                {
-                  Lessons(props.timeTable[day], day)
+              )))
+              : (Object.keys(props.timeTable).map((day) => {
+                currentDayIndex += 1;
+                if (currentDayIndex > 7) {
+                  currentDayIndex = 1;
                 }
-              </div>
-            ))
+                return (
+                  <div key={day} className='Rasp-Monday Rasp-Day Day'>
+                    <div className='Day-Title'>
+                      {days[currentDayIndex]}
+                    </div>
+                    {
+                      Lessons(props.timeTable[day], day, true)
+                    }
+                  </div>
+                );
+              }))
+
           }
         </div>
       </div>

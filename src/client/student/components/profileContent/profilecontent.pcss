@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 .Profilecontent {
   background: #5754db;
@@ -9,10 +9,10 @@
   &-Menu {
     &_visible_true {
       padding-left: 7.5rem;
-      transition: all 1s ease-out;
+      transition: all 0.3s ease-out;
     }
     &_visible_false {
-      transition: all 1s ease-out;
+      transition: all 0.3s ease-out;
     }
   }
   &-Wrap {
@@ -134,14 +134,37 @@
   font-size: 18px;
   line-height: 21px;
   color: #2f2f2f;
+  height: 2em;
   b {
     font-weight: 500;
   }
 }
 
 @media screen and (max-width: 640px) {
+  .Ava {
+    &-Text {
+      font-size: 1em;
+    }
+    &-Img {
+      height: 7.5em;
+    }
+  }
+
+  .Infoblock {
+    &-Title {
+      font-size: 1em;
+    }
+    &-Orders {
+      a {
+        font-size: 1em;
+      }
+    }
+  }
   .Profilecontent {
     padding-left: 0;
+    &-Wrap {
+      width: 90%;
+    }
     &-Menu {
       &_visible_true {
         padding-left: 0;
@@ -154,6 +177,18 @@
     .Navbar {
       position: relative;
       right: 0;
+    }
+  }
+  .Infoline {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Personinfo {
+    &-Content {
+      white-space: nowrap;
+      overflow: scroll;
     }
   }
 }

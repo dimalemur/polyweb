@@ -100,7 +100,7 @@
       "url": "/api/addgrades",
       "headers": "there should be a token",
       "body": {
-        "semester": 2,
+        "semester": 3,
         "orders": [
           {
             "name": "Элективные дисциплины по физической культуре и спорту",

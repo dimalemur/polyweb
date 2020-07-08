@@ -16,7 +16,7 @@ export const getAllGroups = async (req, res, next) => {
 };
 
 export const addGroup = async (req, res, next) => {
-  const { group } = req.body;
+  const { group, semester } = req.body;
   let resoult;
   let newIndex;
   let admin;
@@ -41,7 +41,7 @@ export const addGroup = async (req, res, next) => {
       console.log('ERROR:', error);
     });
 
-  await db.none(`insert into groups(id_group,group_number) values(${newIndex + 1},'${group}')`)
+  await db.none(`insert into groups(id_group,group_number,semester) values(${newIndex + 1},'${group}','${semester}')`)
     .then((data) => res.json({ status: 'success' }))
     .catch((error) => {
       res.status(501).send(error);

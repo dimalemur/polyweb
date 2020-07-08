@@ -1,0 +1,267 @@
+.Sertificates {
+  position: relative;
+  &-Inner {
+    margin: 0 auto;
+    width: 960px;
+    max-width: 90%;
+  }
+  &-Title {
+    font-size: 40px;
+    margin-top: 5rem;
+  }
+  &-Content {
+    padding: 42px;
+  }
+  &-Searchdoc {
+    margin-top: 44px;
+  }
+  &-Cards {
+    margin-top: 44px;
+    display: grid;
+    grid-template-areas:
+      "a b d"
+      "a b d"
+      "a b e"
+      "a c e"
+      "a c f"
+      "a c f";
+  }
+  &-Helplist {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    margin-top: 16px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    color: black;
+  }
+  &-Button {
+    cursor: pointer;
+    width: 151px;
+    height: 30px;
+    border: 0.5px solid #121058;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: 550;
+    font-size: 14px;
+    line-height: 24px;
+    color: #121058;
+    outline: none;
+  }
+
+  &-Button:hover {
+    color: #ffffff;
+    background: #121058;
+  }
+}
+
+.Helplist {
+  &-Instruction {
+    margin-bottom: 25px;
+  }
+  &-Isvisible {
+    &_false {
+      display: none;
+    }
+  }
+}
+
+.Content {
+  &-Header {
+    width: 80%;
+    margin: 0 auto;
+  }
+  &-Description {
+    text-align: center;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 16px;
+    line-height: 23px;
+    margin-bottom: 27px;
+  }
+  &-Helpline {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 25px;
+    cursor: pointer;
+  }
+  &-Table {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1fr 2fr;
+    margin-bottom: 55px;
+  }
+}
+
+.Table {
+  &-Isvisible_false {
+    display: none;
+  }
+  &-Rowname {
+    border: 1px solid #c4c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+  }
+  &-Cell {
+    border: 1px solid #c4c4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 13.18px 22px;
+  }
+}
+
+.Cell {
+  &_green {
+    background: #c0e9d7;
+  }
+}
+
+.Searchdoc {
+  display: grid;
+  grid-template-columns: 87.5fr 12.5fr;
+  height: 32px;
+  &-Inp {
+    border: 1px solid #121058;
+    box-sizing: border-box;
+    border-radius: 4px 0 0 4px;
+    text-align: center;
+  }
+  &-Btn {
+    background: #121058;
+    border-radius: 0px 4px 4px 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.Cards {
+  &-Rb {
+    border-bottom: 27px solid;
+    border-right: 15px solid;
+    border-radius: 5px;
+  }
+  &-Lb {
+    border-bottom: 27px solid;
+    border-left: 15px solid;
+    border-radius: 5px;
+  }
+  &-Title {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    padding: 17px 24px;
+  }
+  &-List {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 13px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #666262;
+    div {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      span:hover {
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.Border {
+  &_yellow {
+    border-color: #fff6a0;
+    grid-area: a;
+    margin: 7.5px;
+  }
+  &_lightgreen {
+    border-color: #c0e9d7;
+    grid-area: b;
+    margin: 7.5px;
+  }
+  &_green {
+    border-color: #21aa93;
+    grid-area: c;
+    margin: 7.5px;
+  }
+  &_lightblue {
+    border-color: #72a6eb;
+    grid-area: d;
+    margin: 7.5px;
+  }
+  &_blue {
+    border-color: #2a66b6;
+    grid-area: e;
+    margin: 7.5px;
+  }
+  &_violet {
+    border-color: #3533ac;
+    grid-area: f;
+    margin: 7.5px;
+  }
+}
+
+.Bg {
+  &_yellow {
+    border-radius: 5px 0px 0px 0px;
+    background: #fff6a0;
+  }
+  &_lightgreen {
+    background: #c0e9d7;
+    border-radius: 0px 5px 0px 0px;
+  }
+  &_green {
+    background: #21aa93;
+    border-radius: 0px 5px 0px 0px;
+  }
+  &_lightblue {
+    background: #72a6eb;
+    border-radius: 0px 5px 0px 0px;
+  }
+  &_blue {
+    background: #2a66b6;
+    border-radius: 0px 5px 0px 0px;
+  }
+  &_violet {
+    background: #3533ac;
+    border-radius: 0px 5px 0px 0px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Sertificates-Cards {
+    display: block;
+  }
+
+  .Bg_yellow {
+    border-radius: 0 5px 0 0;
+  }
+  .Cards-Rb {
+    border-left: 15px solid #fff6a0;
+    border-right: 0px;
+  }
+}

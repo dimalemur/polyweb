@@ -132,8 +132,8 @@ const Studentinfo = (props) => {
   };
 
   const savingEditStudentInfo = (key, value) => {
-    editStudentInfo({ ...studentInfo, [key]: value });
-    console.log(studentInfo);
+    const editingStudentInfo = { ...studentInfo, [key]: value };
+    editStudentInfo(editingStudentInfo);
   };
 
   return (
@@ -245,7 +245,7 @@ const Studentinput = (props) => {
       <Paper component='form' className={props.classes.root}>
         <InputBase
           className={props.classes.input}
-          placeholder='Id'
+          placeholder='Например: jora или 5ecb902139d6512be83cfd2a'
           inputProps={{ 'aria-label': 'Id' }}
           onChange={(event) => { event.preventDefault(); setStudentId(event.target.value); }}
         />
@@ -263,7 +263,7 @@ const Editstudents = (props) => {
 
   return (
     <div className='Students-Add'>
-      <h2>Введите Id студента</h2>
+      <h2>Введите Id или логин студента</h2>
       <Studentinput
         classes={classes}
         asyncGetStudent={props.asyncGetStudent}

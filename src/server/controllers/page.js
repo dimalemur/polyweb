@@ -147,7 +147,11 @@ export async function editInfo(req, res, next) {
     console.log(message);
   }
 
-  if (admin.login === undefined) {
+  console.log(userId.toString());
+  console.log(pages.userId.toString());
+  console.log(admin);
+
+  if (admin === null) {
     if (userId.toString() !== pages.userId.toString()) {
       res.status(403).send('Premission denided');
       return next();

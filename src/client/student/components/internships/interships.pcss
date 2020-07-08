@@ -1,0 +1,99 @@
+.Interships {
+  position: relative;
+  &-Inner {
+    margin: 0 auto;
+    width: 960px;
+    max-width: 90%;
+  }
+  &-Title {
+    font-size: 40px;
+    margin-top: 5rem;
+  }
+}
+
+.Content {
+  padding: 41px 100px;
+  &_st {
+    padding: 41px 100px;
+  }
+  &_white {
+    background: #fff;
+  }
+  &_blue {
+    background: #2c2a90;
+    color: #f2f2f2;
+  }
+  &-Title {
+    font-family: Raleway, sans-serif;
+    margin-bottom: 30px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  &-Text {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 17px;
+  }
+}
+
+.Title {
+  &_black {
+    color: black;
+  }
+  &_white {
+    color: #fff;
+  }
+  &-Date {
+    &_top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 10px;
+      font-family: Raleway, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      color: #666262;
+    }
+  }
+  &_withdate {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.Text {
+  &_lightorange {
+    color: #fcd4b5;
+  }
+  &_orange {
+    color: #f79329;
+  }
+  &_blue {
+    color: #2c2a90;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Title_withdate {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Content_st {
+    padding: 30px 40px;
+  }
+  .Content-Title {
+    font-weight: 700;
+    font-size: 1em;
+  }
+  .Content-Text {
+    font-size: 0.7em;
+  }
+}

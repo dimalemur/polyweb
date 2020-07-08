@@ -36,3 +36,50 @@
     }
   }
 }
+
+@media screen and (max-width: 640px) {
+  .Changebar {
+    flex-direction: column;
+    &-Item {
+      height: 2em;
+    }
+  }
+
+  .Payment-Content {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .Changebar {
+    flex-direction: column;
+    &-Item {
+      font-size: 0.9em;
+    }
+  }
+
+  .Payment-Content {
+    width: auto;
+  }
+  .Hostelinfo {
+    &-Title {
+      font-size: 1em;
+    }
+    &-Period {
+      flex-direction: column;
+      span,
+      input {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  .Name,
+  .Val {
+    font-size: 0.9em;
+  }
+
+  .Payinfo-Isbigdisp {
+    display: none;
+  }
+}

@@ -199,3 +199,65 @@
     text-indent: 1.5px;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .Promocourses {
+    width: 91%;
+    margin-left: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Promocourses {
+    &-Title {
+      font-size: 1.7em;
+    }
+    &-Subtitle {
+      font-size: 1.2em;
+    }
+    &-Text {
+      font-size: 0.9em;
+    }
+  }
+
+  .Checklist {
+    &-Item {
+      font-size: 0.8em;
+    }
+  }
+
+  .Contentlist {
+    &-Title {
+      font-size: 1em;
+    }
+  }
+
+  .Course {
+    display: block;
+    &-Button {
+      margin: 0 auto;
+    }
+    &-Text {
+      margin: 1.2em 0 1.2em 0;
+    }
+    &-Title {
+      font-size: 1em;
+    }
+    &-Image {
+      text-align: center;
+      img {
+        max-width: 100vw;
+        width: 100%;
+        height: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .Checklist {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}

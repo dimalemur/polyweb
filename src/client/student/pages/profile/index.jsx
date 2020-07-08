@@ -14,6 +14,8 @@ import Timetable from '../../components/timetable';
 import { Backgroundcontainer } from '../../components/backgroundcontainer';
 import { Backgrounds } from '../../components/backgrounds';
 import Settings from '../../components/settings';
+import { Interships } from '../../components/internships';
+import { Sertificates } from '../../components/sertificates';
 import { WidthGetJobNews } from '../../highOrderComponents/asyncGetJobNews';
 import { asyncGetUserData } from '../../store/middleware/asyncGetUser';
 import { setMenuVisible, logOutPage } from '../../store/reducers/mainPageReducer';
@@ -147,6 +149,18 @@ const Profile = (props) => {
         )}
       />
 
+      {/* Международные стажировки */}
+      <Route exact
+        path='/:user/internship'
+        render={() => (
+          <Backgroundcontainer
+            page={Interships}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.CurveOrange}
+          />
+        )}
+      />
+
       {/* Мои финансы */}
       < Route exact
         path='/:user/myfinances'
@@ -155,6 +169,18 @@ const Profile = (props) => {
             page={Myfinances}
             menuVisible={props.menuVisible}
             background={Backgrounds.CurveVectorBLue}
+          />
+        )}
+      />
+
+      {/* Справки и заявления */}
+      <Route exact
+        path='/:user/certificates'
+        render={() => (
+          <Backgroundcontainer
+            page={Sertificates}
+            menuVisible={props.menuVisible}
+            background={Backgrounds.Blue}
           />
         )}
       />

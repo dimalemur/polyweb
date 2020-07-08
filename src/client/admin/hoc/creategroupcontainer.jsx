@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Creategroupcontainer = (Component) => {
-  const asyncAddStudentInfo = (token, group) => {
+  const asyncAddStudentInfo = (token, group, semester) => {
     fetch('/api/addgroup', {
       credentials: 'same-origin',
       method: 'POST',
@@ -9,7 +9,7 @@ export const Creategroupcontainer = (Component) => {
         'Content-Type': 'application/json',
         authorization: token,
       }),
-      body: JSON.stringify({ group }),
+      body: JSON.stringify({ group, semester }),
     })
       .then((response) => response.json())
       .then((data) => {

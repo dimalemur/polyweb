@@ -36,13 +36,16 @@ export async function getUserById(req, res, next) {
   const { id } = req.params;
   let user = {};
 
-  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+  const isValidId = id.match(/^[0-9a-fA-F]{24}$/);
+  if (isValidId) {
     try {
       user = await User.findById(id, { password: 0 }); // получаем юзезра по id
     } catch ({ message }) {
       res.status(500).send(message);
       return next();
     }
+  } else if (!isValidId) {
+    user = await User.findOne({ login: id }, { password: 0 });
   } else {
     res.status(400).send('Id error');
   }

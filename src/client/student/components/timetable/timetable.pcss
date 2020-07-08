@@ -22,12 +22,13 @@
 }
 
 .Rasp {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   justify-content: space-between;
   background: #f2f2f2;
   min-height: 450px;
   &-Day {
-    width: 15.5%;
+    width: 100%;
     border: 1.5px solid gray;
   }
 }
@@ -113,6 +114,14 @@
     &-Day {
       width: 100%;
       margin-bottom: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Timetable {
+    &-Title {
+      font-size: 2em;
     }
   }
 }

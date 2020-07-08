@@ -10,73 +10,59 @@ import avatarIcon from '../../../../source/images/icons/ava.svg';
 import settingsIcon from '../../../../source/images/icons/settings.svg';
 import menuIcon from '../../../../source/images/icons/menu.svg';
 
-const study = {
-  id: 'Study',
-  name: 'Учёба',
-  links: [
-    {
-      name: 'Расписание',
-      url: '/timetable',
-    },
-    {
-      name: 'Успеваемость',
-      url: '/performance',
-    },
-    {
-      name: 'Посещения по физкультуре',
-      url: '/visits',
-    },
-    {
-      name: 'Образовательные программы',
-      url: '/faculties',
-    },
-  ],
-};
+const links = [
+  {
+    id: 'Study',
+    name: 'Учёба',
+    links: [
+      {
+        name: 'Расписание',
+        url: '/timetable',
+      },
+      {
+        name: 'Успеваемость',
+        url: '/performance',
+      },
+      {
+        name: 'Посещения по физкультуре',
+        url: '/visits',
+      },
+      {
+        name: 'Образовательные программы',
+        url: '/faculties',
+      },
+    ],
+  },
+  {
+    id: 'Career',
+    name: 'Карьера',
+    links: [
+      {
+        name: 'Дополнительные образовательные курсы',
+        url: '/additional_courses',
+      },
+      {
+        name: 'Трудоустройство и практика',
+        url: '/practic',
+      },
+      {
+        name: 'Международные стажировки',
+        url: '/internship',
+      },
+    ],
+  },
+  {
+    id: 'myFinances',
+    name: 'Мои финансы',
+    url: '/myfinances',
+  },
+  {
+    id: 'certificates',
+    name: 'Справки',
+    url: '/certificates',
+  },
+];
 
-const career = {
-  id: 'Career',
-  name: 'Карьера',
-  links: [
-    {
-      name: 'Дополнительные образовательные курсы',
-      url: '/additional_courses',
-    },
-    {
-      name: 'Трудоустройство и практика',
-      url: '/practic',
-    },
-    {
-      name: 'Международные стажировки',
-      url: '/internship',
-    },
-  ],
-};
-
-const myFinances = {
-  id: 'myFinances',
-  name: 'Мои финансы',
-  url: '/myfinances',
-};
-
-const certificates = {
-  id: 'certificates',
-  name: 'Справки',
-  url: '/certificates',
-};
-
-const alerts = {
-  id: 'alerts',
-  name: 'Уведомления',
-  url: '/alerts',
-};
-
-const feedback = {
-  id: 'feedback',
-  name: 'Обратная связь',
-  url: '/feedback',
-};
-
-const links = [study, career, myFinances, certificates, alerts, feedback];
 const Menu = (props) => {
   const logOut = (event) => {
     props.logOut();

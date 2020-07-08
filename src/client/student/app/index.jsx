@@ -16,7 +16,8 @@ class App extends Component {
 
   render() {
     const token = window.localStorage.getItem('polyUser');
-    if (this.props.login) { // если логин в state установлен
+    // если логин в state установлен
+    if (this.props.login) {
       return (
         <div className='App' >
           <div>

@@ -1,0 +1,160 @@
+.Modalsertificates {
+  font-family: Roboto, sans-serif;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(161, 194, 238, 0.8);
+  top: 0;
+  left: 0;
+  z-index: 12;
+  overflow-y: scroll;
+  &-Content {
+    margin: 0 auto;
+    background: #fff;
+    margin-top: 81px;
+    width: 996px;
+    max-width: 90%;
+    border-radius: 5px;
+    position: relative;
+    right: 1.75em;
+    padding-bottom: 20px;
+  }
+  &_visible {
+    &_false {
+      display: none;
+    }
+  }
+  &-Title {
+    padding-top: 45px;
+    font-family: "HelveticaNeueCyr", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 41px;
+  }
+
+  &-Forminp {
+    padding: 25px 20px;
+    width: 530.81px;
+    max-width: 90%;
+    margin: 0 auto;
+    border: 1px solid rgba(247, 147, 41, 0.83);
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }
+  &-Success {
+    width: 530.81px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.Success {
+  &_gray {
+    width: 173.98px;
+    height: 25px;
+    background: rgba(51, 51, 51, 0.87);
+    border-radius: 5px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 15px;
+    color: #ffffff;
+    margin-right: 25px;
+  }
+  &_white {
+    width: 181.74px;
+    height: 13px;
+
+    font-family: "HelveticaNeueCyr", sans-serif;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 13px;
+    color: #f79329;
+    background: white;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}
+
+.Forminp {
+  &-Title {
+    position: relative;
+    bottom: 36px;
+    display: inline-block;
+    background: white;
+  }
+  &-Inpcontent {
+    text-align: center;
+  }
+}
+
+.Inpcontent {
+  &-Radio {
+    margin-bottom: 20px;
+  }
+  &-Form {
+    margin-bottom: 14px;
+    label {
+      width: 100px;
+      display: inline-block;
+    }
+    input {
+      width: 158.47px;
+      height: 18px;
+      border: 1px solid #c4c4c4;
+      box-sizing: border-box;
+      border-radius: 3px;
+    }
+  }
+}
+
+.Radio {
+  &-Lbl {
+    margin-left: 4em;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+}
+
+#Inp {
+  &_long {
+    width: 137px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Success {
+    &_gray {
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+  }
+
+  .Modalsertificates {
+    &-Content {
+      position: relative;
+      right: 0;
+    }
+    &-Title {
+      font-size: 1em;
+    }
+
+    &-Forminp {
+      font-size: 0.8em;
+    }
+
+    &-Success {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

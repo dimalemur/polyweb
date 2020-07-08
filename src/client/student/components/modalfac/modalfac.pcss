@@ -1,0 +1,114 @@
+.Modalfac {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(255, 255, 255, 0.5);
+  top: 0;
+  z-index: 12;
+  overflow-y: scroll;
+  &-Content {
+    margin: 0 auto;
+    margin-top: 81px;
+    width: 996px;
+    max-width: 90%;
+    background: #121058;
+    border-radius: 5px;
+    position: relative;
+    right: 1.75em;
+    padding-bottom: 20px;
+  }
+  &-Vector {
+    margin: 26px;
+    background: white;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    padding: 17px 50px;
+  }
+  &_visible {
+    &_false {
+      display: none;
+    }
+  }
+
+  &-Title {
+    text-align: center;
+  }
+}
+
+.Content {
+  &-Exitbutton {
+    margin-top: 1.5em;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    span {
+      cursor: pointer;
+    }
+  }
+}
+
+.Vector {
+  &-Title {
+    text-align: center;
+    font-weight: bold;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    margin-bottom: 19px;
+  }
+}
+
+.Title {
+  &-Recens {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2f2f2f;
+    margin-bottom: 11px;
+  }
+}
+
+.Recens {
+  &-Name {
+    cursor: pointer;
+    margin-bottom: 11px;
+    font-size: 18px;
+    line-height: 21px;
+    text-decoration-line: underline;
+    color: #f79329;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .Modalfac {
+    &-Content {
+      position: relative;
+      right: 0;
+    }
+  }
+
+  .Recens {
+    &-Name {
+      font-size: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .Vector {
+    &-Title {
+      font-size: 0.8em;
+    }
+  }
+
+  
+  .Title {
+    &-Recens {
+      font-size: 0.8em;
+    }
+  }
+  .Recens {
+    &-Name {
+      font-size: 0.8em;
+    }
+  }
+}

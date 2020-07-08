@@ -11,16 +11,100 @@
   &-Payment {
     display: inline-block;
   }
+  &-Text {
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    margin-bottom: 24px;
+  }
+  &-Period {
+    border: 1px solid #666262;
+    border-radius: 5px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-family: "HelveticaNeueCyr", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    color: #000000;
+
+    input {
+      border: 0.5px solid #898686;
+      box-sizing: border-box;
+      border-radius: 5px;
+      text-align: center;
+    }
+  }
+  &-Payinfo {
+    background: #fff9f3;
+    padding: 27px;
+  }
+}
+
+.Payinfo {
+  &-Visible {
+    &_false {
+      display: none;
+    }
+  }
+  &-Inner {
+    width: 70%;
+    margin: 0 auto;
+  }
+  &-Title {
+    display: flex;
+    justify-content: space-between;
+    font-family: "HelveticaNeueCyr", sans-serif;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 14px;
+    line-height: 14px;
+    color: #f79329;
+    margin-bottom: 15px;
+  }
+  &-Item {
+    margin-bottom: 10px;
+    font-family: "HelveticaNeueCyr", sans-serif;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 12px;
+    line-height: 12px;
+
+    color: #121058;
+
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.Period {
+  &-Button {
+    background: #121058;
+    border-radius: 5px;
+    padding: 3px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 23px;
+  }
 }
 
 .Payment {
   margin: 28px 0 23px 0;
   &-Item {
     margin: 12px 0;
+    margin-bottom: 23px;
   }
-  &-Wrap {
-    display: flex;
-    justify-content: center;
+  &-Content {
+    width: 536px;
+    margin: 0 auto;
   }
 }
 

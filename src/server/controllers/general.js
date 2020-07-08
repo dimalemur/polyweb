@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /* eslint quotes:off, no-useless-escape:off */
 import { parse } from 'node-html-parser';
 
@@ -60,6 +61,16 @@ export const getJobNews = async (req, res, next) => {
   });
 };
 
+const getRasp = async (group, options) => (await needle('get', `https://rasp.dmami.ru/site/group?group=${group}`, options)
+  .then((resp) => resp.body)
+  .catch((err) => err)
+);
+
+const getRaspSession = async (group, options) => (await needle('get', `https://rasp.dmami.ru/site/group?group=${group}&session=1`, options)
+  .then((resp) => resp.body)
+  .catch((err) => err)
+);
+
 export const getTimetable = async (req, res, next) => {
   const group = req.query.group;
   const options = {
@@ -69,9 +80,10 @@ export const getTimetable = async (req, res, next) => {
     },
   };
 
-  await needle.get(`https://rasp.dmami.ru/site/group?group=${group}`, options, (error, response) => {
-    if (!error && response.statusCode === 200) {
-      res.send(response.body.grid);
-    }
-  });
+  let rasp = await getRasp(group, options);
+
+  if (rasp.status !== 'ok') {
+    rasp = await getRaspSession(group, options);
+  }
+  res.send(rasp.grid);
 };

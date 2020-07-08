@@ -96,11 +96,11 @@ export const StudentinfoAddItem = (props) => {
                     className={props.classes.orders}
                   >
                     <ListItem button>
-                      <ListItemIcon onClick={(event) => { handleClickToDeleteOrder(i, props.kkey); }}>
+                      <ListItemIcon onClick={() => { handleClickToDeleteOrder(i, props.kkey); }}>
                         <DeleteIcon />
                       </ListItemIcon>
                       <ListItemText primary={element.name} />
-                      <div onClick={(event) => { handleClickToOpen(i); }} >
+                      <div onClick={() => { handleClickToOpen(i); }} >
                         {(open === i) ? <ExpandLess /> : <ExpandMore />}
                       </div>
                     </ListItem>
@@ -208,11 +208,10 @@ export const StudentinfoAddItem = (props) => {
         id='panel1bh-header'
       >
         <Typography className={props.classes.heading}>{props.kkey}</Typography>
-        <Typography className={props.secondaryHeading}>{props.value}</Typography>
+        <Typography className={props.secondaryHeading}>{(Array.isArray(props.value) ? '' : props.value)}</Typography>
       </ExpansionPanelSummary>
 
       {detailComponent()}
-
     </ExpansionPanel >
   );
 };
